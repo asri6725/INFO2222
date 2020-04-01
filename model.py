@@ -44,6 +44,14 @@ def login_check(username, password):
 #-----------------------------------------------------------------------------
 
 #go to units
-def units():
-    return page_view("units")
+def units(username):
+
+    return page_view("units", name=username)
+
+
+#-----------------------------------------------------------------------------
+
+#go to topic
+def topic(username):
+    return page_view("topic", name=username)
 

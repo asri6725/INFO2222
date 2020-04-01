@@ -30,6 +30,14 @@ def post_login():
 
 @get('/homepage/subject')
 def units():
- 	return model.units()
+    username = "admin"
+    return model.units(username)
+
+#-----------------------------------------------------------------------------
+
+@get('/homepage/subject/topic')
+def topic():
+    username = "admin"
+    return model.topic(username)
 
 #-----------------------------------------------------------------------------
