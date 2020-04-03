@@ -8,6 +8,23 @@ import model
     You should not have anything beyond basic page loads, handling forms and 
     maybe some simple program logic
 '''
+# Static file paths
+#-----------------------------------------------------------------------------
+
+# Allow image loading
+@route('/img/<picture:path>')
+def serve_pictures(picture):
+    return static_file(picture, root='img/')
+
+
+#-----------------------------------------------------------------------------
+# Allow CSS
+@route('/css/<css:path>')
+def serve_css(css):
+    return static_file(css, root='css/')
+
+#-----------------------------------------------------------------------------
+
 # Redirect to login
 @get('/')
 def get_index():

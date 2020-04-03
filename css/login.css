@@ -1,0 +1,45 @@
+.Wrapper{
+	width: auto;
+	max-width: 50%;
+	margin: auto;
+	top: 50%;
+	height: 100%;
+}
+.Logo{
+	width: auto;
+	max-width: 20%;
+	max-height: 20%;
+	margin: auto;
+	height: auto;
+	
+}
+.FormContainer{
+	width: auto;
+	max-width: 50%;
+	margin: auto;
+	height: auto;
+	min-height: 50%;
+}
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: auto;
+  box-sizing: border-box;
+  border: 0px;
+  border-bottom: solid black 2px;
+}
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: auto;
+  box-sizing: border-box;
+  border: 0px;
+  border-bottom: solid black 2px;
+}
+input[type=submit] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: auto;
+  box-sizing: border-box;
+  border: 0px;
+}
