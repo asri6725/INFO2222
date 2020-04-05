@@ -1,0 +1,52 @@
+.Wrapper{
+  width: auto;
+  min-width: 50%;
+  max-width: 100%;
+
+}
+.heading{
+  text-align: center;
+  font-size: 40px;
+
+}
+.content{
+  text-align: center;
+  font-size: 30px;
+}
+.action{
+  align-items: center;
+  text-align: center;
+}
+.comments{
+  align-items: center;
+  padding-left: 400px;
+  font-size: 30px;
+  padding: 50px 50px;
+}
+.comment_insert{
+  padding: 20px 20px;
+  top: 30%;
+}
+.commentone{
+  padding: 20px 20px;
+  top: 10%;
+}
+.commenttwo{
+  padding: 20px 20px;
+  top: 10%;
+}
+input[type=text]{
+    width: 70%;
+    padding: 12px 20px;
+    margin: auto;
+    box-sizing: border-box;
+
+}
+
+input[type=submit] {
+  width: 10%;
+  padding: 12px 20px;
+  margin: auto;
+  box-sizing: border-box;
+  border: 0px;
+}

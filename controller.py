@@ -4,8 +4,8 @@ import model
 
 #-----------------------------------------------------------------------------
 '''
-    This file will handle our typical Bottle requests and responses 
-    You should not have anything beyond basic page loads, handling forms and 
+    This file will handle our typical Bottle requests and responses
+    You should not have anything beyond basic page loads, handling forms and
     maybe some simple program logic
 '''
 # Static file paths
@@ -38,7 +38,7 @@ def post_login():
     # Handle the form processing
     username = request.forms.get('username')
     password = request.forms.get('password')
-    
+
     # Call the appropriate method
     return model.login_check(username, password)
 
@@ -54,7 +54,13 @@ def units():
 
 @get('/homepage/subject/topic')
 def topic():
-    username = "admin"
-    return model.topic(username)
+    return model.topic()
+
+#-----------------------------------------------------------------------------
+
+@post('/homepage/subject/topic')
+def post_comment():
+    comment = request.forms.get('comment')
+    return model.add_comment(comment)
 
 #-----------------------------------------------------------------------------

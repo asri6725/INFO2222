@@ -2,9 +2,40 @@
 <html>
 <head>
 	<title>Site Name <Name></title>
+		<link rel="stylesheet" type="text/css" href="../css/topic.css">
+
 </head>
 <body>
-<p> This is a title </p>
-<p> This is the body. </p>
+	<div class="Wrapper">
+<div class="heading">
+<p> How do I make a website? </p>
+</div>
+<div class="content">
+<p> I am really interested in making websites but I have no knowledge
+on making it. Any help?
+</p>
+</div>
+<div class="action">
+	<div class="Form">
+	<form action="/homepage/subject/topic" method="post">
+			<input name="comment" placeholder="Comment" type="text"/>
+		</br></br>
+		<input value="Send" type="submit" />
+	</form>
+</div>
+</div>
+<div class="comments">
+<div class="comment_insert">
+		{comment}
+	</div>
+<div class="commentone">
+	You can take up info2222. Great help!
+</div>
+<div class="commenttwo">
+	There is a lot of stuff out there but you need to know html, css and Js.
+	You can look them up online or message me for futher info!
+</div>
+</div>
+</div>
 </body>
 </html>

@@ -25,20 +25,20 @@ def main_page():
 def login_check(username, password):
     # By default assume bad creds
     login = True
-    
+
     if username != "admin": # Wrong Username
         err_str = "Incorrect Username"
         login = False
-    
+
     if password != "password": # Wrong password
         err_str = "Incorrect Password"
         login = False
-        
-    if login: 
+
+    if login:
         return page_view("homepage", name=username)
     else:
         return page_view("invalid", reason=err_str)
-    
+
 
 
 #-----------------------------------------------------------------------------
@@ -52,6 +52,11 @@ def units(username):
 #-----------------------------------------------------------------------------
 
 #go to topic
-def topic(username):
-    return page_view("topic", name=username)
+def topic():
+    return page_view("topic", comment="")
 
+
+#-----------------------------------------------------------------------------
+#comments
+def add_comment(comment):
+    return page_view("topic", comment=comment)
