@@ -2,7 +2,7 @@ from bottle import run
 
 #-----------------------------------------------------------------------------
 # Get our components
-# You may eventually wish to put these in their own directories and then load 
+# You may eventually wish to put these in their own directories and then load
 # Each file separately
 # For the template, we will keep them together
 import model
@@ -22,7 +22,7 @@ import controller
 #-----------------------------------------------------------------------------
 # It might be a good idea to move the following settings to a config file and then load them
 # Change this to your IP address or 0.0.0.0 when actually hosting
-host =  '10.86.163.196' #'localhost'
+host =  'localhost' #''10.86.163.196
 
 # Test port, change to the appropriate port to host
 port = 8080
