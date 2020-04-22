@@ -1,6 +1,6 @@
 import random
 from bottle import template, TEMPLATE_PATH
-
+import bottle
 '''
     Our Model class
     This should control the actual "logic" of your website
