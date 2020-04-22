@@ -1,6 +1,6 @@
 import random
 from bottle import template, TEMPLATE_PATH
-import bottle
+#import bottle
 '''
     Our Model class
     This should control the actual "logic" of your website
@@ -11,7 +11,7 @@ import bottle
 import view
 
 # Initialise our views, all arguments are defaults
-bottle.TEMPLATE_PATH.insert(0,'~/m14AGroup6/')
+#bottle.TEMPLATE_PATH.insert(0,'~/m14AGroup6/')
 page_view = view.View()
 
 users = {"admin":"password"}
@@ -20,7 +20,7 @@ users = {"admin":"password"}
 # Login
 
 def login():
-    return template('templates/Login.html')
+    return template('~/m14AGroup6/templates/Login.html')
 
 #-----------------------------------------------------------------------------
 # Check the login credentials
@@ -34,33 +34,33 @@ def login_check(username, password):
 
 
     if login:
-        return template("templates/homepage.html", name=username)
+        return template("~/m14AGroup6/templates/homepage.html", name=username)
     else:
-        return template("templates/LoginError.html", reason="check credentials")
+        return template("~/m14AGroup6/templates/LoginError.html", reason="check credentials")
 
 #-----------------------------------------------------------------------------
 # Forgot password
 def forgot_password():
-    return template("templates/ForgotPwd.html")
+    return template("~/m14AGroup6/templates/ForgotPwd.html")
 #-----------------------------------------------------------------------------
 # Reset password
 def reset_password():
-    return template("templates/ResetPwd.html")
+    return template("~/m14AGroup6/templates/ResetPwd.html")
 #-----------------------------------------------------------------------------
 # Signup
 def signup():
-    return template("templates/Signup.html")
+    return template("~/m14AGroup6/templates/Signup.html")
 #-----------------------------------------------------------------------------
 # Signup Check
 def signup_check(username, password):
     global users
     if (username not in users):
         users[username] = password
-        return template("templates/Login.html")
+        return template("~/m14AGroup6/templates/Login.html")
     else:
-        return template("templates/SignupError.html")
+        return template("~/m14AGroup6/templates/SignupError.html")
 
 #-----------------------------------------------------------------------------
 # Signup Error
 def signup_error():
-    return template("templates/SignupError.html")
+    return template("~/m14AGroup6/templates/SignupError.html")
