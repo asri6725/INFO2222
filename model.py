@@ -1,6 +1,8 @@
 import random
 from bottle import template, TEMPLATE_PATH
-#import bottle
+import os
+
+
 '''
     Our Model class
     This should control the actual "logic" of your website
@@ -11,7 +13,12 @@ from bottle import template, TEMPLATE_PATH
 import view
 
 # Initialise our views, all arguments are defaults
-#bottle.TEMPLATE_PATH.insert(0,'~/m14AGroup6/')
+global TEMPLATE_PATH
+
+TEMPLATE_PATH.insert(0, './templates/')
+print(TEMPLATE_PATH)
+
+print(os.getcwd())
 page_view = view.View()
 
 users = {"admin":"password"}
@@ -20,47 +27,48 @@ users = {"admin":"password"}
 # Login
 
 def login():
-    return template('~/m14AGroup6/templates/Login.html')
+    return template('Login.html')
 
 #-----------------------------------------------------------------------------
 # Check the login credentials
 def login_check(username, password):
     # By default assume bad creds
+    # doesn't work for now just to deploy
     login = True
-
-    if username == "admin@gmail.com" and password=="password": # Wrong Username
-        login = True
-
+    global users
+    if username in users: # right username
+        if users[username] == password:
+            login = True
 
 
     if login:
-        return template("~/m14AGroup6/templates/homepage.html", name=username)
+        return template("homepage.html", name=username)
     else:
-        return template("~/m14AGroup6/templates/LoginError.html", reason="check credentials")
+        return template("LoginError.html", reason="check credentials")
 
 #-----------------------------------------------------------------------------
 # Forgot password
 def forgot_password():
-    return template("~/m14AGroup6/templates/ForgotPwd.html")
+    return template("ForgotPwd.html")
 #-----------------------------------------------------------------------------
 # Reset password
 def reset_password():
-    return template("~/m14AGroup6/templates/ResetPwd.html")
+    return template("ResetPwd.html")
 #-----------------------------------------------------------------------------
 # Signup
 def signup():
-    return template("~/m14AGroup6/templates/Signup.html")
+    return template("Signup.html")
 #-----------------------------------------------------------------------------
 # Signup Check
 def signup_check(username, password):
     global users
     if (username not in users):
         users[username] = password
-        return template("~/m14AGroup6/templates/Login.html")
+        return template("Login.html")
     else:
-        return template("~/m14AGroup6/templates/SignupError.html")
+        return template("SignupError.html")
 
 #-----------------------------------------------------------------------------
 # Signup Error
 def signup_error():
-    return template("~/m14AGroup6/templates/SignupError.html")
+    return template("SignupError.html")
