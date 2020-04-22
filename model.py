@@ -1,4 +1,6 @@
 import random
+from bottle import template
+
 '''
     Our Model class
     This should control the actual "logic" of your website
@@ -11,52 +13,53 @@ import view
 # Initialise our views, all arguments are defaults
 page_view = view.View()
 
+users = {"admin":"password"}
 
 #-----------------------------------------------------------------------------
 # Login
+
+def login():
+    return template('templates/Login.html')
+
 #-----------------------------------------------------------------------------
-
-def main_page():
-    return page_view("login")
-
-#-----------------------------------------------------------------------------
-
 # Check the login credentials
 def login_check(username, password):
     # By default assume bad creds
     login = True
 
-    if username != "admin": # Wrong Username
-        err_str = "Incorrect Username"
-        login = False
+    if username == "admin@gmail.com" and password=="password": # Wrong Username
+        login = True
 
-    if password != "password": # Wrong password
-        err_str = "Incorrect Password"
-        login = False
+
 
     if login:
-        return page_view("homepage", name=username)
+        return template("templates/homepage.html", name=username)
     else:
-        return page_view("invalid", reason=err_str)
-
-
+        return template("templates/LoginError.html", reason="check credentials")
 
 #-----------------------------------------------------------------------------
-
-#go to units
-def units(username):
-
-    return page_view("units", name=username)
-
+# Forgot password
+def forgot_password():
+    return template("templates/ForgotPwd.html")
+#-----------------------------------------------------------------------------
+# Reset password
+def reset_password():
+    return template("templates/ResetPwd.html")
+#-----------------------------------------------------------------------------
+# Signup
+def signup():
+    return template("templates/Signup.html")
+#-----------------------------------------------------------------------------
+# Signup Check
+def signup_check(username, password):
+    global users
+    if (username not in users):
+        users[username] = password
+        return template("templates/Login.html")
+    else:
+        return template("templates/SignupError.html")
 
 #-----------------------------------------------------------------------------
-
-#go to topic
-def topic():
-    return page_view("topic", comment="")
-
-
-#-----------------------------------------------------------------------------
-#comments
-def add_comment(comment):
-    return page_view("topic", comment=comment)
+# Signup Error
+def signup_error():
+    return template("templates/SignupError.html")
