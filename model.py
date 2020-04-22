@@ -1,5 +1,5 @@
 import random
-from bottle import template
+from bottle import template, TEMPLATE_PATH
 
 '''
     Our Model class
@@ -11,6 +11,7 @@ from bottle import template
 import view
 
 # Initialise our views, all arguments are defaults
+bottle.TEMPLATE_PATH.insert(0,'~/m14AGroup6/')
 page_view = view.View()
 
 users = {"admin":"password"}
