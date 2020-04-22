@@ -28,7 +28,7 @@ host =  '10.86.163.196' #'localhost'10.86.163.196
 port = 8080
 
 # Turn this off for production
-debug = False
+debug = True
 #-----------------------------------------------------------------------------
 
 #Run the server
