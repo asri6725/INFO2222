@@ -11,8 +11,9 @@ from bottle import template, TEMPLATE_PATH
 
 # Initialise our views, all arguments are defaults
 
-users = {"admin":"password"}
-
+users = {'admin':'password', 'abhi':'123'}
+print(users.keys())
+print(users.values())
 #-----------------------------------------------------------------------------
 # Login
 
@@ -24,14 +25,19 @@ def login():
 def login_check(username, password):
     # By default assume bad creds
     # doesn't work for now just to deploy
-    login = True
+    login = False
     global users
-    if username in users.keys(): # right username
-        if users[username] == password:
-            login = True
+    for user in users.keys():
+        if username == user: # right username
+            print("Username check exist, password should be", users[username])
+            if users[username] == password:
+                login = True
+        else:
+            print("username: ", username, ", not equal to user: ", user)
+        
 
 
-    if login:
+    if login==True:
         subject = {'name':'INFO2222', 'code': 'COMP3333'}
         return template("homepage.tpl", name="username", subject=subject)
     else:
