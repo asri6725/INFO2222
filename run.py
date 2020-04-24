@@ -6,7 +6,6 @@ from bottle import run
 # Each file separately
 # For the template, we will keep them together
 import model
-import view
 import controller
 #-----------------------------------------------------------------------------
 
@@ -22,13 +21,13 @@ import controller
 #-----------------------------------------------------------------------------
 # It might be a good idea to move the following settings to a config file and then load them
 # Change this to your IP address or 0.0.0.0 when actually hosting
-host =  '10.86.163.196' #'localhost'10.86.163.196
+host =  'localhost' #'localhost'10.86.163.196
 
 # Test port, change to the appropriate port to host
 port = 8080
 
 # Turn this off for production
-debug = False
+debug = True
 #-----------------------------------------------------------------------------
 
 #Run the server

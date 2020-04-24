@@ -1,7 +1,5 @@
 import random
 from bottle import template, TEMPLATE_PATH
-import os
-
 
 '''
     Our Model class
@@ -10,16 +8,8 @@ import os
     It should exist as a separate layer to any database or data structure that you might be using
     Nothing here should be stateful, if it's stateful let the database handle it
 '''
-import view
 
 # Initialise our views, all arguments are defaults
-global TEMPLATE_PATH
-
-TEMPLATE_PATH.insert(0, './templates/')
-print(TEMPLATE_PATH)
-
-print(os.getcwd())
-page_view = view.View()
 
 users = {"admin":"password"}
 
@@ -36,15 +26,18 @@ def login_check(username, password):
     # doesn't work for now just to deploy
     login = True
     global users
-    if username in users: # right username
+    if username in users.keys(): # right username
         if users[username] == password:
             login = True
 
 
     if login:
-        return template("homepage.html", name=username)
+        subject = {'name':'INFO2222', 'code': 'COMP3333'}
+        return template("homepage.tpl", name="username", subject=subject)
     else:
         return template("LoginError.html", reason="check credentials")
+
+
 
 #-----------------------------------------------------------------------------
 # Forgot password

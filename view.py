@@ -37,7 +37,7 @@ class View():
         template = self.simple_render(template, **keys)
         return template
 
-    def load_and_render(self, filename, header="header", tailer="tailer", **kwargs):
+    def load_and_render(self, filename, **kwargs):
         template = self.load_template(filename)
         rendered_template = self.render(template, **kwargs)
         return rendered_template
