@@ -37,7 +37,7 @@ def sign_up():
 
 @get('/sign-up', method='POST')
 def do_sign_up():
-    username = request.forms.get('email')
+    username = request.forms.get('username')
     password = request.forms.get('password')
 
     return model.signup_check(username, password)

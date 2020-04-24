@@ -29,17 +29,17 @@ def login_check(username, password):
     global users
     for user in users.keys():
         if username == user: # right username
-            print("Username check exist, password should be", users[username])
+            #print("Username check exist, password should be", users[username])
             if users[username] == password:
                 login = True
-        else:
-            print("username: ", username, ", not equal to user: ", user)
+        # else:
+        #     print("username: ", username, ", not equal to user: ", user)
         
 
 
     if login==True:
         subject = {'name':'INFO2222', 'code': 'COMP3333'}
-        return template("homepage.tpl", name="username", subject=subject)
+        return template("homepage.tpl", name=username, subject=subject)
     else:
         return template("LoginError.html", reason="check credentials")
 
@@ -61,7 +61,11 @@ def signup():
 # Signup Check
 def signup_check(username, password):
     global users
-    if (username not in users):
+    exist = False
+    for user in users.keys():
+        if username == user:
+            exist = True
+    if (exist == False):
         users[username] = password
         return template("Login.html")
     else:
