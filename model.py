@@ -1,5 +1,5 @@
 import random
-from bottle import template, TEMPLATE_PATH
+from bottle import template, error
 
 '''
     Our Model class
@@ -12,8 +12,8 @@ from bottle import template, TEMPLATE_PATH
 # Initialise our views, all arguments are defaults
 
 users = {'admin':'password', 'abhi':'123'}
-print(users.keys())
-print(users.values())
+subject = ['comp2022', 'info2222', 'comp3333', 'info1111', 'comp2123', 'info3315', 'comp3308', 'data3404']
+
 #-----------------------------------------------------------------------------
 # Login
 
@@ -38,7 +38,7 @@ def login_check(username, password):
 
 
     if login==True:
-        subject = {'name':'INFO2222', 'code': 'COMP3333'}
+        global subject
         return template("homepage.tpl", name=username, subject=subject)
     else:
         return template("LoginError.html", reason="check credentials")
@@ -75,3 +75,15 @@ def signup_check(username, password):
 # Signup Error
 def signup_error():
     return template("SignupError.html")
+
+#-----------------------------------------------------------------------------
+
+def homepage():
+    global users
+    global subject
+    return template("homepage.tpl", name = 'username', subject='subject')
+
+#-----------------------------------------------------------------------------
+
+def error():
+    return template("ErrorPage.html")

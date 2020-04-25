@@ -1,4 +1,4 @@
-from bottle import route, get, post, request, redirect, static_file
+from bottle import route, get, post, request, redirect, static_file, error, template
 
 import model
 
@@ -13,27 +13,45 @@ import model
 def login():
     return model.login()
 
+#-----------------------------------------------------------------------------
+
 @post('/')
 def do_login():
     username = request.forms.get('username')
     password = request.forms.get('password')
     return model.login_check(username, password)
 
+#-----------------------------------------------------------------------------
+
+@get('/homepage')
+def homepage():
+    return model.homepage()
+
+#-----------------------------------------------------------------------------
+
 @get('/forgot-password')
 def forgot():
     return model.forgot_password()
+
+#-----------------------------------------------------------------------------
 
 @get('/reset-password')
 def forgot():
     return model.reset_password()
 
+#-----------------------------------------------------------------------------
+
 @get('/sign-up')
 def sign_up():
     return model.signup()
 
+#-----------------------------------------------------------------------------
+
 @get('/sign-uperror')
 def sign_up():
     return model.signup_error()
+
+#-----------------------------------------------------------------------------
 
 @get('/sign-up', method='POST')
 def do_sign_up():
@@ -41,6 +59,13 @@ def do_sign_up():
     password = request.forms.get('password')
 
     return model.signup_check(username, password)
+
+#-----------------------------------------------------------------------------
+
+@route('/homepage/<subject>')            # matches /wiki/Learning_Python
+def show_wiki_page(subject):
+    tpl = "<p> Welcome to discussion of {{subject}}"
+    return template(tpl, subject=subject)
 
 
 #-----------------------------------------------------------------------------
@@ -72,5 +97,11 @@ def serve_js(js):
 @route('/css/<css:path>')
 def serve_css(css):
     return static_file(css, root='css/')
+
+#-----------------------------------------------------------------------------
+
+@error(404)
+def error404(error):
+    return model.error()
 
 #-----------------------------------------------------------------------------
