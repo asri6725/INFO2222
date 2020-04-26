@@ -21,11 +21,14 @@ def do_login():
     password = request.forms.get('password')
     return model.login_check(username, password)
 
-#-----------------------------------------------------------------------------
 
-@get('/homepage')
-def homepage():
-    return model.homepage()
+#-----------------------------------------------------------------------------
+  
+@post('/homepage')
+def unit_add():
+    username = request.forms.get('username')
+    unit_add = request.forms.get('unit')
+    return model.addUnit(unit_add, username)
 
 #-----------------------------------------------------------------------------
 
@@ -62,7 +65,7 @@ def do_sign_up():
 
 #-----------------------------------------------------------------------------
 
-@route('/homepage/<subject>')            # matches /wiki/Learning_Python
+@get('/homepage/<subject>')            
 def show_wiki_page(subject):
     tpl = "<p> Welcome to discussion of {{subject}}"
     return template(tpl, subject=subject)
