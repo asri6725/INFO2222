@@ -17,13 +17,69 @@ import studhelp_dbsql
 #Anyone feel free to add your name and subjects here and it will show them in the login
 users = {1:{'user':'admin',
              'password': 'password',
-             'subject':['math2022','info2222']            
+             'subject':['math2068','info2222']            
             },
         2:{
             'user':'abhi',
             'password': '123',
             'subject': ['data3404','info2222']
         } }
+
+#Discussion table
+
+discussion = {
+    'info2222':{
+        1:{
+            'title':'how to make websites?',
+            'content': 'I want to learn how to make websites',
+            'responses':{
+                'abhi':'Just learn html, css and javascript',
+                'admin': 'it is easy! definitely have a go with html',
+            }
+        },
+        2:{
+            'title':'I have a doubt with loading JavaScript',
+            'content': 'How to use the window object?',
+            'responses':{
+                'admin':'Call the variables with "window.<something>"',
+            },
+        },
+    },
+    'math2068':{
+        1:{
+            'title':'How can we crack SHA encryption',
+            'content': 'Why is it computationally not possible to do so?',
+            'responses':{
+                'abhi':'I dunno',
+                'admin': 'it is easy! ',
+            }
+        },
+        2:{
+            'title':'What is diffie helman method of encryption?',
+            'content': 'How to use the window object?',
+            'responses':{
+                'admin':'It can be used to generate secret keys between 2 users',
+            },
+        },
+    },
+    'comp2022':{
+        1:{
+            'title':'What are NP hard problems',
+            'content': 'I do not know what NP means',
+            'responses':{
+                'abhi':'Non Polynomial time complexity',
+                'admin': 'What he said^',
+            }
+        },
+        2:{
+            'title':'What is dynamic programming?',
+            'content': 'I dont really understand it',
+            'responses':{
+                'admin':'It is a style that basically saves some computation to reduce time',
+            },
+        },
+    },
+}
 
 
 #-----------------------------------------------------------------------------
@@ -99,3 +155,34 @@ def signup_error():
 
 def error():
     return template("ErrorPage.html")
+
+#-----------------------------------------------------------------------------
+# Unit Discussion
+
+def listTopics(unit):
+    title = []
+    global discussion
+    for i in discussion[unit]:
+        title.append(discussion[unit][i]['title'])
+    
+    print(title)
+    return template("UnitDiscussion.tpl", title = title, unit=unit)
+
+#-----------------------------------------------------------------------------
+# Viewing each post, including title, content and responses
+
+def content(subject, title):
+    
+    global discussion
+    content = None
+    responses = {}
+    for i in discussion[subject]:  #itreate the subjects (from signature) content looking for title (from signature), returning that, it's content and responses
+        title_check = ''.join(e for e in discussion[subject][i]['title'] if e.isalnum()) 
+        if title == title_check:
+            content = discussion[subject][i]['content']
+            responses = discussion[subject][i]['responses']
+            title_normal = discussion[subject][i]['title']
+       
+    return template("topic.tpl", title = title_normal, unit=subject, content=content, responses = responses)
+
+#-----------------------------------------------------------------------------

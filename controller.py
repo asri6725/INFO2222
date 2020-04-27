@@ -66,10 +66,15 @@ def do_sign_up():
 #-----------------------------------------------------------------------------
 
 @get('/homepage/<subject>')            
-def show_wiki_page(subject):
-    tpl = "<p> Welcome to discussion of {{subject}}"
-    return template(tpl, subject=subject)
+def list_of_topics(subject):
+    return model.listTopics(subject)
 
+#-----------------------------------------------------------------------------
+
+@get('/homepage/<subject>/<title>')            
+def topic(subject, title):
+    return model.content(subject, title)
+#-----------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------
 # Static file paths
