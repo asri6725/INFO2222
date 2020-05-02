@@ -1,7 +1,8 @@
 import random
-from bottle import template, error
+from bottle import template, error, redirect
 import studhelp_dbsql
 
+from collections import defaultdict
 '''
     Our Model class
     This should control the actual "logic" of your website
@@ -15,6 +16,7 @@ import studhelp_dbsql
 #we dont need this anymore
 #Jackey this is the design for users
 #Anyone feel free to add your name and subjects here and it will show them in the login
+
 users = {1:{'user':'admin',
              'password': 'password',
              'subject':['math2068','info2222']            
@@ -112,13 +114,10 @@ def addUnit(unit_add, username):
     #ADD unit to DB with the username and return homepage
     global users
     subject = ['not initialised']
-    print(username, unit_add)
     for i in users:
         if users[i]['user']== username:
-            print(username, unit_add)
             users[i]['subject'].append(unit_add)
             subject = users[i]['subject']
-            print(subject)
     
     return template("homepage.tpl", name=username, subject=subject)
 
@@ -164,9 +163,9 @@ def listTopics(unit):
     global discussion
     for i in discussion[unit]:
         title.append(discussion[unit][i]['title'])
-    
-    print(title)
-    return template("UnitDiscussion.tpl", title = title, unit=unit)
+
+    url = 'homepage/'+ unit
+    return template("UnitDiscussion.tpl", title = title, url=url, unit=unit)  
 
 #-----------------------------------------------------------------------------
 # Viewing each post, including title, content and responses
@@ -186,3 +185,12 @@ def content(subject, title):
     return template("topic.tpl", title = title_normal, unit=subject, content=content, responses = responses)
 
 #-----------------------------------------------------------------------------
+
+def new_post(subject, title, content):
+    global discussion
+    index = len(discussion[subject])+1
+    discussion[subject][index]={}
+    discussion[subject][index]['title'] = title
+    discussion[subject][index]['content'] = content
+    discussion[subject][index]['responses'] = {}
+    redirect('http://localhost:8080/homepage/'+subject)   

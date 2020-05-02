@@ -71,10 +71,19 @@ def list_of_topics(subject):
 
 #-----------------------------------------------------------------------------
 
+@post('/homepage/send/<subject>')
+@post('/homepage/send/homepage/<subject>')
+def get_post(subject):
+    title = request.forms.get('title')
+    content = request.forms.get('content')
+    return model.new_post(subject, title, content)
+
+#-----------------------------------------------------------------------------
+
 @get('/homepage/<subject>/<title>')            
 def topic(subject, title):
     return model.content(subject, title)
-#-----------------------------------------------------------------------------
+
 
 #-----------------------------------------------------------------------------
 # Static file paths
