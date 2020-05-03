@@ -56,13 +56,13 @@ def get_user_subject(username):
 #Return -1 when user is already enrolled in the unit
 def unit_add(username, unit):
 	
-	subjects = get_user_subject(username);
+	subjects = get_user_subject(username)
 	
 	for subject in subjects:
 		if subject == unit:
 			return subjects
 
-	cursor.execute("INSERT INTO user_subject VALUES(?, ?)", (username, unit));
+	cursor.execute("INSERT INTO user_subject VALUES(?, ?)", (username, unit))
 	connection.commit()
 
 	return get_user_subject(username)
@@ -70,7 +70,7 @@ def unit_add(username, unit):
 def get_post_contents(subject, title):
 
 	cursor.execute("""
-		SELECT P.title, P.subject_id, P.context
+		SELECT P.context
 		FROM post P
 		WHERE P.title = :title AND P.subject_id = :subject_id
 		""", {"title": title, "subject_id": subject})
@@ -92,7 +92,10 @@ def get_all_post_title(unit):
 	return title
 
 def add_new_post(username, subject, title, content):
-	cursor.execute("INSERT INTO post VALUES(?, ?, ?, ?)", (title, content, username, subject))
+	cursor.execute("SELECT MAX(post_id) FROM post")
+	data = cursor.fetchall()
+	id = data[0][0]+1
+	cursor.execute("INSERT INTO post VALUES(?, ?, ?, ?, ?)", (id, title, content, username, subject))
 	connection.commit()
 	return 0
 

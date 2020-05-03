@@ -99,10 +99,7 @@ def login_check(username, password):
     if result == 0:
         #checking the units that the user chose and only showing them in the homepage
         subject = ['initial_value_subject']
-        global users
-        for i in users:
-            if users[i]['user']== username:
-                subject = users[i]['subject']
+        subject = studhelp_dbsql.get_user_subject(username)
 
         return template("homepage.tpl", name=username, subject=subject)
     else:
@@ -110,15 +107,9 @@ def login_check(username, password):
 
 #-----------------------------------------------------------------------------
 
-def addUnit(unit_add, username):
+def addUnit(unit, username):
     #ADD unit to DB with the username and return homepage
-    global users
-    subject = ['not initialised']
-    for i in users:
-        if users[i]['user']== username:
-            users[i]['subject'].append(unit_add)
-            subject = users[i]['subject']
-    
+    subject = studhelp_dbsql.unit_add(username, unit)
     return template("homepage.tpl", name=username, subject=subject)
 
 #-----------------------------------------------------------------------------
@@ -160,9 +151,7 @@ def error():
 
 def listTopics(unit):
     title = []
-    global discussion
-    for i in discussion[unit]:
-        title.append(discussion[unit][i]['title'])
+    title = studhelp_dbsql.get_all_post_title(unit)
 
     url = 'homepage/'+ unit
     return template("UnitDiscussion.tpl", title = title, url=url, unit=unit)  
@@ -171,26 +160,12 @@ def listTopics(unit):
 # Viewing each post, including title, content and responses
 
 def content(subject, title):
-    
-    global discussion
-    content = None
-    responses = {}
-    for i in discussion[subject]:  #itreate the subjects (from signature) content looking for title (from signature), returning that, it's content and responses
-        title_check = ''.join(e for e in discussion[subject][i]['title'] if e.isalnum()) 
-        if title == title_check:
-            content = discussion[subject][i]['content']
-            responses = discussion[subject][i]['responses']
-            title_normal = discussion[subject][i]['title']
-       
-    return template("topic.tpl", title = title_normal, unit=subject, content=content, responses = responses)
+    res = studhelp_dbsql.get_post_contents(subject, title)
+    content = res[0]
+    return template("topic.tpl", title = title, unit=subject, content=content, responses = "to implement in db")
 
 #-----------------------------------------------------------------------------
 
 def new_post(subject, title, content):
-    global discussion
-    index = len(discussion[subject])+1
-    discussion[subject][index]={}
-    discussion[subject][index]['title'] = title
-    discussion[subject][index]['content'] = content
-    discussion[subject][index]['responses'] = {}
+    ret = studhelp_dbsql.add_new_post('admin', subject, title, content)
     redirect('http://localhost:8080/homepage/'+subject)   

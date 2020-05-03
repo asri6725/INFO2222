@@ -14,28 +14,28 @@
         <div>
         <form action = "/homepage" method="POST">
         <input type=hidden name=username value="{{name}}">
-        <input type=hidden name=unit value="math2068">
-        <input type=submit name=submit value="math2068">
+        <input type=hidden name=unit value="MATH2068">
+        <input type=submit name=submit value="MATH2068">
      </form>  
         <form action = "/homepage" method="POST">
         <input type=hidden name=username value="{{name}}">
-        <input type=hidden name=unit value="comp2022">
-        <input type=submit name=submit value="comp2022">
+        <input type=hidden name=unit value="COMP2022">
+        <input type=submit name=submit value="COMP2022">
      </form>  
      <form action = "/homepage" method="POST">
         <input type=hidden name=username value="{{name}}">
-        <input type=hidden name=unit value="info2222">
-        <input type=submit name=submit value="info2222">
+        <input type=hidden name=unit value="INFO2222">
+        <input type=submit name=submit value="INFO2222">
      </form>  
      <form action = "/homepage" method="POST">
         <input type=hidden name=username value="{{name}}">
-        <input type=hidden name=unit value="comp2017">
-        <input type=submit name=submit value="comp2017">
+        <input type=hidden name=unit value="COMP2017">
+        <input type=submit name=submit value="COMP2017">
      </form>  
      <form action = "/homepage" method="POST">
         <input type=hidden name=username value="{{name}}">
-        <input type=hidden name=unit value="data3404">
-        <input type=submit name=submit value="data3404">
+        <input type=hidden name=unit value="DATA3404">
+        <input type=submit name=submit value="DATA3404">
      </form>  
       </div>
     </body>

@@ -8,7 +8,16 @@
         <p>-----------------This is the discussion titles like ed</p>
             %for i in title:
                 % mod_i = ''.join(e for e in i if e.isalnum())
-                <a href="/homepage/{{unit}}/{{mod_i}}"> {{i}} </a><br>
+               
+                % val = None
+                % for char in mod_i.lower():
+                    %val = ord(char) - 96 
+                    %end
+
+                <form action = "http://localhost:8080/homepage/{{unit}}/{{val}}" method="POST">
+                    <input type=hidden name=topic value="{{i}}">
+                    <input type=submit name=submit value="{{i}}">
+                </form>
             % end
         </div>
 

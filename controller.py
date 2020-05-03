@@ -80,8 +80,9 @@ def get_post(subject):
 
 #-----------------------------------------------------------------------------
 
-@get('/homepage/<subject>/<title>')            
-def topic(subject, title):
+@post('/homepage/<subject>/<value>')            
+def topic(subject, value):
+    title = request.forms.get('title')
     return model.content(subject, title)
 
 
