@@ -71,13 +71,14 @@ def unit_add(username, unit):
 def get_post_contents(subject, title):
 
 	cursor.execute("""
-		SELECT P.context
+		SELECT P.title, P.subject_id, P.context
 		FROM post P
 		WHERE P.title = :title AND P.subject_id = :subject_id
 		""", {"title": title, "subject_id": subject})
 	data = cursor.fetchall()
+	if len(data) == 0:
+		return [("This post does not exist")]
 	return data[0]
-	# print(data[0])
 
 def get_all_post_title(unit):
 	cursor.execute("""
