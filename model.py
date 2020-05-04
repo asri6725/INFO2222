@@ -161,11 +161,11 @@ def listTopics(unit):
 
 def content(subject, title):
     res = studhelp_dbsql.get_post_contents(subject, title)
-    content = res[0]
+    content = res[2]
     return template("topic.tpl", title = title, unit=subject, content=content, responses = {'admin':'not implemented yet'})
 
 #-----------------------------------------------------------------------------
 
 def new_post(subject, title, content):
     ret = studhelp_dbsql.add_new_post('admin', subject, title, content)
-    redirect('http://localhost:8080/homepage/'+subject)   
+    redirect('http://10.86.163.196:8080/homepage/'+subject)   
