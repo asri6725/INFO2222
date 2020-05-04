@@ -1,3 +1,4 @@
+
 import sqlite3
 
 connection = sqlite3.connect("stud_help.db")
@@ -94,8 +95,8 @@ def get_all_post_title(unit):
 def add_new_post(username, subject, title, content):
 	cursor.execute("SELECT MAX(post_id) FROM post")
 	data = cursor.fetchall()
-	id = data[0][0]+1
-	cursor.execute("INSERT INTO post VALUES(?, ?, ?, ?, ?)", (id, title, content, username, subject))
+	p_id = data[0][0]+1
+	cursor.execute("INSERT INTO post VALUES(?, ?, ?, ?, ?)", (p_id, title, content, username, subject))
 	connection.commit()
 	return 0
 
@@ -103,4 +104,3 @@ def add_user(username, password):
 	cursor.execute("INSERT INTO user_detail VALUES(?, ?, ?)", (username, password, 1))
 	connection.commit()
 	return 0
-
