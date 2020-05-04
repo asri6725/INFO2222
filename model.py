@@ -162,7 +162,7 @@ def listTopics(unit):
 def content(subject, title):
     res = studhelp_dbsql.get_post_contents(subject, title)
     content = res[0]
-    return template("topic.tpl", title = title, unit=subject, content=content, responses = "to implement in db")
+    return template("topic.tpl", title = title, unit=subject, content=content, responses = {'admin':'not implemented yet'})
 
 #-----------------------------------------------------------------------------
 
