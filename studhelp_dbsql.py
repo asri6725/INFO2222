@@ -1,3 +1,4 @@
+
 import sqlite3
 
 connection = sqlite3.connect("stud_help.db")
@@ -70,13 +71,14 @@ def unit_add(username, unit):
 def get_post_contents(subject, title):
 
 	cursor.execute("""
-		SELECT P.context
+		SELECT P.title, P.subject_id, P.context
 		FROM post P
 		WHERE P.title = :title AND P.subject_id = :subject_id
 		""", {"title": title, "subject_id": subject})
 	data = cursor.fetchall()
+	if len(data) == 0:
+		return [("This post does not exist")]
 	return data[0]
-	# print(data[0])
 
 def get_all_post_title(unit):
 	cursor.execute("""
@@ -94,8 +96,8 @@ def get_all_post_title(unit):
 def add_new_post(username, subject, title, content):
 	cursor.execute("SELECT MAX(post_id) FROM post")
 	data = cursor.fetchall()
-	id = data[0][0]+1
-	cursor.execute("INSERT INTO post VALUES(?, ?, ?, ?, ?)", (id, title, content, username, subject))
+	p_id = data[0][0]+1
+	cursor.execute("INSERT INTO post VALUES(?, ?, ?, ?, ?)", (p_id, title, content, username, subject))
 	connection.commit()
 	return 0
 
@@ -103,4 +105,3 @@ def add_user(username, password):
 	cursor.execute("INSERT INTO user_detail VALUES(?, ?, ?)", (username, password, 1))
 	connection.commit()
 	return 0
-

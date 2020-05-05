@@ -14,13 +14,24 @@ body {
 
 /* Header/Blog Title */
 .header {
-  padding: 30px;
+  padding: 5px;
   text-align: center;
   background: white;
 }
 
 .header h1 {
   font-size: 50px;
+}
+
+.icon{
+  display: block;
+  position: fixed;
+  left: 10px;
+  margin-left: 440px;
+  margin-right: 10px;
+  margin-top:-15px;
+  height: 75px;
+  vertical-align: super;
 }
 
 /* Style the top navigation bar */
@@ -89,6 +100,10 @@ body {
   margin-top: 20px;
 }
 
+.red_text{
+  color: red;
+}
+
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {
   .leftcolumn, .rightcolumn {
@@ -109,8 +124,10 @@ body {
 <body>
 
 <div class="header">
-  <h1>STUD HELP</h1>
-  <p>blah blah blah</p>
+  <h1>
+    <img src="../img/cropped.png" alt="icon" class="icon">
+    STUD <span class="red_text">HELP</span>
+  </h1>
 </div>
 
 <div class="topnav">
@@ -125,6 +142,11 @@ body {
       <h2>UNIT CODE</h2>
       <h5>Unit description</h5>
       <div class="fakeimg" style="height:200px;">Image</div>
+      <form action = "/homepage" method="POST">
+        <input type=hidden name=username value="{{name}}">
+        <input type=hidden name=unit value="MATH2068">
+        <input type=submit name=submit value="MATH2068">
+      </form>
       <p>blah blah</p>
       <p>hello world.</p>
     </div>
