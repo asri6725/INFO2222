@@ -97,6 +97,10 @@
         background: #ddd;
         margin-top: 20px;
       }
+      .red_text{
+        color: red;
+      }
+
 
       /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
       @media screen and (max-width: 800px) {
@@ -117,8 +121,10 @@
     </head>
     <body>
       <div class="header">
-        <img src="../img/cropped.png" alt="icon" class="icon">
-        <h1>STUD <span class="red_text">HELP</span></h1>
+        <h1>
+          <img src="../img/cropped.png" alt="icon" class="icon">
+          STUD <span class="red_text">HELP</span>
+        </h1>
         <p>blah blah blah</p>
       </div>
         <p> This is the homepage {{name}} </p>
