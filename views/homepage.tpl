@@ -11,6 +11,22 @@
         background: #f1f1f1;
       }
 
+      input[type=submit]{
+        background-color: transparent;
+        border: none;
+        text-align: center;
+        color: black;
+        margin-left: 13px;
+        padding: 1px 2px;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 13px;
+      }
+      a {
+        color: black;
+      }
+
+
       /* Header/Blog Title */
       .header {
         padding: 30px;
@@ -20,16 +36,29 @@
 
       .header h1 {
         font-size: 50px;
+        display: inline-block;
+
       }
+
       .icon{
-        display: block;
-        position: fixed;
+        display: inline-block;
         left: 10px;
-        margin-left: 440px;
-        margin-right: 10px;
-        margin-top:-15px;
-        height: 75px;
-        vertical-align: super;
+        margin-left: -100px;
+        margin-right: 0px;
+        margin-top:-30px;
+        height: 70px;
+        vertical-align: text-bottom;
+      }
+      .user_card_img{
+        display: block;
+        height: 100px;
+      }
+      .unit_img{
+        display: block;
+        /* height: 100px; */
+        width: 100%;
+        height: 200px;
+        padding: 20px;
       }
 
       /* Style the top navigation bar */
@@ -56,17 +85,25 @@
 
       /* Create two unequal columns that floats next to each other */
       /* Left column */
-      .leftcolumn {
+      .rightcolumn {
         float: left;
         width: 75%;
+        padding-left: 20px;
       }
 
+      .unitcolumn {
+        float: left;
+        width: 25%;
+        padding: 3px;
+        display: inline-table;
+      }
+
+
       /* Right column */
-      .rightcolumn {
+      .leftcolumn {
         float: left;
         width: 25%;
         background-color: #f1f1f1;
-        padding-left: 20px;
       }
 
       /* Fake image */
@@ -81,6 +118,7 @@
         background-color: white;
         padding: 20px;
         margin-top: 20px;
+        object-fit: cover;
       }
 
       /* Clear floats after the columns */
@@ -100,6 +138,42 @@
       .red_text{
         color: red;
       }
+
+      .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 110px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {background-color: #ddd;}
+
+      .dropdown:hover .dropdown-content {display: block;}
+
+      .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
 
 
       /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
@@ -125,42 +199,112 @@
           <img src="../img/cropped.png" alt="icon" class="icon">
           STUD <span class="red_text">HELP</span>
         </h1>
-        <p>blah blah blah</p>
       </div>
-        <p> This is the homepage {{name}} </p>
-        <div>
-            <p>-----------------This is the subjects chosen by the user</p>
-            %for i in range(0,len(subject)):
-                <a href="/homepage/{{subject[i]}}">{{subject[i]}} </a><br>
-            % end
+      <div class="topnav">
+        <a href="#">Home</a>
+        <a href="#">Unit</a>
+        <a href="#">Academic Dishonesty</a>
+      </div>
+      <div class="row">
+        <div class="leftcolumn">
+          <div class="card">
+            <img src="../img/john_doe.jpg" alt="icon" class="user_card_img">
+            <h2>{{name}}</h2>
+            <p>Bachelor of Advanced Computing</p>
+          </div>
+          <div class="card">
+            <h3>13123</h3>
+            <div class="fakeimg"><p>Image</p></div>
+            <div class="fakeimg"><p>Image</p></div>
+            <div class="fakeimg"><p>Image</p></div>
+          </div>
+          <div class="card">
+            <h3>13212312</h3>
+            <p>Some text adfa..</p>
+          </div>
         </div>
-        <p>-----------------This is the subjects that can be added</p>
-        <div>
-        <form action = "/homepage" method="POST">
-          <input type=hidden name=username value="{{name}}">
-          <input type=hidden name=unit value="MATH2068">
-          <input type=submit name=submit value="MATH2068">
-        </form>
-        <form action = "/homepage" method="POST">
-          <input type=hidden name=username value="{{name}}">
-          <input type=hidden name=unit value="COMP2022">
-          <input type=submit name=submit value="COMP2022">
-        </form>
-        <form action = "/homepage" method="POST">
-          <input type=hidden name=username value="{{name}}">
-          <input type=hidden name=unit value="INFO2222">
-          <input type=submit name=submit value="INFO2222">
-        </form>
-        <form action = "/homepage" method="POST">
-          <input type=hidden name=username value="{{name}}">
-          <input type=hidden name=unit value="COMP2017">
-          <input type=submit name=submit value="COMP2017">
-       </form>
-       <form action = "/homepage" method="POST">
-          <input type=hidden name=username value="{{name}}">
-          <input type=hidden name=unit value="DATA3404">
-          <input type=submit name=submit value="DATA3404">
-       </form>
+        <div class="rightcolumn">
+          <div class="card">
+            <h2>Select units</h2>
+            <h3>
+              You may select upto 4 units<br>
+              Click the unit you would like to add
+            </h3>
+            <div class="dropdown">
+              <button class="dropbtn">select here</button>
+              <div class="dropdown-content">
+                <a href="#">
+                  <form action = "/homepage" method="POST">
+                    <input type=hidden name=username value="{{name}}">
+                    <input type=hidden name=unit value="MATH2068">
+                    <input type=submit name=submit value="MATH2068">
+                  </form>
+                </a>
+                <a href="#">
+                  <form action = "/homepage" method="POST">
+                    <input type=hidden name=username value="{{name}}">
+                    <input type=hidden name=unit value="COMP2022">
+                    <input type=submit name=submit value="COMP2022">
+                  </form>
+                </a>
+                <a href="#">
+                  <form action = "/homepage" method="POST">
+                    <input type=hidden name=username value="{{name}}">
+                    <input type=hidden name=unit value="INFO2222">
+                    <input type=submit name=submit value="INFO2222">
+                  </form>
+                </a>
+                <a href="#">
+                  <form action = "/homepage" method="POST">
+                    <input type=hidden name=username value="{{name}}">
+                    <input type=hidden name=unit value="COMP2017">
+                    <input type=submit name=submit value="COMP2017">
+                   </form>
+                </a>
+                <a href="#">
+                  <form action = "/homepage" method="POST">
+                     <input type=hidden name=username value="{{name}}">
+                     <input type=hidden name=unit value="DATA3404">
+                     <input type=submit name=submit value="DATA3404">
+                  </form>
+                </a>
+              </div>
+          </div>
+        </div>
+          %for i in range(0,len(subject)):
+            <div class="unitcolumn">
+              <a href="/homepage/{{subject[i]}}" style="text-decoration: none;">
+                <div class="card">
+                  {{subject[i]}}
+                  %if subject[i] == "COMP2022":
+                    <p> Models of Computation<br>(6 CP) </p>
+                    <img src="../img/cropped.png" alt="icon" class="unit_img">
+                  %elif subject[i] == "DATA3404":
+                    <p> Data Science Platforms<br>(6 CP) </p>
+                    <img src="../img/cropped.png" alt="icon" class="unit_img">
+                  %elif subject[i] == "MATH2068":
+                    <p> Number Theory and Cryptography (6 CP)<br>  </p>
+                    <img src="../img/cropped.png" alt="icon" class="unit_img">
+                  %elif subject[i] == "INFO2222":
+                    <p> Computing 2 Usability and Security (6 CP)<br> </p>
+                    <img src="../img/cropped.png" alt="icon" class="unit_img">
+                  %end
+                </div>
+              </a>
+            </div>
+          % end
+        </div>
+        <div class="rightcolumn">
+          <div class="card">
+            <h2>Academic Dishonesty</h2>
+            <h3>Academic dishonesty and plagiarism</h3>
+            <p>As a student of the University,<br>
+              you are expected to promote a culture of academic integrity.<br>
+              We consider any attempt to gain academic advantage by<br>
+              dishonest or unfair means to be academic dishonesty – it is unacceptable.
+            </p>
+          </div>
+        </div>
       </div>
     </body>
 </html>
