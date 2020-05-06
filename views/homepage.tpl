@@ -103,7 +103,6 @@
       .leftcolumn {
         float: left;
         width: 25%;
-        background-color: #f1f1f1;
       }
 
       /* Fake image */
@@ -202,8 +201,8 @@
       </div>
       <div class="topnav">
         <a href="#">Home</a>
-        <a href="#">Unit</a>
-        <a href="#">Academic Dishonesty</a>
+        <a href="#unit">Unit</a>
+        <a href="#Academic_Dishonesty">Academic Dishonesty</a>
       </div>
       <div class="row">
         <div class="leftcolumn">
@@ -271,6 +270,7 @@
               </div>
           </div>
         </div>
+        <a name="unit"> </a>
           %for i in range(0,len(subject)):
             <div class="unitcolumn">
               <a href="/homepage/{{subject[i]}}" style="text-decoration: none;">
@@ -296,7 +296,7 @@
         </div>
         <div class="rightcolumn">
           <div class="card">
-            <h2>Academic Dishonesty</h2>
+            <h2> <a name="Academic_Dishonesty"> Academic Dishonesty </a></h2>
             <h3>Academic dishonesty and plagiarism</h3>
             <p>As a student of the University,<br>
               you are expected to promote a culture of academic integrity.<br>
