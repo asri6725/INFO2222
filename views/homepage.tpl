@@ -48,10 +48,12 @@
         margin-top:-30px;
         height: 70px;
         vertical-align: text-bottom;
+        border-radius: 15px;
       }
       .user_card_img{
         display: block;
         height: 100px;
+        border-radius: 15px;
       }
       .unit_img{
         display: block;
@@ -59,6 +61,7 @@
         width: 100%;
         height: 200px;
         padding: 20px;
+        border-radius: 15px;
       }
 
       /* Style the top navigation bar */
@@ -89,6 +92,7 @@
         float: left;
         width: 75%;
         padding-left: 20px;
+        border-radius: 15px;
       }
 
       .unitcolumn {
@@ -96,6 +100,7 @@
         width: 25%;
         padding: 3px;
         display: inline-table;
+        border-radius: 15px;
       }
 
 
@@ -103,6 +108,7 @@
       .leftcolumn {
         float: left;
         width: 25%;
+        border-radius: 15px;
       }
 
       /* Fake image */
@@ -118,6 +124,7 @@
         padding: 20px;
         margin-top: 20px;
         object-fit: cover;
+        border-radius: 15px;
       }
 
       /* Clear floats after the columns */
@@ -133,6 +140,7 @@
         text-align: center;
         background: #ddd;
         margin-top: 20px;
+        border-radius: 15px;
       }
       .red_text{
         color: red;
@@ -144,11 +152,14 @@
         padding: 16px;
         font-size: 16px;
         border: none;
+        border-radius: 15px;
       }
 
       .dropdown {
         position: relative;
         display: inline-block;
+        border-radius: 15px;
+
       }
 
       .dropdown-content {
@@ -158,6 +169,7 @@
         min-width: 110px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
+        border-radius: 15px;
       }
 
       .dropdown-content a {
@@ -165,6 +177,7 @@
         padding: 12px 16px;
         text-decoration: none;
         display: block;
+        border-radius: 15px;
       }
 
       .dropdown-content a:hover {background-color: #ddd;}
@@ -305,6 +318,9 @@
             </p>
           </div>
         </div>
+      </div>
+      <div class="footer">
+        <h2>Home Page</h2>
       </div>
     </body>
 </html>

@@ -48,10 +48,12 @@
         margin-top:-30px;
         height: 70px;
         vertical-align: text-bottom;
+        border-radius: 15px;
       }
       .user_card_img{
         display: block;
         height: 100px;
+        border-radius: 15px;
       }
       .unit_img{
         display: block;
@@ -59,6 +61,7 @@
         width: 100%;
         height: 200px;
         padding: 20px;
+        border-radius: 15px;
       }
 
       /* Style the top navigation bar */
@@ -89,6 +92,7 @@
         float: left;
         width: 75%;
         padding-left: 20px;
+        border-radius: 15px;
       }
 
       .unitcolumn {
@@ -96,6 +100,7 @@
         width: 25%;
         padding: 3px;
         display: inline-table;
+        border-radius: 15px;
       }
 
 
@@ -103,6 +108,7 @@
       .leftcolumn {
         float: left;
         width: 25%;
+        border-radius: 15px;
       }
 
       /* Fake image */
@@ -118,6 +124,16 @@
         padding: 20px;
         margin-top: 20px;
         object-fit: cover;
+        border-radius: 15px;
+      }
+
+      .discuss_card {
+        background-color: #aaa;
+        padding: 20px;
+        margin-top: 20px;
+        object-fit: cover;
+        width: 45%;
+        border-radius: 15px;
       }
 
       /* Clear floats after the columns */
@@ -133,6 +149,7 @@
         text-align: center;
         background: #ddd;
         margin-top: 20px;
+        border-radius: 15px;
       }
       .red_text{
         color: red;
@@ -144,6 +161,8 @@
         padding: 16px;
         font-size: 16px;
         border: none;
+        border-radius: 15px;
+
       }
 
       .dropdown {
@@ -224,40 +243,48 @@
         </div>
         <div class="rightcolumn">
           <div class="card">
-            <h1> COMP2022 </h1>
-            <h3> Models of Computation </h3>
+            <h1> {{unit}} </h1>
+            %if unit == "COMP2022":
+              <h3> Models of Computation </h3>
+            %elif unit == "DATA3404":
+              <h3> Data Science Platforms </h3>
+            %elif unit == "MATH2068":
+              <h3> Number Theory and Cryptography </h3>
+            %elif unit == "INFO2222":
+              <h3> Computing 2 Usability and Security </h3>
+            %end
           </div>
           <div class="card">
             <h2> Discussion Board </h2>
-          </div>
-          %for i in title:
-            <div class="card">
-              <div>
-                % mod_i = ''.join(e for e in i if e.isalnum())
+            %for i in title:
+              <div class="discuss_card">
+                <div>
+                  % mod_i = ''.join(e for e in i if e.isalnum())
 
-                % val = None
-                % for char in mod_i.lower():
-                    %val = ord(char) - 96
-                    %end
-
-                <form action = "http://{{server}}:8080/homepage/{{unit}}/{{val}}" method="POST">
-                    <input type=hidden name=title value="{{i}}">
-                    <input type=submit name=submit value="{{i}}">
-                </form>
+                  % val = None
+                  % for char in mod_i.lower():
+                      %val = ord(char) - 96
+                      %end
+                  <form action = "http://{{server}}:8080/homepage/{{unit}}/{{val}}" method="POST">
+                      <input type=hidden name=title value="{{i}}">
+                      <input type=submit name=submit value="{{i}}">
+                  </form>
+                </div>
               </div>
-            </div>
-          % end
-        </div>
-      </div>
-
-
-        <div>
-         <p>-----------------This is the discussion titles like ed</p>
+            % end
+          </div>
+          <div class="card">
+            <h3> New Question </h3>
             <form action='http://{{server}}:8080/homepage/send/{{unit}}' method="post">
                 <input name="title" type="text" placeholder="Title"/>
                 <input name="content" type="text" placeholder="Content"/>
                 <input value="Send" type="submit" />
             </form>
+          </div>
         </div>
+      </div>
+      <div class="footer">
+        <h2>{{unit}} Discussion Page</h2>
+      </div>
     </body>
 </html>
