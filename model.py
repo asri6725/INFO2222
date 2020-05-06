@@ -59,13 +59,13 @@ def signup():
     return template("Signup.html")
 #-----------------------------------------------------------------------------
 # Signup Check
-def signup_check(username, password):
+def signup_check(username, password, email):
 
     result = studhelp_dbsql.check_signup(username, password)
 
     if (result == 0):
-        studhelp_dbsql.add_user(username, password)
-        return template("Login.html")
+        studhelp_dbsql.add_user(username, password, email)
+        return template("Login.tpl", server = conf.ip_conf())
     else:
         return template("SignupError.html")
 

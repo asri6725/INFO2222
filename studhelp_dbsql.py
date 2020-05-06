@@ -129,8 +129,8 @@ def add_new_post(username, subject, title, content):
 	connection.commit()
 	return 0
 
-def add_user(username, password):
-	cursor.execute("INSERT INTO user_detail VALUES(?, ?, ?)", (username, password, 1))
+def add_user(username, password, email):
+	cursor.execute("INSERT INTO user_detail VALUES(?, ?, ?, ?)", (username, password, 1, email))
 	connection.commit()
 	return 0
 

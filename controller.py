@@ -60,8 +60,12 @@ def sign_up():
 def do_sign_up():
     username = request.forms.get('username')
     password = request.forms.get('password')
+    email = request.forms.get('email')
 
-    return model.signup_check(username, password)
+    #Need to remove 
+    if email is None:
+        email = "test123@gmail.com"
+    return model.signup_check(username, password, email)
 
 #-----------------------------------------------------------------------------
 
