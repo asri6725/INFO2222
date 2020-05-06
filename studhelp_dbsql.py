@@ -72,6 +72,37 @@ def unit_add(username, unit):
 
 	return get_user_subject(username)
 
+#users: Array of username that are part of the chat
+#message_name: Name of the chat
+def create_new_message(users, message_name):
+
+	cursor.execute("INSERT INTO message (message_name) VALUES(?)", (message_name,))
+	connection.commit()
+	for user in users:
+		cursor.execute("SELECT MAX(message_id) FROM message")
+		data = cursor.fetchall()
+		m_id = data[0][0]
+		cursor.execute("INSERT INTO message_user VALUES (?, ?)", (m_id, user))
+		connection.commit()
+
+	return 0
+
+#m_id: message_id
+#return example: [('hey jackey', 'admin'), ('hi admin', 'jackey'), ('how you doing admin?', 'jackey')]
+def get_message_contents(m_id):
+
+	message_his = []
+	count = 0
+
+	command = """
+		SELECT M.content, M.username
+		FROM message_content M
+		WHERE M.message_id = {}
+		ORDER BY M.content_id""".format(m_id)
+	cursor.execute(command)
+	data = cursor.fetchall()
+	return data
+
 def get_post_contents(subject, title):
 
 	cursor.execute("""
@@ -181,3 +212,4 @@ def send_password(username):
 	cc.send("\r\n.\r\n".encode())
 	print(cc.recv(1024).decode())
 	return 0
+
