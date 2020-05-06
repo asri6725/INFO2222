@@ -22,7 +22,7 @@
     }
       #username {
           text-align: center;
-          padding-top: 0;
+          padding-top: 10;
       }
       #password {
           text-align: center;
@@ -91,16 +91,15 @@
             </div>
 
 
-          <!--  <div id = username>
-                <input name="username" type="text" class="uname" placeholder="Username"/>
-            </div> -->
+           <div id = username>
+                <input name="username" type="text" class="pword" placeholder="Username"/>
+            </div>
 
 
 
             <div id = password>
                 <input name="password" type="password" class="pword" placeholder="Password" />
             </div>
-            <br>
 
 
               <div id ="academic_honesty">
