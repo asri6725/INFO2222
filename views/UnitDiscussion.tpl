@@ -219,9 +219,9 @@
         </h1>
       </div>
       <div class="topnav">
-        <a href="http://0.0.0.0:8080/homepage">Home</a>
-        <a href="http://0.0.0.0:8080/homepage">Unit</a>
-        <a href="http://0.0.0.0:8080/homepage">Academic Dishonesty</a>
+        <a href="http://localhost:8080/homepage">Home</a>
+        <a href="http://localhost:8080/homepage">Unit</a>
+        <a href="http://localhost:8080/homepage">Academic Dishonesty</a>
       </div>
       <div class="row">
         <div class="leftcolumn">
