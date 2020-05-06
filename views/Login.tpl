@@ -75,7 +75,7 @@
         <img src="../img/cropped.png" alt="icon" class="icon">
         <h1> STUD <span class="red_text">HELP</span>  </h1>
 
-        <form action="/" method="post">
+        <form action="http://{{server}}:8080/" method="post">
         <div id = username>
             <input name="username" type="text" class="email" placeholder="Username"/>
         </div>
@@ -88,10 +88,10 @@
         </form>
         <div id = sign_up>
             <p> Don't have an account?
-              <a href="/sign-up">Sign Up!</a>
+              <a href="http://{{server}}:8080/sign-up">Sign Up!</a>
               <br>
               <br>
-                <a href="/forgot-password">Forgot Password</a>
+                <a href="http://{{server}}:8080/forgot-password">Forgot Password</a>
             </p>
         </div>
     </div>

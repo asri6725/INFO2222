@@ -1,8 +1,7 @@
 import random
 from bottle import template, error, redirect
 import studhelp_dbsql
-
-from collections import defaultdict
+import conf
 '''
     Our Model class
     This should control the actual "logic" of your website
@@ -17,78 +16,12 @@ from collections import defaultdict
 #Jackey this is the design for users
 #Anyone feel free to add your name and subjects here and it will show them in the login
 
-users = {1:{'user':'admin',
-             'password': 'password',
-             'subject':['math2068','info2222']            
-            },
-        2:{
-            'user':'abhi',
-            'password': '123',
-            'subject': ['data3404','info2222']
-        } }
-
-#Discussion table
-
-discussion = {
-    'info2222':{
-        1:{
-            'title':'how to make websites?',
-            'content': 'I want to learn how to make websites',
-            'responses':{
-                'abhi':'Just learn html, css and javascript',
-                'admin': 'it is easy! definitely have a go with html',
-            }
-        },
-        2:{
-            'title':'I have a doubt with loading JavaScript',
-            'content': 'How to use the window object?',
-            'responses':{
-                'admin':'Call the variables with "window.<something>"',
-            },
-        },
-    },
-    'math2068':{
-        1:{
-            'title':'How can we crack SHA encryption',
-            'content': 'Why is it computationally not possible to do so?',
-            'responses':{
-                'abhi':'I dunno',
-                'admin': 'it is easy! ',
-            }
-        },
-        2:{
-            'title':'What is diffie helman method of encryption?',
-            'content': 'How to use the window object?',
-            'responses':{
-                'admin':'It can be used to generate secret keys between 2 users',
-            },
-        },
-    },
-    'comp2022':{
-        1:{
-            'title':'What are NP hard problems',
-            'content': 'I do not know what NP means',
-            'responses':{
-                'abhi':'Non Polynomial time complexity',
-                'admin': 'What he said^',
-            }
-        },
-        2:{
-            'title':'What is dynamic programming?',
-            'content': 'I dont really understand it',
-            'responses':{
-                'admin':'It is a style that basically saves some computation to reduce time',
-            },
-        },
-    },
-}
-
 
 #-----------------------------------------------------------------------------
 # Login
 
 def login():
-    return template('Login.html')
+    return template('Login.tpl', server = conf.ip_conf())
 
 #-----------------------------------------------------------------------------
 # Check the login credentials
@@ -101,7 +34,7 @@ def login_check(username, password):
         subject = ['initial_value_subject']
         subject = studhelp_dbsql.get_user_subject(username)
 
-        return template("homepage.tpl", name=username, subject=subject)
+        return template("homepage.tpl", name=username, subject=subject, server = conf.ip_conf())
     else:
         return template("LoginError.html", reason="check credentials")
 
@@ -110,7 +43,7 @@ def login_check(username, password):
 def addUnit(unit, username):
     #ADD unit to DB with the username and return homepage
     subject = studhelp_dbsql.unit_add(username, unit)
-    return template("homepage.tpl", name=username, subject=subject)
+    return template("homepage.tpl", name=username, subject=subject, server = conf.ip_conf())
 
 #-----------------------------------------------------------------------------
 # Forgot password
@@ -154,7 +87,7 @@ def listTopics(unit):
     title = studhelp_dbsql.get_all_post_title(unit)
 
     url = 'homepage/'+ unit
-    return template("UnitDiscussion.tpl", title = title, url=url, unit=unit)  
+    return template("UnitDiscussion.tpl", title = title, url=url, unit=unit, server = conf.ip_conf())  
 
 #-----------------------------------------------------------------------------
 # Viewing each post, including title, content and responses
@@ -162,10 +95,11 @@ def listTopics(unit):
 def content(subject, title):
     res = studhelp_dbsql.get_post_contents(subject, title)
     content = res[2]
-    return template("topic.tpl", title = title, unit=subject, content=content, responses = {'admin':'not implemented yet'})
+    return template("topic.tpl", title = title, unit=subject, content=content, responses = {'admin':'not implemented yet'}, server = conf.ip_conf())
 
 #-----------------------------------------------------------------------------
 
 def new_post(subject, title, content):
     ret = studhelp_dbsql.add_new_post('admin', subject, title, content)
-    redirect('http://10.86.163.196:8080/homepage/'+subject)   
+    url = 'http://'+conf.ip_conf()+':8080/homepage/'+subject
+    redirect(url)   
