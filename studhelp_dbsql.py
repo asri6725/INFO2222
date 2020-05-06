@@ -1,5 +1,9 @@
 
 import sqlite3
+import base64
+from socket import *
+import sys
+
 
 connection = sqlite3.connect("stud_help.db")
 cursor = connection.cursor()
@@ -93,6 +97,30 @@ def get_all_post_title(unit):
 		title.append(record[0])
 	return title
 
+def get_post_responses(subject, title):
+	cursor.execute("""
+		SELECT R.response, R.username
+		FROM post P INNER JOIN post_response PR USING (post_id) INNER JOIN response R USING (response_id)
+		WHERE P.title = :title AND P.subject_id = :subject_id
+		ORDER BY PR.response_id
+		""", {"title": title, "subject_id":subject})
+	data = cursor.fetchall()
+	if len(data) == 0:
+		return ["Response does not exist"]
+	return data
+
+def add_post_reponses(postID, message):
+	cursor.execute("""
+		SELECT R.response, R.username
+		FROM post_repose PR INNER JOIN Response R
+		WHERE PR.post_id = :post_id
+		""", {"post_id": postID})
+	data = cursor.fetchall()
+	if len(data) == 0:
+		return ["Response does not exist"]
+	return data
+
+
 def add_new_post(username, subject, title, content):
 	cursor.execute("SELECT MAX(post_id) FROM post")
 	data = cursor.fetchall()
@@ -104,4 +132,52 @@ def add_new_post(username, subject, title, content):
 def add_user(username, password):
 	cursor.execute("INSERT INTO user_detail VALUES(?, ?, ?)", (username, password, 1))
 	connection.commit()
+	return 0
+
+def send_password(username):
+
+	mail = None
+	password = None
+
+	cursor.execute("""
+		SELECT U.email, U.password
+		FROM user_detail U
+		WHERE U.username = :username
+		""", {"username": username})
+
+	data = cursor.fetchall()
+	mail = data[0][0]
+	password = data[0][1]
+
+	if (mail == None or password == None):
+		return -1
+
+	mf = "studhelp_info@gmail.com"
+	rt = mail
+	subject = "Password Recover from StudHelp"
+	f = "studhelp <studhelp_info@gmail.com"
+	t = username + " <" + mail + ">"
+	context = "Hello, - - Your password is : " + password + ". -"
+	context_list = context.split("-")
+
+	cc = socket(AF_INET, SOCK_STREAM)
+	cc.connect(("mail.usyd.edu.au", 25))
+	print(cc.recv(1024).decode())
+
+	cc.send(("MAIL FROM: <" + mf + ">" + "\r\n").encode())
+	print(cc.recv(1024).decode())
+	cc.send(("RCPT TO: <" + rt + ">" + "\r\n").encode())
+	print(cc.recv(1024).decode())
+	cc.send(("DATA" + "\r\n").encode())
+	print(cc.recv(1024).decode())
+
+	cc.send(("Subject: " + subject + "\r\n").encode())
+	cc.send(("From: " + f + "\r\n").encode())
+	cc.send(("To: " + t + "\r\n").encode())
+	count = 0
+	while count < len(context_list): 
+	    cc.send((context_list[count] + "\r\n").encode())
+	    count += 1
+	cc.send("\r\n.\r\n".encode())
+	print(cc.recv(1024).decode())
 	return 0
