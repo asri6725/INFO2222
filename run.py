@@ -18,7 +18,7 @@ import model
 '''
 #-----------------------------------------------------------------------------
 #Testing if this way runs the wsgi server
-from bottle import route, get, post, request, redirect, static_file, error, template
+from bottle import route, get, post, request, redirect, static_file, error, template, response
 
 import model
 
@@ -31,7 +31,11 @@ import model
 app = application = bottle.Bottle()
 @app.route('/', method='GET')
 def login():
-    return model.login()
+    if request.get_cookie("username"):
+        username = request.get_cookie("username")
+        return model.homepage(username)
+    else:
+        return model.login()
 
 #-----------------------------------------------------------------------------
 
@@ -39,6 +43,9 @@ def login():
 def do_login():
     username = request.forms.get('username')
     password = request.forms.get('password')
+    response.set_cookie("username",username)
+
+    
     return model.login_check(username, password)
 
 
@@ -46,7 +53,7 @@ def do_login():
   
 @app.post('/homepage')
 def unit_add():
-    username = request.forms.get('username')
+    username = request.get_cookie("username")
     unit_add = request.forms.get('unit')
     return model.addUnit(unit_add, username)
 
@@ -91,7 +98,8 @@ def do_sign_up():
 
 @app.get('/homepage/<subject>')            
 def list_of_topics(subject):
-    return model.listTopics(subject)
+    username = request.get_cookie("username")
+    return model.listTopics(subject, username)
 
 #-----------------------------------------------------------------------------
 
@@ -100,14 +108,16 @@ def list_of_topics(subject):
 def get_post(subject):
     title = request.forms.get('title')
     content = request.forms.get('content')
-    return model.new_post(subject, title, content)
+    username = request.get_cookie("username")
+    return model.new_post(subject, title, content, username)
 
 #-----------------------------------------------------------------------------
 
 @app.post('/homepage/<subject>/<value>')            
 def topic(subject, value):
     title = request.forms.get('title')
-    return model.content(subject, title)
+    username = request.get_cookie("username")
+    return model.content(subject, title, username)
 
 
 #-----------------------------------------------------------------------------

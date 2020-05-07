@@ -40,6 +40,14 @@ def login_check(username, password):
 
 #-----------------------------------------------------------------------------
 
+def homepage(username):
+    subject = ['initial_value_subject']
+    subject = studhelp_dbsql.get_user_subject(username)
+    print("Enter here")
+    return template("homepage.tpl", name=username, subject=subject, server = conf.ip_conf())
+
+#-----------------------------------------------------------------------------
+
 def addUnit(unit, username):
     #ADD unit to DB with the username and return homepage
     subject = studhelp_dbsql.unit_add(username, unit)
@@ -82,24 +90,24 @@ def error():
 #-----------------------------------------------------------------------------
 # Unit Discussion
 
-def listTopics(unit):
+def listTopics(unit, username):
     title = []
     title = studhelp_dbsql.get_all_post_title(unit)
 
     url = 'homepage/'+ unit
-    return template("UnitDiscussion.tpl", title = title, url=url, unit=unit, server = conf.ip_conf())  
+    return template("UnitDiscussion.tpl", title = title, url=url, unit=unit, server = conf.ip_conf(), username=username)  
 
 #-----------------------------------------------------------------------------
 # Viewing each post, including title, content and responses
 
-def content(subject, title):
+def content(subject, title, username):
     res = studhelp_dbsql.get_post_contents(subject, title)
     content = res[2]
-    return template("topic.tpl", title = title, unit=subject, content=content, responses = {'admin':'not implemented yet'}, server = conf.ip_conf())
+    return template("topic.tpl", title = title, unit=subject, content=content, responses = {'admin':'not implemented yet'}, server = conf.ip_conf(), username = username)
 
 #-----------------------------------------------------------------------------
 
-def new_post(subject, title, content):
-    ret = studhelp_dbsql.add_new_post('admin', subject, title, content)
+def new_post(subject, title, content, username):
+    ret = studhelp_dbsql.add_new_post(username, subject, title, content)
     url = 'http://'+conf.ip_conf()+':8080/homepage/'+subject
     redirect(url)   
