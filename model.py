@@ -46,7 +46,7 @@ def homepage(username):
     print("Enter here")
     return template("homepage.tpl", name=username, subject=subject, server = conf.ip_conf())
 
-#-----------------------------------------------------------------------------
+'''#-----------------------------------------------------------------------------
 #Creating new msg
 
 #usernames: array of users who participate in this char
@@ -75,7 +75,7 @@ def add_message(username, message_id, content):
     #return something
 
 
-#-----------------------------------------------------------------------------
+'''#-----------------------------------------------------------------------------
 
 def addUnit(unit, username):
     #ADD unit to DB with the username and return homepage
@@ -140,3 +140,20 @@ def new_post(subject, title, content, username):
     ret = studhelp_dbsql.add_new_post(username, subject, title, content)
     url = 'http://'+conf.ip_conf()+':8080/homepage/'+subject
     redirect(url)   
+#-----------------------------------------------------------------------------
+
+def get_users(ret, username):
+    users = []
+    for row in ret:
+        if row [1] != username:
+            users.append(row[1])
+        if row[2] != username:
+            users.append(row[2])    
+    if len(users) == 0:
+        users.append['Need to start chatting!']
+    return users
+
+def overview_messages(username):
+    ret = studhelp_dbsql.view_messages(username)
+    users = get_users(ret, username)
+    return template("view_all_messages.tpl", username = username, users = users)

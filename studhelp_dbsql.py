@@ -232,3 +232,16 @@ def send_password(username):
 	cc.send("\r\n.\r\n".encode())
 	print(cc.recv(1024).decode())
 	return 0
+
+def add_message(usr_from, user_to, message):
+	cursor.execute("SELECT max(message_id) from messages_final;")
+	data = cursor.fetchall()
+	m_id = data[0][0]+1
+	cursor.execute("INSERT INTO messages_final VALUES(?, ?, ?, ?)", (m_id, usr_from, user_to, message))
+	connection.commit()
+	return 0
+
+def view_messages(username):
+	cursor.execute("SELECT * FROM messages_final WHERE sender= :username OR reciever= :username ORDER BY message_id;", {"username": username})
+	data = cursor.fetchall()
+	return data

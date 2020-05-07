@@ -132,7 +132,15 @@ def topic(subject, value):
     else:
         return model.login()
 
+#-----------------------------------------------------------------------------
 
+@app.get('/homepage/messages')
+def list_users():
+    if request.get_cookie("username"):
+        username = request.get_cookie("username")
+        return model.overview_messages(username)
+    else:
+        return model.login()
 #-----------------------------------------------------------------------------
 # Static file paths
 #-----------------------------------------------------------------------------
