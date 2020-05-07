@@ -146,9 +146,11 @@ def get_users(ret, username):
     users = []
     for row in ret:
         if row [1] != username:
-            users.append(row[1])
+            if row[1] not in users:
+                users.append(row[1])
         if row[2] != username:
-            users.append(row[2])    
+            if row[2] not in users:
+                users.append(row[2])    
     if len(users) == 0:
         users.append['Need to start chatting!']
     return users
