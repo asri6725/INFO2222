@@ -131,8 +131,9 @@ def listTopics(unit, username):
 
 def content(subject, title, username):
     res = studhelp_dbsql.get_post_contents(subject, title)
-    content = res[2]
-    return template("topic.tpl", title = title, unit=subject, content=content, responses = {'admin':'not implemented yet'}, server = conf.ip_conf(), username = username)
+    content = res
+    responses = studhelp_dbsql.get_post_responses(subject, title)
+    return template("topic.tpl", title = title, unit=subject, content=content, responses = responses, server = conf.ip_conf(), username = username)
 
 #-----------------------------------------------------------------------------
 
