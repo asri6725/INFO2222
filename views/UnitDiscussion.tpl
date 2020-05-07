@@ -336,7 +336,7 @@
                 <input name="content" type="text" placeholder="Content"/>
                 <input value="Send" type="submit" />
             </form> -->
-            <form action='homepage/{{username}}/{{subject}}' method="POST">
+            <form action='homepage/{{username}}/{{unit}}' method="POST">
               <input type=hidden name=username value="{{username}}">
             <div id = titldiv>
                 <input name="title" type="text" class="ttl" placeholder="Title" style="width:100%;"/>

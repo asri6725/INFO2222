@@ -300,9 +300,9 @@ input[type=text]:focus{
           </div>
 
           <div id = titlediv>
-          <h1 name="title" class="ttl"style="width:100%";> MY QUESTION TITLE</h1>
+          <h1 name="title" class="ttl"style="width:100%";> {{content[0]}}</h1>
           <div id = textdiv>
-            <p class="txt"> I have a question about websites! </p>
+            <p class="txt"> {{content[2]}} </p>
           </div>
         </div>
       </div>
@@ -319,16 +319,18 @@ input[type=text]:focus{
   <!--User comments to the post -->
   <div class="userComment">
 
-      <!-- WHERE THE USERNAME SHOULD BE -->
-      <div class="username">
-        <p> Bret John: </p>
-      </div>
+      %for response in responses:
+      
+          <!-- WHERE THE USERNAME SHOULD BE -->
+          <div class="username">
+          <p> {{response[1]}}: </p>
+          </div>
 
-      <div id = titlediv>
-        <div id = userCommentdiv>
-          <p class="txt"> I have the answer! </p>
-        </div>
-    </div>
+          <div id = titlediv>
+          <div id = userCommentdiv>
+          <p class="txt"> {{response[0]}} </p>
+          </div>
+          </div>
   </div>
 
 <!--The button/form to reply to a comment -->
