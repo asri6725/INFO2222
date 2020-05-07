@@ -9,7 +9,7 @@ import model
     maybe some simple program logic
 '''
 
-@get('/')
+@route('/', method='GET')
 def login():
     return model.login()
 
