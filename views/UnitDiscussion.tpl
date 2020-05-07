@@ -126,6 +126,13 @@
         object-fit: cover;
         border-radius: 15px;
       }
+      .Qcard {
+        background-color: white;
+        padding: 20px;
+        margin-top: 20px;
+        object-fit: cover;
+        border-radius: 15px;
+      }
 
       .discuss_card {
         background-color: #aaa;
@@ -192,7 +199,50 @@
 
       .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
+/* Button to reveal and hide the option to create a post */
+      .CreatePostBtn{
+        margin-top: 20px;
+        font-size: 18px;
+        color: white;
+        cursor: pointer;
+        border: none;
+        background: rgba(35, 177, 246, 0.65);
+        border-radius: 15px;
+        padding: 1% 2%;
+        transition: 0.3s;
+      }
 
+      .CreatePostBtn:hover {
+          box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+      }
+
+      .ttl{
+        opacity: 0.7;
+        font-size: 28px;
+        border-top-width: 1px;
+        border-left-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        height: 40px;
+        text-align: center;
+      }
+
+      .txt{
+        padding-left: 1%;
+        opacity: 0.7;
+        font-size: 20px;
+        border-top-width: 1px;
+        border-left-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        height: 350px;
+        width: 100%;
+      }
+
+      .txtlink:hover{
+        text-decoration: underline;
+        color: rgba(35, 177, 246, 0.65);
+      }
 
       /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
       @media screen and (max-width: 800px) {
@@ -273,16 +323,49 @@
               </div>
             % end
           </div>
-          <div class="card">
-            <h3> New Question </h3>
-            <form action='http://{{server}}:8080/homepage/send/{{unit}}' method="post">
+
+
+          <div style="text-align: center;">
+            <button onclick="myFunction()" class="CreatePostBtn">Want to create your own post? Click here!</button>
+          </div>
+          <div class="Qcard" id="myDIV" style="display: none;">
+            <h3> Create a Post! </h3>
+
+            <!-- <form action='http://{{server}}:8080/homepage/send/{{unit}}' method="post">
                 <input name="title" type="text" placeholder="Title"/>
                 <input name="content" type="text" placeholder="Content"/>
                 <input value="Send" type="submit" />
-            </form>
+            </form> -->
+            <form action='homepage/{{username}}/{{subject}}' method="POST">
+              <input type=hidden name=username value="{{username}}">
+            <div id = titldiv>
+                <input name="title" type="text" class="ttl" placeholder="Title" style="width:100%;"/>
+            </div>
+            <br>
+            <div id = textdiv>
+              <textarea class="txt" rows="4" cols="60" maxlength="250" placeholder="Enter your text here (250 character limit)"></textarea>
+            </div>
+            <p style="text-align:center;"> (Remember to make sure your post aligns with the University of Sydney's
+              <a href="https://www.sydney.edu.au/students/academic-integrity.html" class="txtlink">Academic Integrity</a>
+              policies and guidlines.)
+            </p>
+            <button class="CreatePostBtn" style="text-align:center">Post</button>
           </div>
         </div>
       </div>
+
+      <script>
+      function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+      </script>
+
+
       <div class="footer">
         <h2>{{unit}} Discussion Page</h2>
       </div>
