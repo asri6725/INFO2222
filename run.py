@@ -35,19 +35,20 @@ def login():
         username = request.get_cookie("username")
         return model.homepage(username)
     else:
+        print("going to login")
         return model.login()
 
 #-----------------------------------------------------------------------------
 
 @app.post('/')
 def do_login():
-    if request.get_cookie("username"):
-        username = request.forms.get('username')
-        password = request.forms.get('password')
-        response.set_cookie("username",username)
+
+    username = request.forms.get('username')
+    password = request.forms.get('password')
+    response.set_cookie("username",username)
 
         
-        return model.login_check(username, password)
+    return model.login_check(username, password)
 
 
 #-----------------------------------------------------------------------------
@@ -155,6 +156,15 @@ def view_chat(user):
         return model.get_messages(username, user_to_chat)
     else:
         return model.login()
+
+#-----------------------------------------------------------------------------
+@app.get('/signout')
+def signout():
+    response.delete_cookie("username")
+    username = request.get_cookie("username")
+    print(username)
+    return model.login()
+
 #-----------------------------------------------------------------------------
 # Static file paths
 #-----------------------------------------------------------------------------
