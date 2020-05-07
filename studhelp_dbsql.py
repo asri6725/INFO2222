@@ -245,3 +245,8 @@ def view_messages(username):
 	cursor.execute("SELECT * FROM messages_final WHERE sender= :username OR reciever= :username ORDER BY message_id;", {"username": username})
 	data = cursor.fetchall()
 	return data
+
+def view_chat_history(username1, username2):
+	cursor.execute("SELECT * FROM messages_final WHERE (sender = :user1 AND reciever = :user2) OR (sender = :user2 AND reciever = :user1) ORDER BY message_id;", {'user1':username1, "user2": username2})
+	data = cursor.fetchall()
+	return data

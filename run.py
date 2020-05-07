@@ -125,6 +125,7 @@ def get_post(subject):
 
 @app.post('/homepage/<subject>/<value>')            
 def topic(subject, value):
+    print("topic")
     if request.get_cookie("username"):
         title = request.forms.get('title')
         username = request.get_cookie("username")
@@ -134,11 +135,24 @@ def topic(subject, value):
 
 #-----------------------------------------------------------------------------
 
-@app.get('/homepage/messages')
+@app.get('/messages')
 def list_users():
+    print("list of users")
     if request.get_cookie("username"):
         username = request.get_cookie("username")
         return model.overview_messages(username)
+    else:
+        return model.login()
+
+#-----------------------------------------------------------------------------
+
+@app.post('/messages/<user>')
+def view_chat(user):
+    print("view chat")
+    if request.get_cookie("username"):
+        username = request.get_cookie("username")
+        user_to_chat = request.forms.get("message_user")
+        return model.get_messages(username, user_to_chat)
     else:
         return model.login()
 #-----------------------------------------------------------------------------
