@@ -152,12 +152,11 @@ def get_users(ret, username):
         if row[2] != username:
             if row[2] not in users:
                 users.append(row[2])    
-    if len(users) == 0:
-        users.append['Need to start chatting!']
     return users
 
 def overview_messages(username):
     ret = studhelp_dbsql.view_messages(username)
+    users = []
     users = get_users(ret, username)
     return template("view_all_messages.tpl", username = username, users = users)
 
@@ -165,4 +164,10 @@ def overview_messages(username):
 
 def get_messages(username, chat_with):
     ret = studhelp_dbsql.view_chat_history(username, chat_with)
-    return template("chat.tpl", chat = ret)
+    return template("chat.tpl", chat = ret, reciever=chat_with)
+
+#-----------------------------------------------------------------------------
+
+def new_message(sender, reciever, message):
+    ret = studhelp_dbsql.add_message(sender, reciever, message)
+    return get_messages(sender, reciever)

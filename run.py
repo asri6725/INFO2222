@@ -158,6 +158,20 @@ def view_chat(user):
         return model.login()
 
 #-----------------------------------------------------------------------------
+
+@app.post('/messages/send')
+def new_message():
+    print("Enter controller for messages post")
+    if request.get_cookie("username"):
+        username = request.get_cookie("username")
+        user_to_chat = request.forms.get("message_user")
+        message = request.forms.get("message")
+        print("Going to model")
+        return model.new_message(username, user_to_chat, message)
+    else:
+        return model.login()
+
+#-----------------------------------------------------------------------------
 @app.get('/signout')
 def signout():
     response.delete_cookie("username")
