@@ -281,14 +281,8 @@
             <p>Bachelor of Advanced Computing</p>
           </div>
           <div class="card">
-            <h3>13123</h3>
-            <div class="fakeimg"><p>Image</p></div>
-            <div class="fakeimg"><p>Image</p></div>
-            <div class="fakeimg"><p>Image</p></div>
-          </div>
-          <div class="card">
-            <h3>13212312</h3>
-            <p>Some text adfa..</p>
+            <h3>Unit</h3>
+            {{unit}}
           </div>
         </div>
         <div class="rightcolumn">

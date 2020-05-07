@@ -89,7 +89,7 @@
       /* Create two unequal columns that floats next to each other */
       /* Left column */
       .rightcolumn {
-        float: left;
+        float: right;
         width: 75%;
         padding-left: 20px;
         border-radius: 15px;
@@ -225,14 +225,15 @@
             <p>Bachelor of Advanced Computing</p>
           </div>
           <div class="card">
-            <h3>13123</h3>
-            <div class="fakeimg"><p>Image</p></div>
-            <div class="fakeimg"><p>Image</p></div>
-            <div class="fakeimg"><p>Image</p></div>
-          </div>
-          <div class="card">
-            <h3>13212312</h3>
-            <p>Some text adfa..</p>
+            <h3>Unit</h3>
+            %for i in range(0,len(subject)):
+              <div>
+                <a href="http://{{server}}:8080/homepage/{{subject[i]}}" style="text-decoration: none;">
+                {{subject[i]}}
+                </a>
+              </div>
+              <br>
+            %end
           </div>
         </div>
         <div class="rightcolumn">
