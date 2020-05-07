@@ -36,11 +36,13 @@ def check_signup(username, password):
 	else:
 		return 0
 
+#This function get all the subject that user has selected
 def get_user_subject(username):
 
 	subjects = []
 	count = 0
 
+	#Search for all id user has selected
 	cursor.execute("""
 		SELECT S.subject_id
 		FROM user_detail UD INNER JOIN user_subject US USING(username) INNER JOIN subject S USING(subject_id)
@@ -57,6 +59,7 @@ def get_user_subject(username):
 	
 	return subjects
 
+#Adds selected unit to the user
 #Return -1 when user is already enrolled in the unit
 def unit_add(username, unit):
 	
@@ -135,6 +138,18 @@ def get_post_contents(subject, title):
 		return [("This post does not exist")]
 	return data[0]
 
+#New version
+# def get_post_contents(post_id):
+# 	cursor.execute("""
+# 		SELECT P.title, P.subject_id, P.context
+# 		FROM post P
+# 		WHERE P.post_id = :post_id""", {"post_id": post_id})
+# 	data = cursor.fetchall()
+# 	if len(data) == 0:
+# 		return [("This post does not exist")]
+# 	return data[0]
+
+#Gets an array of all the post_title in the unit
 def get_all_post_title(unit):
 	cursor.execute("""
 		SELECT P.title
@@ -160,6 +175,20 @@ def get_post_responses(subject, title):
 		return ["Response does not exist"]
 	return data
 
+#new version
+# def get_post_response(post_id):
+# 	cursor.execute("""
+# 		SELECT R.response, R.username
+# 		FROM post P INNER JOIN post_response PR USING (post_id) INNER JOIN response R USING (response_id)
+# 		WHERE PR.post_id = :post_id
+# 		ORDER BY PR.response_id""", {"post_id": post_id})
+# 	data = cursor.fetchall()
+# 	if len(data) == 0:
+# 		return ["Response does not exist"]
+# 	return data
+
+
+#Adds a response to the post
 def add_post_reponses(postID, message):
 	cursor.execute("""
 		SELECT R.response, R.username
@@ -171,7 +200,6 @@ def add_post_reponses(postID, message):
 		return ["Response does not exist"]
 	return data
 
-
 def add_new_post(username, subject, title, content):
 	cursor.execute("SELECT MAX(post_id) FROM post")
 	data = cursor.fetchall()
@@ -180,25 +208,26 @@ def add_new_post(username, subject, title, content):
 	connection.commit()
 	return 0
 
+
 def add_user(username, password, email):
 	cursor.execute("INSERT INTO user_detail VALUES(?, ?, ?, ?)", (username, password, 1, email))
 	connection.commit()
 	return 0
 
-def send_password(username):
+#Sends an email to the users with their password
+def send_password(mail):
 
-	mail = None
-	password = None
-
+	#looks up username and password, related to this email
 	cursor.execute("""
-		SELECT U.email, U.password
+		SELECT U.password, U.username
 		FROM user_detail U
-		WHERE U.username = :username
-		""", {"username": username})
+		WHERE U.email = :email
+		""", {"email": mail})
 
 	data = cursor.fetchall()
-	mail = data[0][0]
-	password = data[0][1]
+	password = data[0][0]
+	username = data[0][1]
+
 
 	if (mail == None or password == None):
 		return -1
@@ -210,6 +239,8 @@ def send_password(username):
 	t = username + " <" + mail + ">"
 	context = "Hello, - - Your password is : " + password + ". -"
 	context_list = context.split("-")
+
+	#Connects to uni mail server to send a msg
 
 	cc = socket(AF_INET, SOCK_STREAM)
 	cc.connect(("mail.usyd.edu.au", 25))
