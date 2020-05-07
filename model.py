@@ -47,6 +47,35 @@ def homepage(username):
     return template("homepage.tpl", name=username, subject=subject, server = conf.ip_conf())
 
 #-----------------------------------------------------------------------------
+#Creating new msg
+
+#usernames: array of users who participate in this char
+#message_name: is the naming of the chat.
+def create_new_chat(usernames, message_name):
+    #This creates new chat in the database, and return message_id
+    message_id = studhelp_dbsql.create_new_message(usernames, message_name)
+
+    #return something here?
+
+#-----------------------------------------------------------------------------
+#Retrieve Message
+#Message_data: Array of tuples, ("Message content", "User who wrote the message")
+#   E.g. [('hey jackey', 'admin'), ('hi admin', 'jackey'), ('how you doing admin?', 'jackey')]
+def retrieve_message(message_id):
+
+    messsage_data = studhelp_dbsql.get_message_contents(message_id)
+
+    #return something
+
+#-----------------------------------------------------------------------------
+#Probaly after this function, retrieve_message should be called to update the contents
+def add_message(username, message_id, content):
+    studhelp_dbsql.add_new_msg(message_id, usernamem content)
+
+    #return something
+
+
+#-----------------------------------------------------------------------------
 
 def addUnit(unit, username):
     #ADD unit to DB with the username and return homepage
@@ -102,14 +131,8 @@ def listTopics(unit, username):
 
 def content(subject, title, username):
     res = studhelp_dbsql.get_post_contents(subject, title)
-    content = res
-    print(content[0])
-    print(content[2])
-    print(content)
-    responses = studhelp_dbsql.get_post_responses(subject, title)
-    if responses is None:
-        responses = [['','']]
-    return template("topic.tpl", title = title, unit=subject, content=content, responses = responses, server = conf.ip_conf(), username = username)
+    content = res[2]
+    return template("topic.tpl", title = title, unit=subject, content=content, responses = {'admin':'not implemented yet'}, server = conf.ip_conf(), username = username)
 
 #-----------------------------------------------------------------------------
 

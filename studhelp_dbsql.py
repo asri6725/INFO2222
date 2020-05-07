@@ -1,4 +1,3 @@
-
 import sqlite3
 import base64
 from socket import *
@@ -85,7 +84,7 @@ def create_new_message(users, message_name):
 		cursor.execute("INSERT INTO message_user VALUES (?, ?)", (m_id, user))
 		connection.commit()
 
-	return 0
+	return m_id
 
 #m_id: message_id
 #return example: [('hey jackey', 'admin'), ('hi admin', 'jackey'), ('how you doing admin?', 'jackey')]
@@ -101,6 +100,27 @@ def get_message_contents(m_id):
 		ORDER BY M.content_id""".format(m_id)
 	cursor.execute(command)
 	data = cursor.fetchall()
+	return data
+
+#Adds new messsage from the user
+def add_new_msg(m_id, username, content):
+
+	cursor.execute("INSERT INTO message_content (message_id, content, username) VALUES (?, ?, ?)", (m_id, content, username))
+	connection.commit()
+
+#Returns -1 there is no post in this subject
+#Otherwise return array of tuples containing information
+#	E.g. [(1, 'how to make websites?', 'admin')]
+def get_pid_title_username(subject):
+
+	cursor.execute("""
+		SELECT post_id, title, username
+		FROM post
+		WHERE subject_id = :subject_id
+		""", {"subject_id": subject})
+	data = cursor.fetchall()
+	if len(data) == 0:
+		return -1
 	return data
 
 def get_post_contents(subject, title):
@@ -212,4 +232,3 @@ def send_password(username):
 	cc.send("\r\n.\r\n".encode())
 	print(cc.recv(1024).decode())
 	return 0
-
