@@ -41,21 +41,25 @@ def login():
 
 @app.post('/')
 def do_login():
-    username = request.forms.get('username')
-    password = request.forms.get('password')
-    response.set_cookie("username",username)
+    if request.get_cookie("username"):
+        username = request.forms.get('username')
+        password = request.forms.get('password')
+        response.set_cookie("username",username)
 
-    
-    return model.login_check(username, password)
+        
+        return model.login_check(username, password)
 
 
 #-----------------------------------------------------------------------------
   
 @app.post('/homepage')
 def unit_add():
-    username = request.get_cookie("username")
-    unit_add = request.forms.get('unit')
-    return model.addUnit(unit_add, username)
+    if request.get_cookie("username"):
+        username = request.get_cookie("username")
+        unit_add = request.forms.get('unit')
+        return model.addUnit(unit_add, username)
+    else:
+        return model.login()
 
 #-----------------------------------------------------------------------------
 
@@ -98,26 +102,35 @@ def do_sign_up():
 
 @app.get('/homepage/<subject>')            
 def list_of_topics(subject):
-    username = request.get_cookie("username")
-    return model.listTopics(subject, username)
+    if request.get_cookie("username"):
+        username = request.get_cookie("username")
+        return model.listTopics(subject, username)
+    else:
+        return model.login()
 
 #-----------------------------------------------------------------------------
 
 @app.post('/homepage/send/<subject>')
 @app.post('/homepage/send/homepage/<subject>')
 def get_post(subject):
-    title = request.forms.get('title')
-    content = request.forms.get('content')
-    username = request.get_cookie("username")
-    return model.new_post(subject, title, content, username)
+    if request.get_cookie("username"):
+        title = request.forms.get('title')
+        content = request.forms.get('content')
+        username = request.get_cookie("username")
+        return model.new_post(subject, title, content, username)
+    else:
+        return model.login()
 
 #-----------------------------------------------------------------------------
 
 @app.post('/homepage/<subject>/<value>')            
 def topic(subject, value):
-    title = request.forms.get('title')
-    username = request.get_cookie("username")
-    return model.content(subject, title, username)
+    if request.get_cookie("username"):
+        title = request.forms.get('title')
+        username = request.get_cookie("username")
+        return model.content(subject, title, username)
+    else:
+        return model.login()
 
 
 #-----------------------------------------------------------------------------
