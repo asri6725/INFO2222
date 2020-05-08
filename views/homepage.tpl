@@ -237,7 +237,7 @@
         <a href="#unit">Unit</a>
         <a href="#Academic_Dishonesty">Academic Dishonesty</a>
         
-        <form action="http://localhost:2000/signout" method="GET">
+        <form action="http://localhost:8080/signout" method="GET">
           <button value="Logout" type ="submit" class="logout">Logout</button>
         </form>
         
