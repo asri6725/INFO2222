@@ -317,7 +317,7 @@ input[type=text]:focus{
     </div>
 
   <!--User comments to the post -->
-  <div class="userComment">
+    <div class="userComment">
 
       %for response in responses:
       
@@ -331,15 +331,8 @@ input[type=text]:focus{
           <p class="txt"> {{response[0]}} </p>
           </div>
           </div>
-  </div>
+      </div>
 
-<!--The button/form to reply to a comment -->
-    <div class="commentdiv">
-        <form action="post" method="post">
-          <input type="text" class="comment" placeholder="Reply to this message?" style="opacity:0.7;"/>
-          <input value="Submit" type="submit" class="submit_btn"/>
-        </form>
-    </div>
     </div>
   </div>
 
