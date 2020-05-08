@@ -408,9 +408,11 @@ input[type=text]:focus{
 
 <!-- LINK TO PAGES WITHIN SITE -->
     <ul>
-      <li> <a href="" class="Footertxtlink">Home</a> </li>
-      <li> <a href="" class="Footertxtlink">Unit</a></li>
-      <li> <a href="" class="Footertxtlink">Academic Dishonesty</a></li>
+      <li> <a href="http://localhost:8080/" class="Footertxtlink">Home</a> </li>
+      <li> <a href="http://localhost:8080/#unit" class="Footertxtlink">Unit</a></li>
+      <li> <a href="http://localhost:8080/#Academic_Dishonesty" class="Footertxtlink">Academic Dishonesty</a></li>
+      <li> <a href="http://localhost:8080/messages" class="Footertxtlink">Messages</a></li>
+      <li> <a href="http://localhost:8080/signout" class="Footertxtlink">Logout</a></li>
     </ul>
   </div>
 </div>
