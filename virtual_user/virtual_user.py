@@ -112,7 +112,7 @@ def full_traverse(usr, email, pwds):
 	add_comment_in_post("Commented by the virtual user")
 	view_message()
 	# Message needs to be fixed!
-	# send_message("jackey", "hello")
+	send_message("jackey", "hello")
 	time.sleep(1)
 	browser.get("http://localhost:8080/signout")
 	time.sleep(2)
