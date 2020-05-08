@@ -310,29 +310,30 @@ input[type=text]:focus{
 
   <!--The button/form to comment on the question -->
     <div class="commentdiv">
-        <form action="post" method="post">
-          <input type="text" class="comment" placeholder="Add your comment here" style="opacity:0.7;"/>
+        <form action="/" method="post">
+        <input type="hidden" name= "unit" value= {{unit}} />
+          <input type="hidden" name= "title" value= {{title}} />
+          <input type="text" name = "comment"class="comment" placeholder="Add your comment here" style="opacity:0.7;"/>
           <input value="Submit" type="submit" class="submit_btn"/>
         </form>
     </div>
 
   <!--User comments to the post -->
-    <div class="userComment">
-
-      %for response in responses:
+    %for response in responses:
+        <div class="userComment">
       
-          <!-- WHERE THE USERNAME SHOULD BE -->
-          <div class="username">
-          <p> {{response[1]}}: </p>
-          </div>
+        <!-- WHERE THE USERNAME SHOULD BE -->
+        <div class="username">
+        <p> {{response[1]}}: </p>
+        </div>
 
-          <div id = titlediv>
-          <div id = userCommentdiv>
-          <p class="txt"> {{response[0]}} </p>
-          </div>
-          </div>
+        <div id = titlediv>
+        <div id = userCommentdiv>
+        <p class="txt"> {{response[0]}} </p>
+        </div>
+        </div>
       </div>
-
+    %end
     </div>
   </div>
 

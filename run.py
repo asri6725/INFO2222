@@ -136,6 +136,22 @@ def topic(subject, value):
 
 #-----------------------------------------------------------------------------
 
+@app.post('/homepage/comment/<subject>/<value>')
+def add_comment(subject, value):
+    if request.get_cookie("username"):
+        comment = request.forms.get("comment")
+        username = request.get_cookie("username")
+        title = request.forms.get("title")
+        unit = request.forms.get("unit")
+        if unit!=subject:
+            return model.error()
+        return model.content(subject, title, comment,username)
+    else:
+        return model.login()
+
+
+#-----------------------------------------------------------------------------
+
 @app.get('/messages')
 def list_users():
     print("list of users")

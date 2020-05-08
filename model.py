@@ -143,6 +143,12 @@ def new_post(subject, title, content, username):
     redirect(url)   
 #-----------------------------------------------------------------------------
 
+def new_comment(subject, title, comment, username):
+    ret = ""
+    return content(subject, title, username)
+
+#-----------------------------------------------------------------------------
+
 def get_users(ret, username):
     users = []
     for row in ret:
