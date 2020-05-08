@@ -337,10 +337,10 @@ input[type=text]:focus{
     <div class="card" style="position: relative; overflow:auto;">
 
 
-  /* Displays all usersnames that you have made a chat with
+  <!-- /* Displays all usersnames that you have made a chat with
       CLicking one will take you to a chat with that individual person
        This div is formatted such that if there are several users you have chats with,
-       you can scroll through with a scroll bar*/
+       you can scroll through with a scroll bar*/ -->
 
       <div class="chatbox" >
         <h6 style="font-size: 22px; "> Your Messages </h6>
@@ -355,10 +355,10 @@ input[type=text]:focus{
 
       </div>
 
-      /* This div will stay at the bottom of the card div, here users can enter the username
+      <!-- /* This div will stay at the bottom of the card div, here users can enter the username
           of someone they want to message along with what they want to message.
          This will create a new user in the above chat box, which can be clicked to open messages with them,
-         also including the original message they sent to start the conversation.*/
+         also including the original message they sent to start the conversation.*/ -->
 
       <div class="bottomchat" style="position: absolute; bottom: 10px;">
         <form action="http://localhost:2000/messages/send" method="POST">
