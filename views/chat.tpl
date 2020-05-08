@@ -5,7 +5,7 @@
 
 % end
 
-<form action="http://localhost:8080/messages/send" method="POST">
+<form action="{{server}}/messages/send" method="POST">
     <input type="hidden" name="message_user" value="{{reciever}}" />
     <input type="text" name="message" placeholder="reply" />
     <input type = "submit" value="Send" />

@@ -296,7 +296,7 @@ input[type=text]:focus{
 
           <!-- WHERE THE USERNAME SHOULD BE -->
           <div class="username">
-            <p> Johnny Cool: </p>
+            <p> {{username}} </p>
           </div>
 
           <div id = titlediv>

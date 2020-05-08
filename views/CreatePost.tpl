@@ -192,7 +192,7 @@ body {
 
   <div class="leftcolumn">
     <div class="card">
-      <form action='homepage/{{username}}/{{subject}}' method="POST">
+      <form action='{{server}}/homepage/{{username}}/{{subject}}' method="POST">
         <input type=hidden name=username value="{{username}}">
 
       <div id = titldiv>

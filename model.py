@@ -21,7 +21,7 @@ import conf
 # Login
 
 def login():
-    return template('Login.tpl', server = conf.ip_conf())
+    return template('Login.tpl', server = conf.complete_server_conf()) 
 
 #-----------------------------------------------------------------------------
 # Check the login credentials
@@ -34,7 +34,7 @@ def login_check(username, password):
         subject = ['initial_value_subject']
         subject = studhelp_dbsql.get_user_subject(username)
 
-        return template("homepage.tpl", name=username, subject=subject, server = conf.ip_conf())
+        return template("homepage.tpl", name=username, subject=subject, server = conf.complete_server_conf())
     else:
         return template("LoginError.html", reason="check credentials")
 
@@ -44,7 +44,7 @@ def homepage(username):
     subject = ['initial_value_subject']
     subject = studhelp_dbsql.get_user_subject(username)
     print("Enter here")
-    return template("homepage.tpl", name=username, subject=subject, server = conf.ip_conf())
+    return template("homepage.tpl", name=username, subject=subject, server = conf.complete_server_conf())
 
 '''#-----------------------------------------------------------------------------
 #Creating new msg
@@ -80,7 +80,7 @@ def add_message(username, message_id, content):
 def addUnit(unit, username):
     #ADD unit to DB with the username and return homepage
     subject = studhelp_dbsql.unit_add(username, unit)
-    return template("homepage.tpl", name=username, subject=subject, server = conf.ip_conf())
+    return template("homepage.tpl", name=username, subject=subject, server = conf.complete_server_conf())
 
 #-----------------------------------------------------------------------------
 # Forgot password
@@ -102,7 +102,7 @@ def signup_check(username, password, email):
 
     if (result == 0):
         studhelp_dbsql.add_user(username, password, email)
-        return template("Login.tpl", server = conf.ip_conf())
+        return template("Login.tpl", server = conf.complete_server_conf())
     else:
         return template("SignupError.html")
 
@@ -124,7 +124,7 @@ def listTopics(unit, username):
     title = studhelp_dbsql.get_all_post_title(unit)
 
     url = 'homepage/'+ unit
-    return template("UnitDiscussion.tpl", title = title, url=url, unit=unit, server = conf.ip_conf(), username=username)  
+    return template("UnitDiscussion.tpl", title = title, url=url, unit=unit, server = conf.complete_server_conf(), username=username)  
 
 #-----------------------------------------------------------------------------
 # Viewing each post, including title, content and responses
@@ -133,13 +133,13 @@ def content(subject, title, username):
     res = studhelp_dbsql.get_post_contents(subject, title)
     content = res
     responses = studhelp_dbsql.get_post_responses(subject, title)
-    return template("topic.tpl", title = title, unit=subject, content=content, responses = responses, server = conf.ip_conf(), username = username)
+    return template("topic.tpl", title = title, unit=subject, content=content, responses = responses, server = conf.complete_server_conf(), username = username)
 
 #-----------------------------------------------------------------------------
 
 def new_post(subject, title, content, username):
     ret = studhelp_dbsql.add_new_post(username, subject, title, content)
-    url = 'http://'+conf.ip_conf()+':8080/homepage/'+subject
+    url = conf.complete_server_conf()+'/homepage/'+subject
     redirect(url)   
 #-----------------------------------------------------------------------------
 

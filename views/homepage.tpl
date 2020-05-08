@@ -217,7 +217,7 @@
         <a href="#">Home</a>
         <a href="#unit">Unit</a>
         <a href="#Academic_Dishonesty">Academic Dishonesty</a>
-        <a href="http://localhost:8080/signout">Logout</a>
+        <a href="{{server}}/signout">Logout</a>
 
         
         
@@ -233,7 +233,7 @@
             <h3>Unit</h3>
             %for i in range(0,len(subject)):
               <div>
-                <a href="http://{{server}}:8080/homepage/{{subject[i]}}" style="text-decoration: none;">
+                <a href="{{server}}/homepage/{{subject[i]}}" style="text-decoration: none;">
                 {{subject[i]}}
                 </a>
               </div>
@@ -252,35 +252,35 @@
               <button class="dropbtn">select here</button>
               <div class="dropdown-content">
                 <a href="#">
-                  <form action = "http://{{server}}:8080/homepage" method="POST">
+                  <form action = "{{server}}/homepage" method="POST">
                     <input type=hidden name=username value="{{name}}">
                     <input type=hidden name=unit value="MATH2068">
                     <input type=submit name=submit value="MATH2068">
                   </form>
                 </a>
                 <a href="#">
-                  <form action = "http://{{server}}:8080/homepage" method="POST">
+                  <form action = "{{server}}/homepage" method="POST">
                     <input type=hidden name=username value="{{name}}">
                     <input type=hidden name=unit value="COMP2022">
                     <input type=submit name=submit value="COMP2022">
                   </form>
                 </a>
                 <a href="#">
-                  <form action = "http://{{server}}:8080/homepage" method="POST">
+                  <form action = "{{server}}/homepage" method="POST">
                     <input type=hidden name=username value="{{name}}">
                     <input type=hidden name=unit value="INFO2222">
                     <input type=submit name=submit value="INFO2222">
                   </form>
                 </a>
                 <a href="#">
-                  <form action = "http://{{server}}:8080/homepage" method="POST">
+                  <form action = "{{server}}/homepage" method="POST">
                     <input type=hidden name=username value="{{name}}">
                     <input type=hidden name=unit value="COMP2017">
                     <input type=submit name=submit value="COMP2017">
                    </form>
                 </a>
                 <a href="#">
-                  <form action = "http://{{server}}:8080/homepage" method="POST">
+                  <form action = "{{server}}/homepage" method="POST">
                      <input type=hidden name=username value="{{name}}">
                      <input type=hidden name=unit value="DATA3404">
                      <input type=submit name=submit value="DATA3404">
@@ -292,7 +292,7 @@
         <a name="unit"> </a>
           %for i in range(0,len(subject)):
             <div class="unitcolumn">
-              <a href="http://{{server}}:8080/homepage/{{subject[i]}}" style="text-decoration: none;">
+              <a href="{{server}}/homepage/{{subject[i]}}" style="text-decoration: none;">
                 <div class="card">
                   {{subject[i]}}
                   %if subject[i] == "COMP2022":

@@ -269,9 +269,9 @@
         </h1>
       </div>
       <div class="topnav">
-        <a href="http://localhost:8080/homepage">Home</a>
-        <a href="http://localhost:8080/homepage">Unit</a>
-        <a href="http://localhost:8080/homepage">Academic Dishonesty</a>
+        <a href="{{server}}/homepage">Home</a>
+        <a href="{{server}}/homepage">Unit</a>
+        <a href="{{server}}/homepage">Academic Dishonesty</a>
       </div>
       <div class="row">
         <div class="leftcolumn">
@@ -309,7 +309,7 @@
                   % for char in mod_i.lower():
                       %val = ord(char) - 96
                       %end
-                  <form action = "http://{{server}}:8080/homepage/{{unit}}/{{val}}" method="POST">
+                  <form action = "{{server}}/homepage/{{unit}}/{{val}}" method="POST">
                       <input type=hidden name=title value="{{i}}">
                       <input type=submit name=submit value="{{i}}">
                   </form>
@@ -330,7 +330,7 @@
                 <input name="content" type="text" placeholder="Content"/>
                 <input value="Send" type="submit" />
             </form> -->
-            <form action='homepage/{{username}}/{{unit}}' method="POST">
+            <form action='{{server}}/homepage/{{username}}/{{unit}}' method="POST">
               <input type=hidden name=username value="{{username}}">
             <div id = titldiv>
                 <input name="title" type="text" class="ttl" placeholder="Title" style="width:100%;"/>
