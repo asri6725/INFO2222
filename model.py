@@ -158,13 +158,13 @@ def overview_messages(username):
     ret = studhelp_dbsql.view_messages(username)
     users = []
     users = get_users(ret, username)
-    return template("view_all_messages.tpl", username = username, users = users)
+    return template("view_all_messages.tpl", username = username, users = users, server = conf.complete_server_conf())
 
 #-----------------------------------------------------------------------------
 
 def get_messages(username, chat_with):
     ret = studhelp_dbsql.view_chat_history(username, chat_with)
-    return template("chat.tpl", chat = ret, reciever=chat_with)
+    return template("chat.tpl", chat = ret, reciever=chat_with, server= conf.complete_server_conf())
 
 #-----------------------------------------------------------------------------
 
