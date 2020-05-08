@@ -144,6 +144,8 @@ def add_comment(subject, value):
         username = request.get_cookie("username")
         title = request.forms.get("title")
         unit = request.forms.get("unit")
+        print(title)
+        print("Unit ", unit, " title ", title, " comment ", comment, " user ", username)
         if unit!=subject:
             return model.error()
         return model.new_comment(subject, title, comment,username)

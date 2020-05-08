@@ -309,15 +309,18 @@ input[type=text]:focus{
 
 
   <!--The button/form to comment on the question -->
-    <div class="commentdiv">
+  
+
+        <div class="commentdiv">
         <form action="/homepage/comment/{{unit}}/{{value}}>" method="post">
-        <input type="hidden" name= "unit" value= {{unit}} />
-          <input type="hidden" name= "title" value= {{title}} />
+        <input type="hidden" name= "unit" value= "{{unit}}" />
+          <input type="hidden" name= "title" value= "{{content[0]}}" /> 
           <input type="text" name = "comment"class="comment" placeholder="Add your comment here" style="opacity:0.7;"/>
           <input value="Submit" type="submit" class="submit_btn"/>
         </form>
-    </div>
+        </div>
 
+       
   <!--User comments to the post -->
     %for response in responses:
         <div class="userComment">
