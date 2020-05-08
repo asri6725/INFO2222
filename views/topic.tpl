@@ -278,9 +278,11 @@ input[type=text]:focus{
 
 <!-- Navigation Bar -->
 <div class="topnav">
-  <a href="#">Home</a>
-  <a href="#">Unit</a>
-  <a href="#">Academic Dishonesty</a>
+  <a href="http://localhost:8080/#">Home</a>
+  <a href="http://localhost:8080/#unit">Unit</a>
+  <a href="http://localhost:8080/#Academic_Dishonesty">Academic Dishonesty</a>
+  <a href="http://localhost:8080/messages">Messages</a>
+  <a href="http://localhost:8080/signout">Signout</a>
 </div>
 
   <!-- The whole bottom section grouped into one div -->
@@ -309,24 +311,22 @@ input[type=text]:focus{
 
 
   <!--The button/form to comment on the question -->
-  
+
 
         <div class="commentdiv">
         <form action="/homepage/comment/{{unit}}/{{value}}>" method="post">
         <input type="hidden" name= "unit" value= "{{unit}}" />
-          <input type="hidden" name= "title" value= "{{content[0]}}" /> 
+          <input type="hidden" name= "title" value= "{{content[0]}}" />
           <input type="text" name = "comment"class="comment" placeholder="Add your comment here" style="opacity:0.7;"/>
           <input value="Submit" type="submit" class="submit_btn"/>
         </form>
         </div>
 
-       
-  <!--User comments to the post, the code goes through the data base 
-        to retrieve the information including sender and content
-        It also utilises a similar system to how messaging works-->
+
+  <!--User comments to the post -->
     %for response in responses:
         <div class="userComment">
-      
+
         <!-- WHERE THE USERNAME SHOULD BE -->
         <div class="username">
         <p> {{response[1]}}: </p>
@@ -387,9 +387,11 @@ input[type=text]:focus{
 
 <!-- LINK TO PAGES WITHIN SITE -->
     <ul>
-      <li> <a href="" class="Footertxtlink">Home</a> </li>
-      <li> <a href="" class="Footertxtlink">Unit</a></li>
-      <li> <a href="" class="Footertxtlink">Academic Dishonesty</a></li>
+      <li> <a href="http://localhost:8080/#" class="Footertxtlink">Home</a> </li>
+      <li> <a href="http://localhost:8080/#unit" class="Footertxtlink">Unit</a></li>
+      <li> <a href="http://localhost:8080/#Academic_Dishonesty" class="Footertxtlink">Academic Dishonesty</a></li>
+      <li> <a href="http://localhost:8080/messages" class="Footertxtlink">Messages</a> </li>
+      <li> <a href="http://localhost:8080/signout" class="Footertxtlink">Signout</a> </li>
     </ul>
   </div>
 </div>
