@@ -157,6 +157,20 @@
         background: #ddd;
         margin-top: 20px;
         border-radius: 15px;
+        overflow: hidden;
+        
+      }
+       .contactUs{
+        float: left;
+        padding-right: 3%;
+      }
+      .quicklinks{
+        text-align: left;
+        padding-left: 2%;
+        float: left;
+        border-left-style: solid;
+        border-left-width: thin;
+        border-left-color: grey;
       }
       .red_text{
         color: red;
@@ -269,9 +283,11 @@
         </h1>
       </div>
       <div class="topnav">
-        <a href="{{server}}/homepage">Home</a>
-        <a href="{{server}}/homepage">Unit</a>
-        <a href="{{server}}/homepage">Academic Dishonesty</a>
+        <a href="http://localhost:8080/homepage">Home</a>
+        <a href="http://localhost:8080/homepage">Unit</a>
+        <a href="http://localhost:8080/homepage">Academic Dishonesty</a>
+        <a href="http://localhost:8080/messages">Messages</a>
+        <a href="http://localhost:8080/signout">Logout</a>
       </div>
       <div class="row">
         <div class="leftcolumn">
@@ -360,8 +376,29 @@
       </script>
 
 
-      <div class="footer">
-        <h2>{{unit}} Discussion Page</h2>
+      <!--Footer -->
+    <div class="footer">
+      <div class="contactUs">
+        <h4 style="font-size: 14px; text-align: left;"> Contact Us </h4>
+        <p style="font-size: 14px; text-align: left;"> Got any questions or feedback?
+          <br>
+          Email us
+          <a href="mailto:StudHelpTeam@outlook.com">StudHelpTeam@outlook.com</a>
+        </p>
+      </div>
+
+      <div class="quicklinks">
+        <h5 style="font-size: 14px; text-align: left; line-height:0px;"> Quick Links </h5>
+
+
+    <!-- LINK TO PAGES WITHIN SITE -->
+        <ul>
+          <li> <a href="http://localhost:8080/#" class="Footertxtlink">Home</a> </li>
+          <li> <a href="http://localhost:8080/#unit" class="Footertxtlink">Unit</a></li>
+          <li> <a href="http://localhost:8080/#Academic_Dishonesty" class="Footertxtlink">Academic Dishonesty</a></li>
+          <li> <a href="http://localhost:8080/messages" class="Footertxtlink">Messages</a> </li>
+          <li> <a href="http://localhost:8080/signout" class="Footertxtlink">Signout</a> </li>
+        </ul>
       </div>
     </body>
 </html>
