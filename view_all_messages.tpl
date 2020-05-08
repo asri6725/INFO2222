@@ -361,7 +361,7 @@ input[type=text]:focus{
          also including the original message they sent to start the conversation.*/ -->
 
       <div class="bottomchat" style="position: absolute; bottom: 10px;">
-        <form action="http://localhost:2000/messages/send" method="POST">
+        <form action="http://localhost:8080/messages/send" method="POST">
             <input name="message_user" type="text" placeholder="recipient (username)" style="font-size: 18px;width:40%;"/>
             <input name="message" type="text" placeholder="Message" style="font-size: 18px; width:40%; margin-left:10px;"/>
             <input type="Submit" value="Send" class="submit_btn" style="margin-Left:10px;"/>
