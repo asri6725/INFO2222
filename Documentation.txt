@@ -1,0 +1,208 @@
+This document only outlines the working of the code, all information relating to the security informaiton and what 
+our website does with it is within the report pdf.
+
+
+
+Model.py
+	-The main file used for dictating the navigation of the website, it is responsible for getting data
+	      and acting upon it. 
+	- This should control the actual "logic" of your website
+              And nicely abstracts away the program logic from your page loading
+              It should exist as a separate layer to any database or data structure that you might be using
+              Nothing here should be stateful, if it's stateful let the database handle it
+
+
+	Functions:
+	
+	login() - 					returns the login tpl page 
+
+	login_check(username, password) - 		checks the login credentials, this calls login_check() which returns 
+							true or false based on if the details are within the database 
+							if this is true then we bring users to the home page, if false we 
+							bring users to the error logining in page. 
+							Param - username and login entered by the user.
+
+	homepage(username) -				returns the template for the home page.
+							Param - username of the user who successfully logged in 
+
+	addUnit(unit, username)- 			Adds unit to the username database 
+							Param - unit and the username of user 
+
+	forgot_password()- 				returns forogt password template 
+
+	reset_password()- 				return reset password template
+
+	def signup()-					return signup template
+
+ 	signup_check(username, pasword, email)-		checks database such that the username password and email are vaild	
+							i.e. no similar username, or input isnt none.	
+							Param username, password and email input by user on signup
+
+	signup_error()- 				returns signup_error html
+
+	error()- 					returns error html	
+	
+
+	listTopics(unit, usernmae)- 			searches database to get all the topics listed by the user
+
+		
+	content(subject, title, username)-		searches database for the data relating to the content 
+
+	new_post(subject, title, content, username)-   	adds new post to the dataabse based on param
+
+	get_users(ret, username)- 			returns the list of users 
+
+	get_messages(username, chat_with)-		returns the messages based on who they are talking with
+
+	new_message(sender, reciever, message)-  	forms a new message based on sender reciever and message 
+
+
+
+
+
+
+run.py
+	-What is used to run the whole website, this runs and starts the webserver
+
+	-(This largely remained unchanged)
+
+
+
+functions:
+Alot of these functions use cookies in order to check and validate users, allowing users to navigate through the 
+site by ensuring they have an account with the site.
+
+
+
+	login()-					this will check with the cookies in the site as to if 
+							they propelry match, if they dont returns the user to login page
+
+	do_login()-					sets the cookies based on login credentials 
+
+	*many following functions are just getter functions, evident in title within the code*
+
+
+
+
+
+
+studhelp_dbsql.py
+	-manages the interaction with the database and our site 
+-	these are called in module and were explained there, this just recaps those
+
+functions:
+
+
+	-chech_login(username, password)		searches the database to ensure that the username is there
+							the password matches the username, and the password is correct
+							If true, return 0, return 1 for incrorect password or 2 for incorrec username
+
+	-check)signup()					as above 
+
+	
+	-unit_add(username, unit)			searches database for the usernames units, then adds the new 
+							unit to the database of that user
+
+	-create_new_message(users, message_name) 	similar to the above, however it adds a message to the database
+
+	-get_message_content(m_id)			as name suggests, it uses the data given in param to show content 
+
+	*the next few are as name suggests therefore we shall pass over them*
+
+	send_password(mail)				looks up the username and password based on given email
+							then based on if its found or not will mail the recipent 
+	
+	add_message(usr_from, user_to, message)		used to add a message to the database between two individuals 
+
+	view_message(username)				searches the data base for all messages where the username is the sender or reciever 
+
+	view_chat_history(username1, username2):	as above 
+
+
+The foobar files:
+These relate to the files respoonsible for generating the certificates and the RSA keys, used in the security 
+aspect of our website. These details are further discussed in the report.
+
+
+
+
+
+
+
+
+
+Front End:
+as these are generally html douccments/templates, we will be discussing various parts, but not really the whole file.
+
+
+Login 
+Not much to discuss in this file, it is quite basic, the input files are connected such that the database can be 
+searched once the login button is pressed. This will then direct users depending on the result of their input
+to either the home page or the login error page. 
+There is an option to sign up for those who do not have an account.
+
+
+Signup 
+The signup page has input for username, email and passsword. So if users forget their password they can use their 
+emails to recover it. Similarly, when signing up, users will not be able to see a signup button until they have agreed
+to know and understand the implications of USYD's academic integrity policy. Once agreed, it will give them the 
+option to login. Therefore, all posts made on this site that violate this policy will be punished accordingly as they
+agreed to these conditions. This stops users from blatantly posting answers. 
+
+The script from line 81-91 works by changing the style of the button back and forth from none, allowing it to 
+appear and reapppear.
+
+
+ForgotPwd
+Allows users to enter their email and recieve their password, this seraches the database for the password matching 
+their email, therefore users should not reveal the email used 
+
+
+Login Error:
+occus when login credentials dont match those in the database. This will return an error and the user will be 
+directed to this screen, giving the option to either try again or go to forgot your password page 
+
+
+Signup Error:
+occurs when the credentials are not met correctly or match those of someone in the database already. 
+
+
+ErrorPage:
+is used for generic errors throughout the site. 
+
+
+
+homepage:
+displays all the information and the ability for users to add units. The user can then select these units tabs
+to take them to the discussion page for that unit. 
+
+
+unit discussion:
+this page is where all the mesages (retrieved from the database) are displayed. Similarly, this page has a script 
+in order to hid and reveal the option to make a post. This option saved us having to make more links to a new page.
+Users can click the button and be presented with the option of making a new post, which will be added to the database
+and the unit discussion subsequently. 
+
+
+View_all_messages:
+This page is where users will go to view all the users they are have had chats with. 
+By clicking on one of the users it will lead them to another page where it will show all the sent messages. 
+
+
+Names of users are displayed when a user creates a new chat by entering the desired recipiants username, 
+then the user will need to enter a message to start the chat. This will then post it to their chat board 
+and the users name they started the chat with will appear. 
+
+
+chat:
+this page is what you will be taken to once clicking the username of someone you have a chat with. Similar in design
+it will display alll the users past messages by searching the database, users can also add to this by sending 
+messages seen at the bottom of the screen. 
+
+
+
+
+
+	
+
+
