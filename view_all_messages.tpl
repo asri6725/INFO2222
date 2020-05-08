@@ -320,9 +320,12 @@ input[type=text]:focus{
 
 <!-- Navigation Bar -->
 <div class="topnav">
-  <a href="#">Home</a>
-  <a href="#">Unit</a>
-  <a href="#">Academic Dishonesty</a>
+  <a href="http://localhost:8080/#">Home</a>
+  <a href="http://localhost:8080/#unit">Unit</a>
+  <a href="http://localhost:8080/#Academic_Dishonesty">Academic Dishonesty</a>
+  <a href="http://localhost:8080/messages">Messages</a>
+  <a href="http://localhost:8080/signout">Logout</a>
+</div>
 </div>
 
   <!-- The whole bottom section grouped into one div -->
