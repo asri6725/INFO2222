@@ -85,7 +85,7 @@
         background-color: #ddd;
         color: black;
       }
-       
+
 
       /* Create two unequal columns that floats next to each other */
       /* Left column */
@@ -231,7 +231,7 @@
         <a href="#unit">Unit</a>
         <a href="#Academic_Dishonesty">Academic Dishonesty</a>
         <a href="http://localhost:8080/messages">Messages</a>
-        <a href="http://localhost:8080/signout">Logout</a>   
+        <a href="http://localhost:8080/signout">Logout</a>
       </div>
       <div class="row">
         <div class="leftcolumn">
@@ -317,6 +317,9 @@
                     <img src="../img/cropped.png" alt="icon" class="unit_img">
                   %elif subject[i] == "INFO2222":
                     <p> Computing 2 Usability and Security (6 CP)<br> </p>
+                    <img src="../img/cropped.png" alt="icon" class="unit_img">
+                  %elif subject[i] == "COMP2017":
+                    <p> Systems Programming (6 CP)<br> </p>
                     <img src="../img/cropped.png" alt="icon" class="unit_img">
                   %end
                 </div>
