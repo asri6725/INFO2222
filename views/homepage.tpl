@@ -230,8 +230,8 @@
         <a href="#">Home</a>
         <a href="#unit">Unit</a>
         <a href="#Academic_Dishonesty">Academic Dishonesty</a>
-        <a href="http://localhost:2000/messages">Messages</a>
-        <a href="http://localhost:2000/signout">Logout</a>   
+        <a href="http://localhost:8080/messages">Messages</a>
+        <a href="http://localhost:8080/signout">Logout</a>   
       </div>
       <div class="row">
         <div class="leftcolumn">
@@ -350,11 +350,11 @@
           <h5 style="font-size: 14px; text-align: left; line-height:0px;"> Quick Links </h5>
       <!-- LINK TO PAGES WITHIN SITE -->
           <ul>
-            <li> <a href="http://localhost:2000/#" class="Footertxtlink">Home</a> </li>
-            <li> <a href="http://localhost:2000/#unit" class="Footertxtlink">Unit</a></li>
-            <li> <a href="http://localhost:2000/#Academic_Dishonesty" class="Footertxtlink">Academic Dishonesty</a></li>
-            <li> <a href="http://localhost:2000/messages" class="Footertxtlink">Messages</a> </li>
-            <li> <a href="http://localhost:2000/signout" class="Footertxtlink">Signout</a> </li>
+            <li> <a href="http://localhost:8080/#" class="Footertxtlink">Home</a> </li>
+            <li> <a href="http://localhost:8080/#unit" class="Footertxtlink">Unit</a></li>
+            <li> <a href="http://localhost:8080/#Academic_Dishonesty" class="Footertxtlink">Academic Dishonesty</a></li>
+            <li> <a href="http://localhost:8080/messages" class="Footertxtlink">Messages</a> </li>
+            <li> <a href="http://localhost:8080/signout" class="Footertxtlink">Signout</a> </li>
           </ul>
         </div>
       </div>
