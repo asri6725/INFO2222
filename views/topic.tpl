@@ -321,7 +321,9 @@ input[type=text]:focus{
         </div>
 
        
-  <!--User comments to the post -->
+  <!--User comments to the post, the code goes through the data base 
+        to retrieve the information including sender and content
+        It also utilises a similar system to how messaging works-->
     %for response in responses:
         <div class="userComment">
       
