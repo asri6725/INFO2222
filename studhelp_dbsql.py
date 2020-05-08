@@ -4,13 +4,12 @@ from socket import *
 import sys
 
 
-connection = sqlite3.connect("stud_help.db")
-cursor = connection.cursor()
-
 #Return 0 for correct login credentials
 #Return 1 for incorrect password
 #Return 2 for incorrect username
 def check_login(username, password):
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 	cursor.execute("SELECT * FROM user_detail")
 	data = cursor.fetchall()
 	for record in data:
@@ -31,6 +30,8 @@ def check_login(username, password):
 #Return 0 for success
 #Return 1 for existing username
 def check_signup(username, password):
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 	cursor.execute("SELECT * FROM user_detail")
 	data = cursor.fetchall()
 	for record in data:
@@ -43,7 +44,8 @@ def check_signup(username, password):
 
 #This function get all the subject that user has selected
 def get_user_subject(username):
-
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 	subjects = []
 	count = 0
 
@@ -67,7 +69,8 @@ def get_user_subject(username):
 #Adds selected unit to the user
 #Return -1 when user is already enrolled in the unit
 def unit_add(username, unit):
-	
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 	subjects = get_user_subject(username)
 	
 	for subject in subjects:
@@ -83,6 +86,9 @@ def unit_add(username, unit):
 #users: Array of username that are part of the chat
 #message_name: Name of the chat
 def create_new_message(users, message_name):
+
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 
 	cursor.execute("INSERT INTO message (message_name) VALUES(?)", (message_name,))
 	connection.commit()
@@ -100,6 +106,9 @@ def create_new_message(users, message_name):
 #return example: [('hey jackey', 'admin'), ('hi admin', 'jackey'), ('how you doing admin?', 'jackey')]
 def get_message_contents(m_id):
 
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
+
 	message_his = []
 	count = 0
 
@@ -116,6 +125,9 @@ def get_message_contents(m_id):
 #Adds new messsage from the user
 def add_new_msg(m_id, username, content):
 
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
+
 	cursor.execute("INSERT INTO message_content (message_id, content, username) VALUES (?, ?, ?)", (m_id, content, username))
 	connection.commit()
 	connection.close()
@@ -124,6 +136,9 @@ def add_new_msg(m_id, username, content):
 #Otherwise return array of tuples containing information
 #	E.g. [(1, 'how to make websites?', 'admin')]
 def get_pid_title_username(subject):
+
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 
 	cursor.execute("""
 		SELECT post_id, title, username
@@ -139,6 +154,9 @@ def get_pid_title_username(subject):
 
 def get_post_contents(subject, title):
 
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
+
 	cursor.execute("""
 		SELECT P.title, P.subject_id, P.context
 		FROM post P
@@ -153,17 +171,24 @@ def get_post_contents(subject, title):
 
 #New version
 # def get_post_contents(post_id):
+
+	# connection = sqlite3.connect("stud_help.db")
+	# cursor = connection.cursor()
 # 	cursor.execute("""
 # 		SELECT P.title, P.subject_id, P.context
 # 		FROM post P
 # 		WHERE P.post_id = :post_id""", {"post_id": post_id})
 # 	data = cursor.fetchall()
 # 	if len(data) == 0:
+#		connection.close()
 # 		return [("This post does not exist")]
+#	connection.close()
 # 	return data[0]
 
 #Gets an array of all the post_title in the unit
 def get_all_post_title(unit):
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 	cursor.execute("""
 		SELECT P.title
 		FROM post P
@@ -178,6 +203,8 @@ def get_all_post_title(unit):
 	return title
 
 def get_post_responses(subject, title):
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 	cursor.execute("""
 		SELECT R.response, R.username
 		FROM post P INNER JOIN post_response PR USING (post_id) INNER JOIN response R USING (response_id)
@@ -193,6 +220,8 @@ def get_post_responses(subject, title):
 
 #new version
 # def get_post_response(post_id):
+	# connection = sqlite3.connect("stud_help.db")
+	# cursor = connection.cursor()
 # 	cursor.execute("""
 # 		SELECT R.response, R.username
 # 		FROM post P INNER JOIN post_response PR USING (post_id) INNER JOIN response R USING (response_id)
@@ -200,12 +229,16 @@ def get_post_responses(subject, title):
 # 		ORDER BY PR.response_id""", {"post_id": post_id})
 # 	data = cursor.fetchall()
 # 	if len(data) == 0:
+#		connection.close()
 # 		return ["Response does not exist"]
+#	connection.close()
 # 	return data
 
 
 
 def add_post_response(unit, title, content, username):
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 	cursor.execute("""
 		SELECT P.post_id
 		FROM post P
@@ -227,6 +260,8 @@ def add_post_response(unit, title, content, username):
 
 
 def add_new_post(username, subject, title, content):
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 	cursor.execute("INSERT INTO post (title, context, username, subject_id) VALUES(?, ?, ?, ?)", (title, content, username, subject))
 	connection.commit()
 	connection.close()
@@ -234,6 +269,8 @@ def add_new_post(username, subject, title, content):
 
 
 def add_user(username, password, email):
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 	cursor.execute("INSERT INTO user_detail VALUES(?, ?, ?, ?)", (username, password, 1, email))
 	connection.commit()
 	connection.close()
@@ -241,6 +278,8 @@ def add_user(username, password, email):
 
 #Sends an email to the users with their password
 def send_password(mail):
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 
 	#looks up username and password, related to this email
 	cursor.execute("""
@@ -292,6 +331,8 @@ def send_password(mail):
 	return 0
 
 def add_message(usr_from, user_to, message):
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 	cursor.execute("SELECT max(message_id) from messages_final;")
 	data = cursor.fetchall()
 	m_id = data[0][0]+1
@@ -301,15 +342,17 @@ def add_message(usr_from, user_to, message):
 	return 0
 
 def view_messages(username):
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 	cursor.execute("SELECT * FROM messages_final WHERE sender= :username OR reciever= :username ORDER BY message_id;", {"username": username})
 	data = cursor.fetchall()
 	connection.close()
 	return data
 
 def view_chat_history(username1, username2):
+	connection = sqlite3.connect("stud_help.db")
+	cursor = connection.cursor()
 	cursor.execute("SELECT * FROM messages_final WHERE (sender = :user1 AND reciever = :user2) OR (sender = :user2 AND reciever = :user1) ORDER BY message_id;", {'user1':username1, "user2": username2})
 	data = cursor.fetchall()
 	connection.close()
 	return data
-
-
