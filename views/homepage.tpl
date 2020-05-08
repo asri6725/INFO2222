@@ -319,7 +319,7 @@
                     <p> Computing 2 Usability and Security (6 CP)<br> </p>
                     <img src="../img/cropped.png" alt="icon" class="unit_img">
                   %elif subject[i] == "COMP2017":
-                    <p> Systems Programming (6 CP)<br> </p>
+                    <p> Systems Programming<br>(6 CP) </p>
                     <img src="../img/cropped.png" alt="icon" class="unit_img">
                   %end
                 </div>
