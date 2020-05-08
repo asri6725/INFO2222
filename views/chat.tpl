@@ -318,6 +318,8 @@ input[type=text]:focus{
   <a href="#">Home</a>
   <a href="#">Unit</a>
   <a href="#">Academic Dishonesty</a>
+  <a href="http://localhost:8080/messages">Messages</a>
+  <a href="http://localhost:8080/signout">Logout</a>
 </div>
 
   <!-- The whole bottom section grouped into one div -->
@@ -341,7 +343,7 @@ input[type=text]:focus{
       </div>
 
       <div class="bottomchat" style="position: absolute; bottom: 10px;">
-        <form action="http://localhost:2000/messages/send" method="POST">
+        <form action="http://localhost:8080/messages/send" method="POST">
             <input type="hidden" name="message_user" value="{{reciever}}" />
             <input type="text" name="message" placeholder="reply" style="font-size: 18px; width:40%; margin-left:10px;" />
             <input type = "submit" value="Send" class="submit_btn"/>
@@ -398,9 +400,11 @@ input[type=text]:focus{
 
 <!-- LINK TO PAGES WITHIN SITE -->
     <ul>
-      <li> <a href="" class="Footertxtlink">Home</a> </li>
-      <li> <a href="" class="Footertxtlink">Unit</a></li>
-      <li> <a href="" class="Footertxtlink">Academic Dishonesty</a></li>
+      <li> <a href="http://localhost:8080/#" class="Footertxtlink">Home</a> </li>
+      <li> <a href="http://localhost:8080/#unit" class="Footertxtlink">Unit</a></li>
+      <li> <a href="http://localhost:8080/#Academic_Dishonesty" class="Footertxtlink">Academic Dishonesty</a></li>
+      <li> <a href="http://localhost:8080/messages" class="Footertxtlink">Messages</a> </li>
+      <li> <a href="http://localhost:8080/signout" class="Footertxtlink">Signout</a> </li>
     </ul>
   </div>
 </div>
