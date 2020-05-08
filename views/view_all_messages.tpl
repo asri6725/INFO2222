@@ -320,11 +320,11 @@ input[type=text]:focus{
 
 <!-- Navigation Bar -->
 <div class="topnav">
-  <a href="http://localhost:8080/#">Home</a>
-  <a href="http://localhost:8080/#unit">Unit</a>
-  <a href="http://localhost:8080/#Academic_Dishonesty">Academic Dishonesty</a>
-  <a href="http://localhost:8080/messages">Messages</a>
-  <a href="http://localhost:8080/signout">Signout</a>
+  <a href="{{server}}/#">Home</a>
+  <a href="{{server}}/#unit">Unit</a>
+  <a href="{{server}}/#Academic_Dishonesty">Academic Dishonesty</a>
+  <a href="{{server}}/messages">Messages</a>
+  <a href="{{server}}/signout">Signout</a>
 </div>
 </div>
 
@@ -361,7 +361,7 @@ input[type=text]:focus{
          also including the original message they sent to start the conversation.*/ -->
 
       <div class="bottomchat" style="position: absolute; bottom: 10px;">
-        <form action="http://localhost:8080/messages/send" method="POST">
+        <form action="{{server}}/messages/send" method="POST">
             <input name="message_user" type="text" placeholder="recipient (username)" style="font-size: 18px;width:40%;"/>
             <input name="message" type="text" placeholder="Message" style="font-size: 18px; width:40%; margin-left:10px;"/>
             <input type="Submit" value="Send" class="submit_btn" style="margin-Left:10px;"/>
@@ -418,11 +418,11 @@ input[type=text]:focus{
 
 <!-- LINK TO PAGES WITHIN SITE -->
     <ul>
-      <li> <a href="http://localhost:8080/#" class="Footertxtlink">Home</a> </li>
-      <li> <a href="http://localhost:8080/#unit" class="Footertxtlink">Unit</a></li>
-      <li> <a href="http://localhost:8080/#Academic_Dishonesty" class="Footertxtlink">Academic Dishonesty</a></li>
-      <li> <a href="http://localhost:8080/messages" class="Footertxtlink">Messages</a> </li>
-      <li> <a href="http://localhost:8080/signout" class="Footertxtlink">Signout</a> </li>
+      <li> <a href="{{server}}/#" class="Footertxtlink">Home</a> </li>
+      <li> <a href="{{server}}/#unit" class="Footertxtlink">Unit</a></li>
+      <li> <a href="{{server}}/#Academic_Dishonesty" class="Footertxtlink">Academic Dishonesty</a></li>
+      <li> <a href="{{server}}/messages" class="Footertxtlink">Messages</a> </li>
+      <li> <a href="{{server}}/signout" class="Footertxtlink">Signout</a> </li>
     </ul>
   </div>
 </div>

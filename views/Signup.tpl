@@ -94,7 +94,7 @@
       <div id = "details">
           <img src="../img/cropped.png" alt="icon" class="icon">
           <h1> STUD <span class="red_text">HELP</span>  </h1>
-          <form action="/sign-up" method="post">
+          <form action="{{server}}/sign-up" method="post">
             <div id = username>
                 <input name="username" type="text" class="mail" placeholder="Username" />
             </div>

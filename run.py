@@ -68,12 +68,18 @@ def unit_add():
 @app.get('/forgot-password')
 def forgot():
     return model.forgot_password()
-
 #-----------------------------------------------------------------------------
 
 @app.get('/reset-password')
 def forgot():
     return model.reset_password()
+
+#-----------------------------------------------------------------------------
+
+@app.post('/forgot-pwd')
+def reset_pass():
+    email = request.forms.get("email")
+    return model.reset_pass(email)
 
 #-----------------------------------------------------------------------------
 

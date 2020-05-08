@@ -1,5 +1,5 @@
 # This is mainly used to change the uris quickly
-ip = 'localhost'
+ip = '127.0.0.1'
 port = ':8080'
 method = 'http://'
 

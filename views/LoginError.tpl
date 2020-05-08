@@ -44,11 +44,11 @@
       <p id="text">
         The username or password you entered was invalid.
         <br>
-        <a href="/forgot-password">Forgot your password?</a>
+        <a href="{{server}}/forgot-password">Forgot your password?</a>
         <br>
         or
         <br>
-        <a href="/signout">Try again?</a>
+        <a href="{{server}}/signout">Try again?</a>
       </p>
     </div>
   </body>

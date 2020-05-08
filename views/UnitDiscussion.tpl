@@ -283,11 +283,11 @@
         </h1>
       </div>
       <div class="topnav">
-        <a href="http://localhost:8080/#">Home</a>
-        <a href="http://localhost:8080/#unit">Unit</a>
-        <a href="http://localhost:8080/#Academic_Dishonesty">Academic Dishonesty</a>
-        <a href="http://localhost:8080/messages">Messages</a>
-        <a href="http://localhost:8080/signout">Signout</a>
+        <a href="{{server}}/#">Home</a>
+        <a href="{{server}}/#unit">Unit</a>
+        <a href="{{server}}/#Academic_Dishonesty">Academic Dishonesty</a>
+        <a href="{{server}}/messages">Messages</a>
+        <a href="{{server}}/signout">Signout</a>
       </div>
       <div class="row">
         <div class="leftcolumn">
@@ -393,11 +393,11 @@
 
     <!-- LINK TO PAGES WITHIN SITE -->
         <ul>
-          <li> <a href="http://localhost:8080/#" class="Footertxtlink">Home</a> </li>
-          <li> <a href="http://localhost:8080/#unit" class="Footertxtlink">Unit</a></li>
-          <li> <a href="http://localhost:8080/#Academic_Dishonesty" class="Footertxtlink">Academic Dishonesty</a></li>
-          <li> <a href="http://localhost:8080/messages" class="Footertxtlink">Messages</a> </li>
-          <li> <a href="http://localhost:8080/signout" class="Footertxtlink">Signout</a> </li>
+          <li> <a href="{{server}}/#" class="Footertxtlink">Home</a> </li>
+          <li> <a href="{{server}}/#unit" class="Footertxtlink">Unit</a></li>
+          <li> <a href="{{server}}/#Academic_Dishonesty" class="Footertxtlink">Academic Dishonesty</a></li>
+          <li> <a href="{{server}}/messages" class="Footertxtlink">Messages</a> </li>
+          <li> <a href="{{server}}/signout" class="Footertxtlink">Signout</a> </li>
         </ul>
       </div>
     </body>

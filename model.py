@@ -36,7 +36,7 @@ def login_check(username, password):
 
         return template("homepage.tpl", name=username, subject=subject, server = conf.complete_server_conf())
     else:
-        return template("LoginError.html", reason="check credentials")
+        return template("LoginError.tpl", reason="check credentials", server = conf.complete_server_conf())
 
 #-----------------------------------------------------------------------------
 
@@ -45,37 +45,7 @@ def homepage(username):
     subject = studhelp_dbsql.get_user_subject(username)
     print("Enter here")
     return template("homepage.tpl", name=username, subject=subject, server = conf.complete_server_conf())
-
-'''#-----------------------------------------------------------------------------
-#Creating new msg
-
-#usernames: array of users who participate in this char
-#message_name: is the naming of the chat.
-def create_new_chat(usernames, message_name):
-    #This creates new chat in the database, and return message_id
-    message_id = studhelp_dbsql.create_new_message(usernames, message_name)
-
-    #return something here?
-
 #-----------------------------------------------------------------------------
-#Retrieve Message
-#Message_data: Array of tuples, ("Message content", "User who wrote the message")
-#   E.g. [('hey jackey', 'admin'), ('hi admin', 'jackey'), ('how you doing admin?', 'jackey')]
-def retrieve_message(message_id):
-
-    messsage_data = studhelp_dbsql.get_message_contents(message_id)
-
-    #return something
-
-#-----------------------------------------------------------------------------
-#Probaly after this function, retrieve_message should be called to update the contents
-def add_message(username, message_id, content):
-    studhelp_dbsql.add_new_msg(message_id, usernamem content)
-
-    #return something
-
-
-'''#-----------------------------------------------------------------------------
 
 def addUnit(unit, username):
     #ADD unit to DB with the username and return homepage
@@ -85,15 +55,22 @@ def addUnit(unit, username):
 #-----------------------------------------------------------------------------
 # Forgot password
 def forgot_password():
-    return template("ForgotPwd.html")
+    return template("ForgotPwd.tpl", server = conf.complete_server_conf())
 #-----------------------------------------------------------------------------
 # Reset password
 def reset_password():
-    return template("ResetPwd.html")
+    return template("ResetPwd.tpl", server = conf.complete_server_conf())
+#-----------------------------------------------------------------------------
+# Send the email for reset
+def reset_pass(email):
+    ret = studhelp_dbsql.send_password(email)
+    url = conf.complete_server_conf()+"/"
+    return redirect(url)
+
 #-----------------------------------------------------------------------------
 # Signup
 def signup():
-    return template("Signup.html")
+    return template("Signup.tpl", server = conf.complete_server_conf())
 #-----------------------------------------------------------------------------
 # Signup Check
 def signup_check(username, password, email):
@@ -104,17 +81,17 @@ def signup_check(username, password, email):
         studhelp_dbsql.add_user(username, password, email)
         return template("Login.tpl", server = conf.complete_server_conf())
     else:
-        return template("SignupError.tpl")
+        return template("SignupError.tpl", server = conf.complete_server_conf())
 
 #-----------------------------------------------------------------------------
 # Signup Error
 def signup_error():
-    return template("SignupError.html")
+    return template("SignupError.tpl", server = conf.complete_server_conf())
 
 #-----------------------------------------------------------------------------
 
 def error():
-    return template("ErrorPage.html")
+    return template("ErrorPage.tpl")
 
 #-----------------------------------------------------------------------------
 # Unit Discussion
