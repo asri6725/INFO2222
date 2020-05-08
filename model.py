@@ -104,7 +104,7 @@ def signup_check(username, password, email):
         studhelp_dbsql.add_user(username, password, email)
         return template("Login.tpl", server = conf.complete_server_conf())
     else:
-        return template("SignupError.html")
+        return template("SignupError.tpl")
 
 #-----------------------------------------------------------------------------
 # Signup Error
