@@ -17,12 +17,15 @@ def check_login(username, password):
 		if (username == record[0]):
 			if (password == record[1]):
 				print("Correct password, now login")
+				connection.close()
 				return 0
 			else:
 				print("Wrong Password")
+				connection.close()
 				return 1
 	else:
 		print("Wrong username")
+		connection.close()
 		return 2
 
 #Return 0 for success
@@ -32,8 +35,10 @@ def check_signup(username, password):
 	data = cursor.fetchall()
 	for record in data:
 		if (username == record[0]):
+			connection.close()
 			return 1
 	else:
+		connection.close()
 		return 0
 
 #This function get all the subject that user has selected
@@ -56,7 +61,7 @@ def get_user_subject(username):
 		for record in data:
 			subjects.append(record[0])
 			count += 1
-	
+	connection.close()
 	return subjects
 
 #Adds selected unit to the user
@@ -71,6 +76,7 @@ def unit_add(username, unit):
 
 	cursor.execute("INSERT INTO user_subject VALUES(?, ?)", (username, unit))
 	connection.commit()
+	connection.close()
 
 	return get_user_subject(username)
 
@@ -86,6 +92,7 @@ def create_new_message(users, message_name):
 		m_id = data[0][0]
 		cursor.execute("INSERT INTO message_user VALUES (?, ?)", (m_id, user))
 		connection.commit()
+	connection.close()
 
 	return m_id
 
@@ -103,6 +110,7 @@ def get_message_contents(m_id):
 		ORDER BY M.content_id""".format(m_id)
 	cursor.execute(command)
 	data = cursor.fetchall()
+	connection.close()
 	return data
 
 #Adds new messsage from the user
@@ -110,6 +118,7 @@ def add_new_msg(m_id, username, content):
 
 	cursor.execute("INSERT INTO message_content (message_id, content, username) VALUES (?, ?, ?)", (m_id, content, username))
 	connection.commit()
+	connection.close()
 
 #Returns -1 there is no post in this subject
 #Otherwise return array of tuples containing information
@@ -123,7 +132,9 @@ def get_pid_title_username(subject):
 		""", {"subject_id": subject})
 	data = cursor.fetchall()
 	if len(data) == 0:
+		connection.close()
 		return -1
+	connection.close()
 	return data
 
 def get_post_contents(subject, title):
@@ -135,7 +146,9 @@ def get_post_contents(subject, title):
 		""", {"title": title, "subject_id": subject})
 	data = cursor.fetchall()
 	if len(data) == 0:
+		connection.close()
 		return [("This post does not exist")]
+	connection.close()
 	return data[0]
 
 #New version
@@ -161,6 +174,7 @@ def get_all_post_title(unit):
 	title = []
 	for record in data:
 		title.append(record[0])
+	connection.close()
 	return title
 
 def get_post_responses(subject, title):
@@ -172,7 +186,9 @@ def get_post_responses(subject, title):
 		""", {"title": title, "subject_id":subject})
 	data = cursor.fetchall()
 	if len(data) == 0:
+		connection.close()
 		return ["Response does not exist"]
+	connection.close()
 	return data
 
 #new version
@@ -188,40 +204,39 @@ def get_post_responses(subject, title):
 # 	return data
 
 
-#Adds a response to the post
-def add_post_reponses(postID, message):
+
+def add_post_response(unit, title, content, username):
 	cursor.execute("""
-		SELECT R.response, R.username
-		FROM post_repose PR INNER JOIN Response R
-		WHERE PR.post_id = :post_id
-		""", {"post_id": postID})
+		SELECT P.post_id
+		FROM post P
+		WHERE P.subject_id = :subject_id AND P.title = :title
+		""", {"subject_id": unit, "title": title})
 	data = cursor.fetchall()
-	if len(data) == 0:
-		return ["Response does not exist"]
-	return data
+	post_id = int(data[0][0])
 
+	cursor.execute("INSERT INTO response (response, username) VALUES(?, ?)", (content, username))
+	connection.commit()
+	cursor.execute("""
+		SELECT MAX(response_id)
+		FROM response""")
+	data = cursor.fetchall()
+	response_id = int(data[0][0])
+	cursor.execute("INSERT INTO post_response VALUES(?, ?)", (post_id, response_id))
+	connection.commit()
+	connection.close()
 
-#New version, that does not use post_id
-def add_post_response(unit, title):
- 	cursor.execute("""
- 		SELECT R.response, R.username
- 		FROM post P INNER JOIN post_response PR USING(post_id) INNER JOIN Response R USING (response_id)
- 		WHERE P.subject_id = :subject_id AND P.title = :title
- 		""", {"subject_id": unit, "title": title})
- 	data = cursor.fetchall()
- 	if len(data) == 0:
- 		return ["Response does not exist"]
- 	return data
 
 def add_new_post(username, subject, title, content):
 	cursor.execute("INSERT INTO post (title, context, username, subject_id) VALUES(?, ?, ?, ?)", (title, content, username, subject))
 	connection.commit()
+	connection.close()
 	return 0
 
 
 def add_user(username, password, email):
 	cursor.execute("INSERT INTO user_detail VALUES(?, ?, ?, ?)", (username, password, 1, email))
 	connection.commit()
+	connection.close()
 	return 0
 
 #Sends an email to the users with their password
@@ -272,6 +287,8 @@ def send_password(mail):
 	    count += 1
 	cc.send("\r\n.\r\n".encode())
 	print(cc.recv(1024).decode())
+
+	connection.close()
 	return 0
 
 def add_message(usr_from, user_to, message):
@@ -280,15 +297,19 @@ def add_message(usr_from, user_to, message):
 	m_id = data[0][0]+1
 	cursor.execute("INSERT INTO messages_final VALUES(?, ?, ?, ?)", (m_id, usr_from, user_to, message))
 	connection.commit()
+	connection.close()
 	return 0
 
 def view_messages(username):
 	cursor.execute("SELECT * FROM messages_final WHERE sender= :username OR reciever= :username ORDER BY message_id;", {"username": username})
 	data = cursor.fetchall()
+	connection.close()
 	return data
 
 def view_chat_history(username1, username2):
 	cursor.execute("SELECT * FROM messages_final WHERE (sender = :user1 AND reciever = :user2) OR (sender = :user2 AND reciever = :user1) ORDER BY message_id;", {'user1':username1, "user2": username2})
 	data = cursor.fetchall()
+	connection.close()
 	return data
+
 
