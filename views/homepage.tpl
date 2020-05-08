@@ -142,6 +142,19 @@
         background: #ddd;
         margin-top: 20px;
         border-radius: 15px;
+        overflow: hidden;
+      }
+      .contactUs{
+        float: left;
+        padding-right: 3%;
+      }
+      .quicklinks{
+        text-align: left;
+        padding-left: 2%;
+        float: left;
+        border-left-style: solid;
+        border-left-width: thin;
+        border-left-color: grey;
       }
       .red_text{
         color: red;
@@ -217,10 +230,8 @@
         <a href="#">Home</a>
         <a href="#unit">Unit</a>
         <a href="#Academic_Dishonesty">Academic Dishonesty</a>
-        <a href="{{server}}/signout">Logout</a>
-
-        
-        
+        <a href="http://localhost:2000/messages">Messages</a>
+        <a href="http://localhost:2000/signout">Logout</a>   
       </div>
       <div class="row">
         <div class="leftcolumn">
@@ -326,7 +337,26 @@
         </div>
       </div>
       <div class="footer">
-        <h2>Home Page</h2>
+        <div class="contactUs">
+          <h4 style="font-size: 14px; text-align: left;"> Contact Us </h4>
+          <p style="font-size: 14px; text-align: left;"> Got any questions or feedback?
+            <br>
+            Email us
+            <a href="mailto:StudHelpTeam@outlook.com">StudHelpTeam@outlook.com</a>
+          </p>
+        </div>
+
+        <div class="quicklinks">
+          <h5 style="font-size: 14px; text-align: left; line-height:0px;"> Quick Links </h5>
+      <!-- LINK TO PAGES WITHIN SITE -->
+          <ul>
+            <li> <a href="http://localhost:2000/#" class="Footertxtlink">Home</a> </li>
+            <li> <a href="http://localhost:2000/#unit" class="Footertxtlink">Unit</a></li>
+            <li> <a href="http://localhost:2000/#Academic_Dishonesty" class="Footertxtlink">Academic Dishonesty</a></li>
+            <li> <a href="http://localhost:2000/messages" class="Footertxtlink">Messages</a> </li>
+            <li> <a href="http://localhost:2000/signout" class="Footertxtlink">Signout</a> </li>
+          </ul>
+        </div>
       </div>
     </body>
 </html>
