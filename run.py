@@ -6,6 +6,7 @@ import conf
 # Each file separately
 # For the template, we will keep them together
 import model
+
 #-----------------------------------------------------------------------------
 
 '''

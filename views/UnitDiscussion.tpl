@@ -330,14 +330,14 @@
                 <input name="content" type="text" placeholder="Content"/>
                 <input value="Send" type="submit" />
             </form> -->
-            <form action='{{server}}/homepage/{{username}}/{{unit}}' method="POST">
+            <form action='{{server}}/homepage/send/{{unit}}' method="POST">
               <input type=hidden name=username value="{{username}}">
             <div id = titldiv>
                 <input name="title" type="text" class="ttl" placeholder="Title" style="width:100%;"/>
             </div>
             <br>
             <div id = textdiv>
-              <textarea class="txt" rows="4" cols="60" maxlength="250" placeholder="Enter your text here (250 character limit)"></textarea>
+              <textarea class="txt" name="content"rows="4" cols="60" maxlength="250" placeholder="Enter your text here (250 character limit)"></textarea>
             </div>
             <p style="text-align:center;"> (Remember to make sure your post aligns with the University of Sydney's
               <a href="https://www.sydney.edu.au/students/academic-integrity.html" class="txtlink">Academic Integrity</a>
