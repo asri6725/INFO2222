@@ -231,7 +231,7 @@
         <a href="#unit">Unit</a>
         <a href="#Academic_Dishonesty">Academic Dishonesty</a>
         <a href="http://localhost:8080/messages">Messages</a>
-        <a href="http://localhost:8080/signout">Logout</a>
+        <a href="http://localhost:8080/signout">Signout</a>
       </div>
       <div class="row">
         <div class="leftcolumn">
