@@ -85,6 +85,26 @@
         background-color: #ddd;
         color: black;
       }
+      
+      /* Log out */
+      
+            .logout{
+        background-color: #333;
+        border: none;
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 16px;
+      }
+
+      .logout:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      
 
       /* Create two unequal columns that floats next to each other */
       /* Left column */
@@ -216,6 +236,12 @@
         <a href="#">Home</a>
         <a href="#unit">Unit</a>
         <a href="#Academic_Dishonesty">Academic Dishonesty</a>
+        
+        <form action="http://localhost:2000/signout" method="GET">
+          <button value="Logout" type ="submit" class="logout">Logout</button>
+        </form>
+        
+        
       </div>
       <div class="row">
         <div class="leftcolumn">
