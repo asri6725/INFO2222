@@ -133,7 +133,13 @@ def content(subject, title, username):
     res = studhelp_dbsql.get_post_contents(subject, title)
     content = res
     responses = studhelp_dbsql.get_post_responses(subject, title)
-    return template("topic.tpl", title = title, unit=subject, content=content, responses = responses, server = conf.complete_server_conf(), username = username)
+    val = None
+    for i in title:
+        mod_i = ''.join(e for e in i if e.isalnum())
+        for char in mod_i.lower():
+            val = ord(char) - 96
+
+    return template("topic.tpl", title = title, unit=subject, content=content, responses = responses, server = conf.complete_server_conf(), username = username, value = val)
 
 #-----------------------------------------------------------------------------
 
@@ -144,7 +150,7 @@ def new_post(subject, title, content, username):
 #-----------------------------------------------------------------------------
 
 def new_comment(subject, title, comment, username):
-    ret = ""
+    ret = studhelp_dbsql.add_post_response(subject, title, comment, username)
     return content(subject, title, username)
 
 #-----------------------------------------------------------------------------

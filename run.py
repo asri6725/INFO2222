@@ -146,7 +146,7 @@ def add_comment(subject, value):
         unit = request.forms.get("unit")
         if unit!=subject:
             return model.error()
-        return model.content(subject, title, comment,username)
+        return model.new_comment(subject, title, comment,username)
     else:
         return model.login()
 
