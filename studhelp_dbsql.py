@@ -200,11 +200,21 @@ def add_post_reponses(postID, message):
 		return ["Response does not exist"]
 	return data
 
+
+#New version, that does not use post_id
+# def add_post_response(unit, title):
+# 	cursor.execute("""
+# 		SELECT R.response, R.username
+# 		FROM post P INNER JOIN post_response PR USING(post_id) INNER JOIN Response R USING (response_id)
+# 		WHERE P.subject_id = :subject_id AND P.title = :title
+# 		""", {"subject_id": unit, "title": title})
+# 	data = cursor.fetchall()
+# 	if len(data) == 0:
+# 		return ["Response does not exist"]
+# 	return data
+
 def add_new_post(username, subject, title, content):
-	cursor.execute("SELECT MAX(post_id) FROM post")
-	data = cursor.fetchall()
-	p_id = data[0][0]+1
-	cursor.execute("INSERT INTO post VALUES(?, ?, ?, ?, ?)", (p_id, title, content, username, subject))
+	cursor.execute("INSERT INTO post (title, context, username, subject_id) VALUES(?, ?, ?, ?)", (title, content, username, subject))
 	connection.commit()
 	return 0
 
@@ -281,3 +291,6 @@ def view_chat_history(username1, username2):
 	cursor.execute("SELECT * FROM messages_final WHERE (sender = :user1 AND reciever = :user2) OR (sender = :user2 AND reciever = :user1) ORDER BY message_id;", {'user1':username1, "user2": username2})
 	data = cursor.fetchall()
 	return data
+
+add_new_post("admin", "INFO2222", "how does hashing work?", "I don't understand")
+
