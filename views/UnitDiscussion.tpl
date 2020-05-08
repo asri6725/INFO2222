@@ -158,7 +158,7 @@
         margin-top: 20px;
         border-radius: 15px;
         overflow: hidden;
-        
+
       }
        .contactUs{
         float: left;
@@ -283,17 +283,17 @@
         </h1>
       </div>
       <div class="topnav">
-        <a href="http://localhost:8080/homepage">Home</a>
-        <a href="http://localhost:8080/homepage">Unit</a>
-        <a href="http://localhost:8080/homepage">Academic Dishonesty</a>
+        <a href="http://localhost:8080/#">Home</a>
+        <a href="http://localhost:8080/#unit">Unit</a>
+        <a href="http://localhost:8080/#Academic_Dishonesty">Academic Dishonesty</a>
         <a href="http://localhost:8080/messages">Messages</a>
-        <a href="http://localhost:8080/signout">Logout</a>
+        <a href="http://localhost:8080/signout">Signout</a>
       </div>
       <div class="row">
         <div class="leftcolumn">
           <div class="card">
             <img src="../img/john_doe.jpg" alt="icon" class="user_card_img">
-            <h2>John Doe</h2>
+            <h2>{{username}}</h2>
             <p>Bachelor of Advanced Computing</p>
           </div>
           <div class="card">
