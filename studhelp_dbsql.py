@@ -3,11 +3,31 @@ import base64
 from socket import *
 import sys
 
+#Return -1 if its sql injection
+def sqli_check(args):
+
+	for arg in args:
+		if arg[0] == "'":
+			return -1
+		if " OR " in arg:
+			return -1
+		if " or " in arg:
+			return -1
+		if "DROP TABLE" in arg:
+			return -1
+		if "drop table" in arg:
+			return -1
+	return 0
+
 
 #Return 0 for correct login credentials
 #Return 1 for incorrect password
 #Return 2 for incorrect username
 def check_login(username, password):
+	args = [username, password]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
 	cursor.execute("SELECT * FROM user_detail")
@@ -30,6 +50,10 @@ def check_login(username, password):
 #Return 0 for success
 #Return 1 for existing username
 def check_signup(username, password):
+	args = [username, password]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
 	cursor.execute("SELECT * FROM user_detail")
@@ -44,6 +68,10 @@ def check_signup(username, password):
 
 #This function get all the subject that user has selected
 def get_user_subject(username):
+	args = [username]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
 	subjects = []
@@ -69,6 +97,10 @@ def get_user_subject(username):
 #Adds selected unit to the user
 #Return -1 when user is already enrolled in the unit
 def unit_add(username, unit):
+	args = [username, unit]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
 	subjects = get_user_subject(username)
@@ -86,6 +118,10 @@ def unit_add(username, unit):
 #users: Array of username that are part of the chat
 #message_name: Name of the chat
 def create_new_message(users, message_name):
+	args = [users, message_name]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
@@ -105,6 +141,10 @@ def create_new_message(users, message_name):
 #m_id: message_id
 #return example: [('hey jackey', 'admin'), ('hi admin', 'jackey'), ('how you doing admin?', 'jackey')]
 def get_message_contents(m_id):
+	args = [mid]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
@@ -124,6 +164,10 @@ def get_message_contents(m_id):
 
 #Adds new messsage from the user
 def add_new_msg(m_id, username, content):
+	args = [m_id, username, content]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
@@ -136,6 +180,10 @@ def add_new_msg(m_id, username, content):
 #Otherwise return array of tuples containing information
 #	E.g. [(1, 'how to make websites?', 'admin')]
 def get_pid_title_username(subject):
+	args = [subject]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
@@ -153,6 +201,10 @@ def get_pid_title_username(subject):
 	return data
 
 def get_post_contents(subject, title):
+	args = [subject, title]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
@@ -187,6 +239,10 @@ def get_post_contents(subject, title):
 
 #Gets an array of all the post_title in the unit
 def get_all_post_title(unit):
+	args = [unit]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
 	cursor.execute("""
@@ -203,6 +259,10 @@ def get_all_post_title(unit):
 	return title
 
 def get_post_responses(subject, title):
+	args = [subject, title]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
 	cursor.execute("""
@@ -237,6 +297,10 @@ def get_post_responses(subject, title):
 
 
 def add_post_response(unit, title, content, username):
+	args = [unit, title, content, username]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
 	cursor.execute("""
@@ -260,6 +324,10 @@ def add_post_response(unit, title, content, username):
 
 
 def add_new_post(username, subject, title, content):
+	args = [username, subject, title, content]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
 	cursor.execute("INSERT INTO post (title, context, username, subject_id) VALUES(?, ?, ?, ?)", (title, content, username, subject))
@@ -269,6 +337,10 @@ def add_new_post(username, subject, title, content):
 
 
 def add_user(username, password, email):
+	args = [username, password, email]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
 	cursor.execute("INSERT INTO user_detail VALUES(?, ?, ?, ?)", (username, password, 1, email))
@@ -278,6 +350,10 @@ def add_user(username, password, email):
 
 #Sends an email to the users with their password
 def send_password(mail):
+	args = [mail]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
 
@@ -331,6 +407,10 @@ def send_password(mail):
 	return 0
 
 def add_message(usr_from, user_to, message):
+	args = [usr_from, user_to, message]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
 	cursor.execute("SELECT max(message_id) from messages_final;")
@@ -342,6 +422,10 @@ def add_message(usr_from, user_to, message):
 	return 0
 
 def view_messages(username):
+	args = [username]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
 	cursor.execute("SELECT * FROM messages_final WHERE sender= :username OR reciever= :username ORDER BY message_id;", {"username": username})
@@ -350,6 +434,10 @@ def view_messages(username):
 	return data
 
 def view_chat_history(username1, username2):
+	args = [username1, username2]
+	sqli = sqli_check(args)
+	if sqli == -1:
+		return -3
 	connection = sqlite3.connect("stud_help.db")
 	cursor = connection.cursor()
 	cursor.execute("SELECT * FROM messages_final WHERE (sender = :user1 AND reciever = :user2) OR (sender = :user2 AND reciever = :user1) ORDER BY message_id;", {'user1':username1, "user2": username2})
