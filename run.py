@@ -212,7 +212,7 @@ def new_message():
         username = request.get_cookie("username",secret='m14AGroup6')
         user_to_chat = html.escape(request.forms.get("message_user"))
         message = html.escape(request.forms.get("message"))
-        if len(message) > 100 or len(user_to_chat):
+        if len(message) > 100 or len(user_to_chat)>10:
             return model.error()
         print("Going to model")
         return model.new_message(username, user_to_chat, message)
