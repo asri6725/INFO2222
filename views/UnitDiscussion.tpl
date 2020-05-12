@@ -349,7 +349,7 @@
             <form action='{{server}}/homepage/send/{{unit}}' method="POST">
               <input type=hidden name=username value="{{username}}">
             <div id = titldiv>
-                <input name="title" type="text" class="ttl" placeholder="Title" style="width:100%;"/>
+                <input name="title" type="text" class="ttl" maxlength="100" placeholder="Title (100 character limit)" style="width:100%;"/>
             </div>
             <br>
             <div id = textdiv>

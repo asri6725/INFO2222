@@ -336,7 +336,7 @@ input[type=text]:focus{
        -->
 
         <form action='homepage/{{username}}/{{subject}}' method="POST">
-          <input type="text" class="message" placeholder="Enter Text"/>
+          <input type="text" class="message" maxlength="100" placeholder="Enter Text (100 characters)"/>
           <input value="Submit" type="submit" name="submit" class="submit_btn"/>
         </form>
       </div>

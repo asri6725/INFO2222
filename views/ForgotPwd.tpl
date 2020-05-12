@@ -66,7 +66,7 @@
       <div id="input">
         <p>
           <form action = "{{server}}/forgot-pwd"method="post">
-            <input name="email" type="email" class="email" placeholder="Email" />
+            <input name="email" type="email" maxlength="50" class="email" placeholder="Email" />
             <br>
             <br>
             <button type="submit" name="reset" class="button">Reset</button>

@@ -45,7 +45,11 @@ def login():
 def do_login():
 
     username = html.escape(request.forms.get('username'))
+    if len(username) > 10:
+        return model.error()
     password = html.escape(request.forms.get('password'))
+    if len(password) > 20:
+        return model.error()
     response.set_cookie("username",username, secret='m14AGroup6')
 
         
@@ -59,6 +63,8 @@ def unit_add():
     if request.get_cookie("username"):
         username = request.get_cookie("username",secret='m14AGroup6')
         unit_add = html.escape(request.forms.get('unit'))
+        if len(unit_add) != 8:
+            return model.error()
         return model.addUnit(unit_add, username)
     else:
         return model.login()
@@ -79,6 +85,8 @@ def forgot():
 @app.post('/forgot-pwd')
 def reset_pass():
     email = html.escape(request.forms.get("email"))
+    if len(email)>50:
+        return model.error()
     return model.reset_pass(email)
 
 #-----------------------------------------------------------------------------
@@ -98,9 +106,14 @@ def sign_up():
 @app.get('/sign-up', method='POST')
 def do_sign_up():
     username = html.escape(request.forms.get('username'))
+    if len(username) > 10:
+        return model.error()
     password = html.escape(request.forms.get('password'))
+    if len(password) > 20:
+        return model.error()
     email = html.escape(request.forms.get('email'))
-
+    if len(email)>50:
+        return model.error()
     #Need to remove 
     if email is None:
         email = "test123@gmail.com"
@@ -123,7 +136,11 @@ def list_of_topics(subject):
 def get_post(subject):
     if request.get_cookie("username",secret='m14AGroup6'):
         title = html.escape(request.forms.get('title'))
+        if len(title) > 100:
+            return model.error()
         content = html.escape(request.forms.get('content'))
+        if len(content) > 250:
+            return model.error()
         username = request.get_cookie("username",secret='m14AGroup6')
         return model.new_post(subject, title, content, username)
     else:
@@ -136,6 +153,8 @@ def topic(subject, value):
     print("topic")
     if request.get_cookie("username",secret='m14AGroup6'):
         title = html.escape(request.forms.get('title'))
+        if len(title) > 100:
+            return model.error()
         username = request.get_cookie("username",secret='m14AGroup6')
         return model.content(subject, title, username)
     else:
@@ -150,8 +169,8 @@ def add_comment(subject, value):
         username = request.get_cookie("username",secret='m14AGroup6')
         title = html.escape(request.forms.get("title"))
         unit = html.escape(request.forms.get("unit"))
-        print(title)
-        print("Unit ", unit, " title ", title, " comment ", comment, " user ", username)
+        if len(title) > 100 or len(username)>10 or len(comment)>250:
+            return model.error()
         if unit!=subject:
             return model.error()
         return model.new_comment(subject, title, comment,username)
@@ -178,6 +197,8 @@ def view_chat(user):
     if request.get_cookie("username",secret='m14AGroup6'):
         username = request.get_cookie("username",secret='m14AGroup6')
         user_to_chat = html.escape(request.forms.get("message_user"))
+        if len(user_to_chat) > 10:
+            return model.error()
         return model.get_messages(username, user_to_chat)
     else:
         return model.login()
@@ -191,6 +212,8 @@ def new_message():
         username = request.get_cookie("username",secret='m14AGroup6')
         user_to_chat = html.escape(request.forms.get("message_user"))
         message = html.escape(request.forms.get("message"))
+        if len(message) > 100 or len(user_to_chat):
+            return model.error()
         print("Going to model")
         return model.new_message(username, user_to_chat, message)
     else:
@@ -247,7 +270,7 @@ def error404(error):
 host =  conf.ip_conf() #'localhost'10.86.163.196
 
 # Test port, change to the appropriate port to host
-port = 80
+port = 8080
 
 # Turn this off for production
 debug = True

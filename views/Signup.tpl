@@ -96,17 +96,17 @@
           <h1> STUD <span class="red_text">HELP</span>  </h1>
           <form action="{{server}}/sign-up" method="post">
             <div id = username>
-                <input name="username" type="text" class="mail" placeholder="Username" />
+                <input name="username" type="text" maxlength="10" class="mail" placeholder="Username (10 characters)" />
             </div>
 
 
            <div id = email>
-                <input name="email" type="text" class="e" placeholder="Email"/>
+                <input name="email" type="text" maxlength="50" class="e" placeholder="Email"/>
             </div>
             <!-- just put it same class as pword to save writting same code-->
 
             <div id = password>
-                <input name="password" type="password" class="pword" placeholder="Password" />
+                <input name="password" type="password" maxlength="20" class="pword" placeholder="Password (20 characters)" />
             </div>
 
 

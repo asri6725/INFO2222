@@ -362,8 +362,8 @@ input[type=text]:focus{
 
       <div class="bottomchat" style="position: absolute; bottom: 10px;">
         <form action="{{server}}/messages/send" method="POST">
-            <input name="message_user" type="text" placeholder="recipient (username)" style="font-size: 18px;width:40%;"/>
-            <input name="message" type="text" placeholder="Message" style="font-size: 18px; width:40%; margin-left:10px;"/>
+            <input name="message_user" type="text" maxlength="10" placeholder="recipient (username 10 characters)" style="font-size: 18px;width:40%;"/>
+            <input name="message" type="text" maxlength="100" placeholder="Message (100 characters)" style="font-size: 18px; width:40%; margin-left:10px;"/>
             <input type="Submit" value="Send" class="submit_btn" style="margin-Left:10px;"/>
         </form>
 

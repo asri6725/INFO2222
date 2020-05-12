@@ -77,10 +77,10 @@
 
         <form action="{{server}}/" method="post">
         <div id = username>
-            <input name="username" type="text" class="email" placeholder="Username"/>
+            <input name="username" maxlength="10" type="text" class="email" placeholder="Username (10 Characters)"/>
         </div>
         <div id = password>
-            <input name="password" type="password" class="pword" placeholder="Password" />
+            <input name="password" type="password" class="pword" maxlength="20" placeholder="Password (20 characters)" />
         </div>
         <div id = login_code>
             <input value="Login" type="submit" class="login_btn"/>

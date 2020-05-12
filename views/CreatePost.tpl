@@ -196,7 +196,7 @@ body {
         <input type=hidden name=username value="{{username}}">
 
       <div id = titldiv>
-          <input name="title" type="text" class="ttl" placeholder="Title" style="width:100%;"/>
+          <input name="title" type="text" class="ttl" maxlength="100" placeholder="Title" style="width:100%;"/>
       </div>
       <div id = textdiv>
         <textarea class="txt" rows="4" cols="60" maxlength="250" placeholder="Enter your text here (250 character limit)"></textarea>
