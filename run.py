@@ -20,7 +20,7 @@ import model
 #-----------------------------------------------------------------------------
 #Testing if this way runs the wsgi server
 from bottle import route, get, post, request, redirect, static_file, error, template, response
-
+import html
 import model
 
 #-----------------------------------------------------------------------------
@@ -32,8 +32,8 @@ import model
 app = application = bottle.Bottle()
 @app.route('/', method='GET')
 def login():
-    if request.get_cookie("username"):
-        username = request.get_cookie("username")
+    if request.get_cookie("username",secret='m14AGroup6'):
+        username = request.get_cookie("username", secret='m14AGroup6')
         return model.homepage(username)
     else:
         print("going to login")
@@ -44,9 +44,9 @@ def login():
 @app.post('/')
 def do_login():
 
-    username = request.forms.get('username')
-    password = request.forms.get('password')
-    response.set_cookie("username",username)
+    username = html.escape(request.forms.get('username'))
+    password = html.escape(request.forms.get('password'))
+    response.set_cookie("username",username, secret='m14AGroup6')
 
         
     return model.login_check(username, password)
@@ -57,8 +57,8 @@ def do_login():
 @app.post('/homepage')
 def unit_add():
     if request.get_cookie("username"):
-        username = request.get_cookie("username")
-        unit_add = request.forms.get('unit')
+        username = request.get_cookie("username",secret='m14AGroup6')
+        unit_add = html.escape(request.forms.get('unit'))
         return model.addUnit(unit_add, username)
     else:
         return model.login()
@@ -78,7 +78,7 @@ def forgot():
 
 @app.post('/forgot-pwd')
 def reset_pass():
-    email = request.forms.get("email")
+    email = html.escape(request.forms.get("email"))
     return model.reset_pass(email)
 
 #-----------------------------------------------------------------------------
@@ -97,9 +97,9 @@ def sign_up():
 
 @app.get('/sign-up', method='POST')
 def do_sign_up():
-    username = request.forms.get('username')
-    password = request.forms.get('password')
-    email = request.forms.get('email')
+    username = html.escape(request.forms.get('username'))
+    password = html.escape(request.forms.get('password'))
+    email = html.escape(request.forms.get('email'))
 
     #Need to remove 
     if email is None:
@@ -110,8 +110,8 @@ def do_sign_up():
 
 @app.get('/homepage/<subject>')            
 def list_of_topics(subject):
-    if request.get_cookie("username"):
-        username = request.get_cookie("username")
+    if request.get_cookie("username",secret='m14AGroup6'):
+        username = request.get_cookie("username",secret='m14AGroup6')
         return model.listTopics(subject, username)
     else:
         return model.login()
@@ -121,10 +121,10 @@ def list_of_topics(subject):
 @app.post('/homepage/send/<subject>')
 @app.post('/homepage/send/homepage/<subject>')
 def get_post(subject):
-    if request.get_cookie("username"):
-        title = request.forms.get('title')
-        content = request.forms.get('content')
-        username = request.get_cookie("username")
+    if request.get_cookie("username",secret='m14AGroup6'):
+        title = html.escape(request.forms.get('title'))
+        content = html.escape(request.forms.get('content'))
+        username = request.get_cookie("username",secret='m14AGroup6')
         return model.new_post(subject, title, content, username)
     else:
         return model.login()
@@ -134,9 +134,9 @@ def get_post(subject):
 @app.post('/homepage/<subject>/<value>')            
 def topic(subject, value):
     print("topic")
-    if request.get_cookie("username"):
-        title = request.forms.get('title')
-        username = request.get_cookie("username")
+    if request.get_cookie("username",secret='m14AGroup6'):
+        title = html.escape(request.forms.get('title'))
+        username = request.get_cookie("username",secret='m14AGroup6')
         return model.content(subject, title, username)
     else:
         return model.login()
@@ -145,11 +145,11 @@ def topic(subject, value):
 
 @app.post('/homepage/comment/<subject>/<value>')
 def add_comment(subject, value):
-    if request.get_cookie("username"):
-        comment = request.forms.get("comment")
-        username = request.get_cookie("username")
-        title = request.forms.get("title")
-        unit = request.forms.get("unit")
+    if request.get_cookie("username",secret='m14AGroup6'):
+        comment = html.escape(request.forms.get("comment"))
+        username = request.get_cookie("username",secret='m14AGroup6')
+        title = html.escape(request.forms.get("title"))
+        unit = html.escape(request.forms.get("unit"))
         print(title)
         print("Unit ", unit, " title ", title, " comment ", comment, " user ", username)
         if unit!=subject:
@@ -164,8 +164,8 @@ def add_comment(subject, value):
 @app.get('/messages')
 def list_users():
     print("list of users")
-    if request.get_cookie("username"):
-        username = request.get_cookie("username")
+    if request.get_cookie("username",secret='m14AGroup6'):
+        username = request.get_cookie("username",secret='m14AGroup6')
         return model.overview_messages(username)
     else:
         return model.login()
@@ -175,9 +175,9 @@ def list_users():
 @app.post('/messages/<user>')
 def view_chat(user):
     print("view chat")
-    if request.get_cookie("username"):
-        username = request.get_cookie("username")
-        user_to_chat = request.forms.get("message_user")
+    if request.get_cookie("username",secret='m14AGroup6'):
+        username = request.get_cookie("username",secret='m14AGroup6')
+        user_to_chat = html.escape(request.forms.get("message_user"))
         return model.get_messages(username, user_to_chat)
     else:
         return model.login()
@@ -187,10 +187,10 @@ def view_chat(user):
 @app.post('/messages/send')
 def new_message():
     print("Enter controller for messages post")
-    if request.get_cookie("username"):
-        username = request.get_cookie("username")
-        user_to_chat = request.forms.get("message_user")
-        message = request.forms.get("message")
+    if request.get_cookie("username",secret='m14AGroup6'):
+        username = request.get_cookie("username",secret='m14AGroup6')
+        user_to_chat = html.escape(request.forms.get("message_user"))
+        message = html.escape(request.forms.get("message"))
         print("Going to model")
         return model.new_message(username, user_to_chat, message)
     else:
@@ -199,7 +199,7 @@ def new_message():
 #-----------------------------------------------------------------------------
 @app.get('/signout')
 def signout():
-    response.delete_cookie("username")
+    response.delete_cookie("username",secret='m14AGroup6')
     username = request.get_cookie("username")
     print(username)
     return model.login()
@@ -247,7 +247,7 @@ def error404(error):
 host =  conf.ip_conf() #'localhost'10.86.163.196
 
 # Test port, change to the appropriate port to host
-port = 8080
+port = 80
 
 # Turn this off for production
 debug = True
