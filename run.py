@@ -270,10 +270,10 @@ def error404(error):
 host =  conf.ip_conf() #'localhost'10.86.163.196
 
 # Test port, change to the appropriate port to host
-port = 8080
+port = 80
 
 # Turn this off for production
-debug = True
+debug = False
 #-----------------------------------------------------------------------------
 
 #Run the server

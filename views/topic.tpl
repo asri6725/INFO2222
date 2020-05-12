@@ -317,7 +317,7 @@ input[type=text]:focus{
         <form action="/homepage/comment/{{unit}}/{{value}}>" method="post">
         <input type="hidden" name= "unit" value= "{{unit}}" />
           <input type="hidden" name= "title" value= "{{content[0]}}" />
-          <input type="text" name = "comment"class="comment" placeholder="Add your comment here" style="opacity:0.7;"/>
+          <input type="text" name = "comment"class="comment" placeholder="Add your comment here (250 characters)" maxlength = 250 style="opacity:0.7;"/>
           <input value="Submit" type="submit" class="submit_btn"/>
         </form>
         </div>
