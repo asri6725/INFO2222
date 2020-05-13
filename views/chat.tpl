@@ -330,11 +330,7 @@ input[type=text]:focus{
   <div class="leftcolumn">
     <div class="card" style="position: relative; overflow:auto;">
 
-  /* This displays the messages you are having with the other user. Similar to the previous page
-      if or when messages pass the limit in the page, a scroll bar will appear allowing users 
-       to scroll through messages. This uses a data base to find all the information 
-       such as the reciever and sender, allowing us to display who you are talking to at the top
-       and also display who sent the message. */
+ 
       <div class="chatbox" >
         <h6 style="font-size: 22px; text-align: center;;"> You are talking to: {{reciever}} </h6>
         % for message in chat:
@@ -346,13 +342,11 @@ input[type=text]:focus{
 
       </div>
 
-      /* This will appear at the bottom of the div, allowing users to type their response and send it, 
-          we use a data base system in order to search and display the messages sent to this data base
-          between the two users. */
+      
       <div class="bottomchat" style="position: absolute; bottom: 10px;">
         <form action="{{server}}/messages/send" method="POST">
             <input type="hidden" name="message_user" value="{{reciever}}" />
-            <input type="text" maxlength="100" name="message" placeholder="reply (100 chars)" style="font-size: 18px; width:40%; margin-left:10px;" />
+            <input type="text" maxlength="100" min="1" name="message" placeholder="reply (100 chars)" style="font-size: 18px; width:40%; margin-left:10px;" />
             <input type = "submit" value="Send" class="submit_btn"/>
         </form>
 

@@ -27,6 +27,9 @@
         It looks like something went wrong.
         <br>
         <br>
+        {{error}}
+        <br>
+        <br>
         If this issue persists, contact us at <a href="mailto:StudHelpTeam@outlook.com">StudHelpTeam@outlook.com</a>.<br>
         <br>
         We will love to hear any feed back or issues you may be having with our site.

@@ -260,7 +260,15 @@ def serve_css(css):
 #-----------------------------------------------------------------------------
 
 @app.error(404)
+@app.error(500)
+@app.error(502)
+@app.error(400)
+@app.error(401)
+@app.error(403)
+@app.error(503)
+
 def error404(error):
+    print(error)
     return model.error()
 
 
