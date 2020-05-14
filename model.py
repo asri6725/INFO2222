@@ -1,5 +1,5 @@
 import random
-from bottle import template, error, redirect
+from bottle import template, error, redirect, response
 import studhelp_dbsql
 import conf
 '''
@@ -127,10 +127,15 @@ def content(subject, title, username):
     res = studhelp_dbsql.get_post_contents(subject, title)
     content = res
     if content == -3:
-        return error()
+        return error("")
+    if content == ['This post does not exist']:
+        return error("Script tags disabled temporarily")
     responses = studhelp_dbsql.get_post_responses(subject, title)
     if responses == -3:
         return error
+    #if responses == ['Response does not exist']:
+    #    return [["",""]]
+    print(responses)
     val = None
     for i in title:
         mod_i = ''.join(e for e in i if e.isalnum())
@@ -143,10 +148,10 @@ def content(subject, title, username):
 
 def new_post(subject, title, content, username):
     if len(title) == 0 or len(content) == 0:
-        return error("One title or content not written")        
+        return error("Title and/or content not written")        
     ret = studhelp_dbsql.add_new_post(username, subject, title, content)
     if ret == -3:
-        return error()
+        return error("")
     url = conf.complete_server_conf()+'/homepage/'+subject
     redirect(url)   
 #-----------------------------------------------------------------------------
@@ -156,7 +161,7 @@ def new_comment(subject, title, comment, username):
         return error("Comment not written")
     ret = studhelp_dbsql.add_post_response(subject, title, comment, username)
     if ret == -3:
-        return error()
+        return error("")
     return content(subject, title, username)
 
 #-----------------------------------------------------------------------------
@@ -175,7 +180,7 @@ def get_users(ret, username):
 def overview_messages(username):
     ret = studhelp_dbsql.view_messages(username)
     if ret == -3:
-        return error()
+        return error("")
     users = []
     users = get_users(ret, username)
     return template("view_all_messages.tpl", username = username, users = users, server = conf.complete_server_conf())
@@ -185,7 +190,7 @@ def overview_messages(username):
 def get_messages(username, chat_with):
     ret = studhelp_dbsql.view_chat_history(username, chat_with)
     if ret == -3:
-        return error()
+        return error("")
     return template("chat.tpl", chat = ret, reciever=chat_with, server= conf.complete_server_conf())
 
 #-----------------------------------------------------------------------------

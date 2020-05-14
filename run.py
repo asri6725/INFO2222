@@ -139,6 +139,7 @@ def get_post(subject):
         if len(title) > 100:
             return model.error()
         content = html.escape(request.forms.get('content'))
+        print(content)
         if len(content) > 250:
             return model.error()
         username = request.get_cookie("username",secret='m14AGroup6')
@@ -150,7 +151,6 @@ def get_post(subject):
 
 @app.post('/homepage/<subject>/<value>')            
 def topic(subject, value):
-    print("topic")
     if request.get_cookie("username",secret='m14AGroup6'):
         title = html.escape(request.forms.get('title'))
         if len(title) > 100:
@@ -278,7 +278,7 @@ def error404(error):
 host =  conf.ip_conf() #'localhost'10.86.163.196
 
 # Test port, change to the appropriate port to host
-port = 80
+port = 8080
 
 # Turn this off for production
 debug = False

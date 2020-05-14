@@ -1,6 +1,6 @@
 # This is mainly used to change the uris quickly
-ip = '10.86.167.191'
-port = ':80'
+ip = 'localhost'
+port = ':8080'
 method = 'http://'
 
 def ip_conf():
