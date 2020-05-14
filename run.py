@@ -50,7 +50,7 @@ def do_login():
     password = html.escape(request.forms.get('password'))
     if len(password) > 20:
         return model.error()
-    response.set_cookie("username",username, secret='m14AGroup6')
+    #response.set_cookie("username",username, secret='m14AGroup6')
 
         
     return model.login_check(username, password)
