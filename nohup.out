@@ -26057,3 +26057,185 @@ IndexError: string index out of range
 10.48.69.79 - - [12/May/2020 15:22:22] "GET /homepage/ABCD%20E HTTP/1.1" 200 10115
 10.48.69.79 - - [12/May/2020 15:25:47] "POST /homepage/send/ABCD%20E HTTP/1.1" 303 0
 10.48.69.79 - - [12/May/2020 15:25:47] "GET /homepage/ABCD%20E HTTP/1.1" 200 10470
+Bottle v0.12.18 server starting up (using WSGIRefServer())...
+Listening on http://10.86.167.191:80/
+Hit Ctrl-C to quit.
+
+Traceback (most recent call last):
+  File "run.py", line 289, in <module>
+    app.run(host=host, port=port, debug=debug)
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 761, in run
+    run(self, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 3137, in run
+    server.run(app)
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 2789, in run
+    srv = make_server(self.host, self.port, app, server_cls, handler_cls)
+  File "/usr/lib64/python3.6/wsgiref/simple_server.py", line 153, in make_server
+    server = server_class((host, port), handler_class)
+  File "/usr/lib64/python3.6/socketserver.py", line 456, in __init__
+    self.server_bind()
+  File "/usr/lib64/python3.6/wsgiref/simple_server.py", line 50, in server_bind
+    HTTPServer.server_bind(self)
+  File "/usr/lib64/python3.6/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/usr/lib64/python3.6/socketserver.py", line 470, in server_bind
+    self.socket.bind(self.server_address)
+OSError: [Errno 98] Address already in use
+Bottle v0.12.18 server starting up (using WSGIRefServer())...
+Listening on http://10.86.167.191:80/
+Hit Ctrl-C to quit.
+
+Traceback (most recent call last):
+  File "run.py", line 289, in <module>
+    app.run(host=host, port=port, debug=debug)
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 761, in run
+    run(self, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 3137, in run
+    server.run(app)
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 2789, in run
+    srv = make_server(self.host, self.port, app, server_cls, handler_cls)
+  File "/usr/lib64/python3.6/wsgiref/simple_server.py", line 153, in make_server
+    server = server_class((host, port), handler_class)
+  File "/usr/lib64/python3.6/socketserver.py", line 456, in __init__
+    self.server_bind()
+  File "/usr/lib64/python3.6/wsgiref/simple_server.py", line 50, in server_bind
+    HTTPServer.server_bind(self)
+  File "/usr/lib64/python3.6/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/usr/lib64/python3.6/socketserver.py", line 470, in server_bind
+    self.socket.bind(self.server_address)
+OSError: [Errno 98] Address already in use
+Bottle v0.12.18 server starting up (using WSGIRefServer())...
+Listening on http://10.86.167.191:80/
+Hit Ctrl-C to quit.
+
+Traceback (most recent call last):
+  File "run.py", line 289, in <module>
+    app.run(host=host, port=port, debug=debug)
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 761, in run
+    run(self, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 3137, in run
+    server.run(app)
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 2789, in run
+    srv = make_server(self.host, self.port, app, server_cls, handler_cls)
+  File "/usr/lib64/python3.6/wsgiref/simple_server.py", line 153, in make_server
+    server = server_class((host, port), handler_class)
+  File "/usr/lib64/python3.6/socketserver.py", line 456, in __init__
+    self.server_bind()
+  File "/usr/lib64/python3.6/wsgiref/simple_server.py", line 50, in server_bind
+    HTTPServer.server_bind(self)
+  File "/usr/lib64/python3.6/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/usr/lib64/python3.6/socketserver.py", line 470, in server_bind
+    self.socket.bind(self.server_address)
+OSError: [Errno 98] Address already in use
+Bottle v0.12.18 server starting up (using WSGIRefServer())...
+Listening on http://10.86.167.191:80/
+Hit Ctrl-C to quit.
+
+Traceback (most recent call last):
+  File "run.py", line 289, in <module>
+    app.run(host=host, port=port, debug=debug)
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 761, in run
+    run(self, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 3137, in run
+    server.run(app)
+  File "/usr/local/lib/python3.6/site-packages/bottle.py", line 2789, in run
+    srv = make_server(self.host, self.port, app, server_cls, handler_cls)
+  File "/usr/lib64/python3.6/wsgiref/simple_server.py", line 153, in make_server
+    server = server_class((host, port), handler_class)
+  File "/usr/lib64/python3.6/socketserver.py", line 456, in __init__
+    self.server_bind()
+  File "/usr/lib64/python3.6/wsgiref/simple_server.py", line 50, in server_bind
+    HTTPServer.server_bind(self)
+  File "/usr/lib64/python3.6/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/usr/lib64/python3.6/socketserver.py", line 470, in server_bind
+    self.socket.bind(self.server_address)
+OSError: [Errno 98] Address already in use
+Bottle v0.12.18 server starting up (using WSGIRefServer())...
+Listening on http://10.86.167.191:80/
+Hit Ctrl-C to quit.
+
+10.48.72.44 - - [14/May/2020 15:25:06] "GET / HTTP/1.1" 200 11910
+10.48.72.44 - - [14/May/2020 15:25:06] "GET /img/cropped.png HTTP/1.1" 200 19060
+10.48.72.44 - - [14/May/2020 15:25:06] "GET /img/john_doe.jpg HTTP/1.1" 200 7484
+10.48.72.44 - - [14/May/2020 15:25:08] "GET /signout HTTP/1.1" 200 2800
+10.48.72.44 - - [14/May/2020 15:25:14] "GET /sign-up HTTP/1.1" 200 3914
+10.48.72.44 - - [14/May/2020 15:25:20] "POST / HTTP/1.1" 200 1356
+10.48.72.44 - - [14/May/2020 15:25:32] "POST / HTTP/1.1" 200 11910
+10.48.72.44 - - [14/May/2020 15:25:34] "GET /homepage/COMP2017 HTTP/1.1" 200 11357
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.72.44 - - [14/May/2020 15:25:34] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.72.44 - - [14/May/2020 15:25:36] "POST /homepage/COMP2017/19 HTTP/1.1" 200 9284
+<h1>Critical error while processing request: /homepage/img/cropped.png</h1>10.48.72.44 - - [14/May/2020 15:25:36] "GET /homepage/img/cropped.png HTTP/1.1" 500 75
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.72.44 - - [14/May/2020 15:25:36] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.72.44 - - [14/May/2020 15:25:39] "POST /homepage/COMP2017/20 HTTP/1.1" 200 1039
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.72.44 - - [14/May/2020 15:25:39] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.72.44 - - [14/May/2020 15:25:46] "GET /signout HTTP/1.1" 200 2800
+10.48.72.44 - - [14/May/2020 15:25:47] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.72.44 - - [14/May/2020 16:07:17] "POST /homepage/COMP2022/19 HTTP/1.1" 200 2800
+<h1>Critical error while processing request: /homepage/img/cropped.png</h1>10.48.72.44 - - [14/May/2020 16:07:17] "GET /homepage/img/cropped.png HTTP/1.1" 500 75
+10.48.72.44 - - [14/May/2020 16:07:36] "GET / HTTP/1.1" 200 2800
+10.48.72.44 - - [14/May/2020 16:07:36] "GET /img/cropped.png HTTP/1.1" 304 0
+10.48.72.44 - - [14/May/2020 16:07:36] "GET / HTTP/1.1" 200 2800
+10.48.72.44 - - [14/May/2020 16:07:36] "GET /img/cropped.png HTTP/1.1" 200 19060
+10.48.72.44 - - [14/May/2020 16:07:40] "POST / HTTP/1.1" 200 11910
+10.48.72.44 - - [14/May/2020 16:07:40] "GET /img/john_doe.jpg HTTP/1.1" 200 7484
+10.48.72.44 - - [14/May/2020 16:07:43] "GET /homepage/COMP2017 HTTP/1.1" 200 11357
+10.48.72.44 - - [14/May/2020 16:07:44] "POST /homepage/COMP2017/19 HTTP/1.1" 200 9284
+<h1>Critical error while processing request: /homepage/img/cropped.png</h1>10.48.72.44 - - [14/May/2020 16:07:44] "GET /homepage/img/cropped.png HTTP/1.1" 500 75
+10.48.72.44 - - [14/May/2020 16:07:50] "GET / HTTP/1.1" 200 11910
+10.48.72.44 - - [14/May/2020 16:07:52] "GET /homepage/COMP2022 HTTP/1.1" 200 10158
+10.48.72.44 - - [14/May/2020 16:07:57] "GET /homepage/INFO2222 HTTP/1.1" 200 10171
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.72.44 - - [14/May/2020 16:07:57] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.72.44 - - [14/May/2020 16:07:59] "GET /homepage/MATH2068 HTTP/1.1" 200 10955
+10.48.72.44 - - [14/May/2020 16:08:02] "POST /homepage/MATH2068/14 HTTP/1.1" 200 9053
+<h1>Critical error while processing request: /homepage/img/cropped.png</h1>10.48.72.44 - - [14/May/2020 16:08:02] "GET /homepage/img/cropped.png HTTP/1.1" 500 75
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.72.44 - - [14/May/2020 16:08:02] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.72.44 - - [14/May/2020 16:08:05] "POST /homepage/MATH2068/20 HTTP/1.1" 200 9299
+<h1>Critical error while processing request: /homepage/img/cropped.png</h1>10.48.72.44 - - [14/May/2020 16:08:05] "GET /homepage/img/cropped.png HTTP/1.1" 500 75
+10.48.3.172 - - [14/May/2020 22:19:35] "GET / HTTP/1.1" 200 2800
+10.48.3.172 - - [14/May/2020 22:54:28] "GET / HTTP/1.1" 200 2800
+10.48.3.172 - - [14/May/2020 22:54:40] "GET / HTTP/1.1" 200 2800
+10.170.9.42 - - [14/May/2020 23:21:58] "GET / HTTP/1.1" 200 2800
+10.170.9.42 - - [14/May/2020 23:21:59] "GET /img/cropped.png HTTP/1.1" 200 19060
+<h1>Critical error while processing request: /favicon.ico</h1>10.170.9.42 - - [14/May/2020 23:21:59] "GET /favicon.ico HTTP/1.1" 500 62
+10.170.9.42 - - [14/May/2020 23:22:01] "GET / HTTP/1.1" 200 2800
+10.170.9.42 - - [14/May/2020 23:22:04] "GET /etc/passwd HTTP/1.1" 200 1424
+<h1>Critical error while processing request: /favicon.ico</h1>10.170.9.42 - - [14/May/2020 23:22:05] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.70.202 - - [15/May/2020 07:57:27] "GET / HTTP/1.1" 200 2800
+10.48.70.202 - - [15/May/2020 07:57:27] "GET /img/cropped.png HTTP/1.1" 200 19060
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.70.202 - - [15/May/2020 07:57:27] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.69.9 - - [15/May/2020 20:28:58] "GET / HTTP/1.1" 200 2800
+10.48.69.9 - - [15/May/2020 20:28:58] "GET /img/cropped.png HTTP/1.1" 200 19060
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:28:59] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.69.9 - - [15/May/2020 20:29:06] "POST / HTTP/1.1" 200 1356
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:29:06] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.69.9 - - [15/May/2020 20:29:09] "GET /signout HTTP/1.1" 200 2800
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:29:09] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.69.9 - - [15/May/2020 20:29:46] "GET /sign-up HTTP/1.1" 200 3914
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:29:46] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.69.9 - - [15/May/2020 20:29:58] "POST /sign-up HTTP/1.1" 200 2800
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:29:58] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.69.9 - - [15/May/2020 20:30:01] "GET /sign-up HTTP/1.1" 200 3914
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:30:01] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.69.9 - - [15/May/2020 20:30:08] "POST /sign-up HTTP/1.1" 200 2800
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:30:08] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.69.9 - - [15/May/2020 20:30:14] "POST / HTTP/1.1" 200 10025
+10.48.69.9 - - [15/May/2020 20:30:14] "GET /img/john_doe.jpg HTTP/1.1" 200 7484
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:30:14] "GET /favicon.ico HTTP/1.1" 500 62
+<h1>Critical error while processing request: /showdetail.asp</h1>10.48.69.9 - - [15/May/2020 20:37:21] "GET /showdetail.asp?id=49 HTTP/1.1" 500 65
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:37:22] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.69.9 - - [15/May/2020 20:37:30] "GET /?id=49 HTTP/1.1" 200 10025
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:37:31] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.69.9 - - [15/May/2020 20:37:40] "GET /signout HTTP/1.1" 200 2800
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:37:40] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.69.9 - - [15/May/2020 20:37:44] "GET /?id=49 HTTP/1.1" 200 2800
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:37:45] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.69.9 - - [15/May/2020 20:45:51] "GET / HTTP/1.1" 200 2800
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:45:52] "GET /favicon.ico HTTP/1.1" 500 62
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:45:59] "GET /favicon.ico HTTP/1.1" 500 62
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:47:07] "GET /favicon.ico HTTP/1.1" 500 62
+10.48.69.9 - - [15/May/2020 20:47:20] "GET /?id=1 HTTP/1.1" 200 2800
+<h1>Critical error while processing request: /favicon.ico</h1>10.48.69.9 - - [15/May/2020 20:47:21] "GET /favicon.ico HTTP/1.1" 500 62
+<h1>Critical error while processing request: /showdetail.asp</h1>10.48.69.9 - - [15/May/2020 20:48:29] "GET /showdetail.asp?id=1 HTTP/1.1" 500 65
