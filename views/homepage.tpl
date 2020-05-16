@@ -193,6 +193,14 @@
         display: block;
         border-radius: 15px;
       }
+      
+       .admin{
+        border-top-style: solid;
+        border-top-color: black;
+        border-top-width: thin;
+        width: 95%;
+        padding: 1%;
+      }
 
       .dropdown-content a:hover {background-color: #ddd;}
 
@@ -233,6 +241,20 @@
         <a href="{{server}}/messages">Messages</a>
         <a href="{{server}}/signout">Signout</a>
       </div>
+      
+      <div class="admin">
+        %if name == 'admin':
+          <form action='' method="POST">
+            <input name="remove" type="text" placeholder="Remove User" style="font-size: 18px;"/>
+            <button  style="text-align:center; font-size: 18px;">Delete</button>
+          </form>
+        %end
+      </div>
+
+      
+      
+      
+      
       <div class="row">
         <div class="leftcolumn">
           <div class="card">
