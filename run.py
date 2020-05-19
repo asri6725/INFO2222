@@ -86,7 +86,7 @@ def forgot():
 def reset_pass():
     email = html.escape(request.forms.get("email"))
     if len(email)>50:
-        return model.error()
+        return model.error("")
     return model.reset_pass(email)
 
 #-----------------------------------------------------------------------------
@@ -107,13 +107,13 @@ def sign_up():
 def do_sign_up():
     username = html.escape(request.forms.get('username'))
     if len(username) > 10:
-        return model.error()
+        return model.error("Length Error")
     password = html.escape(request.forms.get('password'))
     if len(password) > 20:
-        return model.error()
+        return model.error("Length Error")
     email = html.escape(request.forms.get('email'))
     if len(email)>50:
-        return model.error()
+        return model.error("Length Error")
     #Need to remove 
     if email is None:
         email = "test123@gmail.com"
@@ -137,11 +137,11 @@ def get_post(subject):
     if request.get_cookie("username",secret='m14AGroup6'):
         title = html.escape(request.forms.get('title'))
         if len(title) > 100:
-            return model.error()
+            return model.error("Length Error")
         content = html.escape(request.forms.get('content'))
         print(content)
         if len(content) > 250:
-            return model.error()
+            return model.error("Length Error")
         username = request.get_cookie("username",secret='m14AGroup6')
         return model.new_post(subject, title, content, username)
     else:
@@ -154,7 +154,7 @@ def topic(subject, value):
     if request.get_cookie("username",secret='m14AGroup6'):
         title = html.escape(request.forms.get('title'))
         if len(title) > 100:
-            return model.error()
+            return model.error("Length Error")
         username = request.get_cookie("username",secret='m14AGroup6')
         return model.content(subject, title, username)
     else:
@@ -170,9 +170,9 @@ def add_comment(subject, value):
         title = html.escape(request.forms.get("title"))
         unit = html.escape(request.forms.get("unit"))
         if len(title) > 100 or len(username)>10 or len(comment)>250:
-            return model.error()
+            return model.error("Length Error")
         if unit!=subject:
-            return model.error()
+            return model.error("Length Error")
         return model.new_comment(subject, title, comment,username)
     else:
         return model.login()
@@ -198,7 +198,7 @@ def view_chat(user):
         username = request.get_cookie("username",secret='m14AGroup6')
         user_to_chat = html.escape(request.forms.get("message_user"))
         if len(user_to_chat) > 10:
-            return model.error()
+            return model.error("Length Error")
         return model.get_messages(username, user_to_chat)
     else:
         return model.login()
@@ -213,7 +213,7 @@ def new_message():
         user_to_chat = html.escape(request.forms.get("message_user"))
         message = html.escape(request.forms.get("message"))
         if len(message) > 100 or len(user_to_chat)>10:
-            return model.error()
+            return model.error("Length Error")
         print("Going to model")
         return model.new_message(username, user_to_chat, message)
     else:
@@ -269,7 +269,7 @@ def serve_css(css):
 
 def error404(error):
     print(error)
-    return model.error()
+    return model.error("")
 
 
 #-----------------------------------------------------------------------------

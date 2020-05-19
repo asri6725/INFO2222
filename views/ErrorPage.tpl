@@ -5,7 +5,7 @@
       .case{
         text-align: center;
         width: 40%;
-        height: 45%;
+        height: 55%;
         background: rgba(255, 255, 255, 1);
         mix-blend-mode: normal;
         border: 4px solid;
