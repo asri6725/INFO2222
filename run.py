@@ -32,8 +32,8 @@ import model
 app = application = bottle.Bottle()
 @app.route('/', method='GET')
 def login():
-    if request.get_cookie("username",secret='m14AGroup6'):
-        username = request.get_cookie("username", secret='m14AGroup6')
+    if request.get_cookie("username",secret='houdini+stockfish'):
+        username = request.get_cookie("username", secret='houdini+stockfish')
         return model.homepage(username)
     else:
         print("going to login")
@@ -50,7 +50,7 @@ def do_login():
     password = html.escape(request.forms.get('password'))
     if len(password) > 20:
         return model.error()
-    #response.set_cookie("username",username, secret='m14AGroup6')
+    #response.set_cookie("username",username, secret='houdini+stockfish')
 
         
     return model.login_check(username, password)
@@ -61,7 +61,7 @@ def do_login():
 @app.post('/homepage')
 def unit_add():
     if request.get_cookie("username"):
-        username = request.get_cookie("username",secret='m14AGroup6')
+        username = request.get_cookie("username",secret='houdini+stockfish')
         unit_add = html.escape(request.forms.get('unit'))
         if len(unit_add) != 8:
             return model.error()
@@ -123,8 +123,8 @@ def do_sign_up():
 
 @app.get('/homepage/<subject>')            
 def list_of_topics(subject):
-    if request.get_cookie("username",secret='m14AGroup6'):
-        username = request.get_cookie("username",secret='m14AGroup6')
+    if request.get_cookie("username",secret='houdini+stockfish'):
+        username = request.get_cookie("username",secret='houdini+stockfish')
         return model.listTopics(subject, username)
     else:
         return model.login()
@@ -134,7 +134,7 @@ def list_of_topics(subject):
 @app.post('/homepage/send/<subject>')
 @app.post('/homepage/send/homepage/<subject>')
 def get_post(subject):
-    if request.get_cookie("username",secret='m14AGroup6'):
+    if request.get_cookie("username",secret='houdini+stockfish'):
         title = html.escape(request.forms.get('title'))
         if len(title) > 100:
             return model.error("Length Error")
@@ -142,7 +142,7 @@ def get_post(subject):
         print(content)
         if len(content) > 250:
             return model.error("Length Error")
-        username = request.get_cookie("username",secret='m14AGroup6')
+        username = request.get_cookie("username",secret='houdini+stockfish')
         return model.new_post(subject, title, content, username)
     else:
         return model.login()
@@ -151,11 +151,11 @@ def get_post(subject):
 
 @app.post('/homepage/<subject>/<value>')            
 def topic(subject, value):
-    if request.get_cookie("username",secret='m14AGroup6'):
+    if request.get_cookie("username",secret='houdini+stockfish'):
         title = html.escape(request.forms.get('title'))
         if len(title) > 100:
             return model.error("Length Error")
-        username = request.get_cookie("username",secret='m14AGroup6')
+        username = request.get_cookie("username",secret='houdini+stockfish')
         return model.content(subject, title, username)
     else:
         return model.login()
@@ -164,9 +164,9 @@ def topic(subject, value):
 
 @app.post('/homepage/comment/<subject>/<value>')
 def add_comment(subject, value):
-    if request.get_cookie("username",secret='m14AGroup6'):
+    if request.get_cookie("username",secret='houdini+stockfish'):
         comment = html.escape(request.forms.get("comment"))
-        username = request.get_cookie("username",secret='m14AGroup6')
+        username = request.get_cookie("username",secret='houdini+stockfish')
         title = html.escape(request.forms.get("title"))
         unit = html.escape(request.forms.get("unit"))
         if len(title) > 100 or len(username)>10 or len(comment)>250:
@@ -183,8 +183,8 @@ def add_comment(subject, value):
 @app.get('/messages')
 def list_users():
     print("list of users")
-    if request.get_cookie("username",secret='m14AGroup6'):
-        username = request.get_cookie("username",secret='m14AGroup6')
+    if request.get_cookie("username",secret='houdini+stockfish'):
+        username = request.get_cookie("username",secret='houdini+stockfish')
         return model.overview_messages(username)
     else:
         return model.login()
@@ -194,8 +194,8 @@ def list_users():
 @app.post('/messages/<user>')
 def view_chat(user):
     print("view chat")
-    if request.get_cookie("username",secret='m14AGroup6'):
-        username = request.get_cookie("username",secret='m14AGroup6')
+    if request.get_cookie("username",secret='houdini+stockfish'):
+        username = request.get_cookie("username",secret='houdini+stockfish')
         user_to_chat = html.escape(request.forms.get("message_user"))
         if len(user_to_chat) > 10:
             return model.error("Length Error")
@@ -208,8 +208,8 @@ def view_chat(user):
 @app.post('/messages/send')
 def new_message():
     print("Enter controller for messages post")
-    if request.get_cookie("username",secret='m14AGroup6'):
-        username = request.get_cookie("username",secret='m14AGroup6')
+    if request.get_cookie("username",secret='houdini+stockfish'):
+        username = request.get_cookie("username",secret='houdini+stockfish')
         user_to_chat = html.escape(request.forms.get("message_user"))
         message = html.escape(request.forms.get("message"))
         if len(message) > 100 or len(user_to_chat)>10:
@@ -222,7 +222,7 @@ def new_message():
 #-----------------------------------------------------------------------------
 @app.get('/signout')
 def signout():
-    response.delete_cookie("username",secret='m14AGroup6')
+    response.delete_cookie("username",secret='houdini+stockfish')
     username = request.get_cookie("username")
     print(username)
     return model.login()

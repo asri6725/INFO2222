@@ -38,7 +38,7 @@ def login_check(username, password):
         subject = studhelp_dbsql.get_user_subject(username)
         if subject == -3:
             return error()
-        response.set_cookie("username",username, secret='m14AGroup6')
+        response.set_cookie("username",username, secret='houdini+stockfish')
         return template("homepage.tpl", name=username, subject=subject, server = conf.complete_server_conf())
     else:
         return template("LoginError.tpl", reason="check credentials", server = conf.complete_server_conf())
