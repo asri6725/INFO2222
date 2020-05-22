@@ -66,7 +66,7 @@ def check_ddos():
 
 #implment underneath main
 
-t = threading.Thread(target = check_ddos)
+t = threading.Thread(target = check_ddos())
 t.start()
 
 
