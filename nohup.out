@@ -12749,3 +12749,62 @@ Wrong username
 [pid: 63731|app: 0|req: 2145/2145] 10.48.73.19 () {40 vars in 736 bytes} [Sat May 23 00:51:22 2020] POST / => generated 1356 bytes in 9 msecs (HTTP/1.1 200) 2 headers in 81 bytes (2 switches on core 0)
 None
 [pid: 63731|app: 0|req: 2146/2146] 10.48.73.19 () {34 vars in 638 bytes} [Sat May 23 00:51:25 2020] GET /signout => generated 2800 bytes in 0 msecs (HTTP/1.1 200) 3 headers in 223 bytes (1 switches on core 0)
+Correct password, now login
+[pid: 63731|app: 0|req: 2147/2147] 10.48.73.19 () {40 vars in 736 bytes} [Sat May 23 00:53:31 2020] POST / => generated 13021 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 177 bytes (2 switches on core 0)
+(404, 'File does not exist.')
+[pid: 63731|app: 0|req: 2148/2148] 10.48.73.19 () {34 vars in 655 bytes} [Sat May 23 00:53:33 2020] GET /favicon.ico => generated 1007 bytes in 0 msecs (HTTP/1.1 404) 2 headers in 88 bytes (1 switches on core 0)
+list of users
+[pid: 63731|app: 0|req: 2149/2149] 10.48.73.19 () {36 vars in 736 bytes} [Sat May 23 00:53:33 2020] GET /messages => generated 9979 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+view chat
+[pid: 63731|app: 0|req: 2150/2150] 10.48.73.19 () {42 vars in 865 bytes} [Sat May 23 00:53:35 2020] POST /messages/ausfish => generated 8684 bytes in 1 msecs (HTTP/1.1 200) 2 headers in 81 bytes (2 switches on core 0)
+(404, 'File does not exist.')
+[pid: 63731|app: 0|req: 2151/2151] 10.48.73.19 () {34 vars in 663 bytes} [Sat May 23 00:53:38 2020] GET /favicon.ico => generated 1007 bytes in 0 msecs (HTTP/1.1 404) 2 headers in 88 bytes (1 switches on core 0)
+Enter controller for messages post
+Going to model
+[pid: 63731|app: 0|req: 2152/2152] 10.48.73.19 () {42 vars in 867 bytes} [Sat May 23 00:53:43 2020] POST /messages/send => generated 8871 bytes in 5 msecs (HTTP/1.1 200) 2 headers in 81 bytes (2 switches on core 0)
+(404, 'File does not exist.')
+[pid: 63731|app: 0|req: 2153/2153] 10.48.73.19 () {34 vars in 660 bytes} [Sat May 23 00:53:43 2020] GET /favicon.ico => generated 1007 bytes in 0 msecs (HTTP/1.1 404) 2 headers in 88 bytes (1 switches on core 0)
+!WTrhWzHOyLznKxQLThuVEA==?gASVFgAAAAAAAACMCHVzZXJuYW1llIwFYWRtaW6UhpQu
+[pid: 63731|app: 0|req: 2154/2154] 10.48.73.19 () {36 vars in 747 bytes} [Sat May 23 00:53:57 2020] GET /signout => generated 2800 bytes in 0 msecs (HTTP/1.1 200) 3 headers in 223 bytes (1 switches on core 0)
+[pid: 63731|app: 0|req: 2155/2155] 10.170.9.1 () {34 vars in 742 bytes} [Sat May 23 15:27:55 2020] GET /etc/shadow => generated 0 bytes in 0 msecs (HTTP/1.1 304) 1 headers in 66 bytes (0 switches on core 0)
+(404, 'File does not exist.')
+[pid: 63731|app: 0|req: 2156/2156] 10.170.9.1 () {30 vars in 531 bytes} [Sat May 23 15:27:55 2020] GET /robots.txt => generated 1007 bytes in 0 msecs (HTTP/1.1 404) 2 headers in 88 bytes (1 switches on core 0)
+(404, 'File does not exist.')
+[pid: 63731|app: 0|req: 2157/2157] 10.170.9.1 () {32 vars in 616 bytes} [Sat May 23 15:27:55 2020] GET /favicon.ico => generated 1007 bytes in 0 msecs (HTTP/1.1 404) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 63731|app: 0|req: 2158/2158] 10.170.9.1 () {36 vars in 773 bytes} [Sat May 23 15:59:19 2020] GET /etc/shadow => generated 0 bytes in 0 msecs (HTTP/1.1 304) 1 headers in 66 bytes (0 switches on core 0)
+[pid: 63731|app: 0|req: 2159/2159] 10.170.9.1 () {34 vars in 766 bytes} [Sat May 23 16:01:02 2020] GET /home/m14AGroup6/run.py => generated 0 bytes in 0 msecs (HTTP/1.1 304) 1 headers in 66 bytes (0 switches on core 0)
+[pid: 63731|app: 0|req: 2160/2160] 10.170.9.1 () {32 vars in 723 bytes} [Sat May 23 16:02:07 2020] GET /home/m14AGroup6/stud_help.db => generated 716800 bytes in 193 msecs via sendfile() (HTTP/1.1 200) 4 headers in 151 bytes (7 switches on core 0)
+going to login
+[pid: 63731|app: 0|req: 2161/2161] 10.48.72.210 () {34 vars in 682 bytes} [Sat May 23 18:27:58 2020] GET / => generated 2800 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 63731|app: 0|req: 2162/2162] 10.48.72.210 () {32 vars in 605 bytes} [Sat May 23 18:27:59 2020] GET /img/cropped.png => generated 19060 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 135 bytes (0 switches on core 0)
+going to login
+[pid: 63731|app: 0|req: 2163/2163] 10.170.9.1 () {32 vars in 667 bytes} [Sat May 23 21:41:18 2020] GET / => generated 2800 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 63731|app: 0|req: 2164/2164] 10.170.9.1 () {34 vars in 669 bytes} [Sat May 23 21:41:18 2020] GET /img/cropped.png => generated 0 bytes in 0 msecs (HTTP/1.1 304) 1 headers in 66 bytes (0 switches on core 0)
+going to login
+[pid: 63731|app: 0|req: 2165/2165] 10.48.4.6 () {28 vars in 364 bytes} [Sat May 23 22:20:37 2020] GET / => generated 2800 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+going to login
+[pid: 63731|app: 0|req: 2166/2166] 10.48.4.6 () {28 vars in 364 bytes} [Sat May 23 22:37:48 2020] GET / => generated 2800 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+going to login
+[pid: 63731|app: 0|req: 2167/2167] 10.48.4.6 () {28 vars in 364 bytes} [Sun May 24 02:01:41 2020] GET / => generated 2800 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+going to login
+[pid: 63731|app: 0|req: 2168/2168] 10.48.4.6 () {28 vars in 364 bytes} [Sun May 24 02:01:54 2020] GET / => generated 2800 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+going to login
+[pid: 63731|app: 0|req: 2169/2169] 10.48.72.43 () {34 vars in 577 bytes} [Sun May 24 13:39:03 2020] GET / => generated 2800 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 63731|app: 0|req: 2170/2170] 10.48.72.43 () {34 vars in 549 bytes} [Sun May 24 13:39:04 2020] GET /img/cropped.png => generated 19060 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 135 bytes (0 switches on core 0)
+(404, 'File does not exist.')
+[pid: 63731|app: 0|req: 2171/2171] 10.48.72.43 () {32 vars in 504 bytes} [Sun May 24 13:39:04 2020] GET /favicon.ico => generated 1007 bytes in 0 msecs (HTTP/1.1 404) 2 headers in 88 bytes (1 switches on core 0)
+going to login
+[pid: 63731|app: 0|req: 2172/2172] 10.48.20.82 () {32 vars in 564 bytes} [Sun May 24 13:57:33 2020] GET / => generated 2800 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 63731|app: 0|req: 2173/2173] 10.48.20.82 () {32 vars in 536 bytes} [Sun May 24 13:57:33 2020] GET /img/cropped.png => generated 19060 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 135 bytes (0 switches on core 0)
+(404, 'File does not exist.')
+[pid: 63731|app: 0|req: 2174/2174] 10.48.20.82 () {30 vars in 491 bytes} [Sun May 24 13:57:33 2020] GET /favicon.ico => generated 1007 bytes in 0 msecs (HTTP/1.1 404) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 63731|app: 0|req: 2175/2175] 10.48.20.82 () {34 vars in 615 bytes} [Sun May 24 13:57:38 2020] GET /sign-up => generated 3914 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 63731|app: 0|req: 2176/2176] 10.48.20.82 () {40 vars in 727 bytes} [Sun May 24 13:58:03 2020] POST /sign-up => generated 2800 bytes in 3 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+Correct password, now login
+[pid: 63731|app: 0|req: 2177/2177] 10.48.20.82 () {40 vars in 713 bytes} [Sun May 24 13:58:07 2020] POST / => generated 10227 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 177 bytes (1 switches on core 0)
+[pid: 63731|app: 0|req: 2178/2178] 10.48.20.82 () {34 vars in 634 bytes} [Sun May 24 13:58:07 2020] GET /img/john_doe.jpg => generated 7484 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 135 bytes (0 switches on core 0)
+list of users
+[pid: 63731|app: 0|req: 2179/2179] 10.48.20.82 () {36 vars in 713 bytes} [Sun May 24 13:58:14 2020] GET /messages => generated 9298 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+Enter controller for messages post
+Going to model
+[pid: 63731|app: 0|req: 2180/2180] 10.48.20.82 () {42 vars in 836 bytes} [Sun May 24 13:58:29 2020] POST /messages/send => generated 8752 bytes in 3 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
